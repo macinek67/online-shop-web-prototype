@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 :root {
     --mainColor: #68d5f7;
 }
@@ -5,7 +7,7 @@
 html, body {
     margin: 0px;
     background-color: #f5f5f5;
-    font-family: arial, sans-serif;
+    font-family: montserrat;
     overflow:visible;
 }
 
@@ -60,6 +62,8 @@ a {
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .bestSellersDiv {
@@ -68,7 +72,11 @@ a {
     top: 600px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background-color: red;
+    background: rgba(235, 239, 240, 0.27);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .lastWatchedProductsDiv {
@@ -77,7 +85,44 @@ a {
     top: 700px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background-color: red;
+    background: rgba(15, 126, 200, 0.39);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#lastWatchedProductsDivTitle {
+    position: relative;
+    text-align: center;
+    top: 15%;
+    font-size: 2.0vmax;
+    font-weight: 600;
+    font-family: arial, sans-serif;
+    color: #3c4142;
+}
+
+#lastWatchedProductsDivButton {
+    position: relative;
+    top: 8%;
+    border: none;
+    display: inline-block;
+    background: rgba(235, 239, 240, 1);
+    color: #339DFF;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 38px;
+    border-radius: 10px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 370px;
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .theNewestProductsDiv {
@@ -86,7 +131,11 @@ a {
     top: 800px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background-color: red;
+    background: rgba(235, 239, 240, 0.27);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .ContactUsDiv {
@@ -95,10 +144,11 @@ a {
     top: 1000px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background-color: rgb(236, 239, 241);
+    background-color: #ebeff0;
     border-top-style: solid;
     border-color: #339DFF;
     border-top-width: 3px;
+    font-family: arial, sans-serif;
 }
 
 .SelectSugeestionButtons {
@@ -236,13 +286,13 @@ a {
     font-weight: 700;
 }
   
-#logInButton:hover {
+#logInButton:hover, #lastWatchedProductsDivButton:hover {
     box-shadow: 0 7px 7px rgba(83, 100, 255, 0.32);
 }
 
 #SingUpTitleLoginMenu {
     position: relative;
-    top: 15%;
+    top: 10.5%;
     color: white;
     text-shadow: 1px 1px rgb(0, 0, 0, 0.4);
     font-size: 12px;
@@ -273,7 +323,67 @@ a {
     -webkit-text-stroke: 0.25vw #0084ff;
 }
 
+#msform {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+  }
 
+  #msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    position: relative;
+    border-radius: 10px;
+  }
+
+  #msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+  }
+
+  #msform .action-button {
+    width: 100px;
+    background: #339DFF;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  #msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
+  }
+
+  .fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+  }
+  .fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+  }
 
 
 
@@ -304,6 +414,17 @@ a {
     .theNewestProductsDiv {
         width: 1280px;
     }
+
+    #lastWatchedProductsDivTitle {
+        font-size: 35px;
+    }
+
+    .contactUsTitle {
+        font-size: 100px;
+        margin-top: -60px;
+        -webkit-text-stroke: 4px #0084ff;
+    }
+
 }
 
 @media screen and (min-width: 1020px) and (max-width: 1285px) {
@@ -331,6 +452,7 @@ a {
     .ContactUsDiv {
         top: 700px;
     }
+
 }
 
 
@@ -431,7 +553,7 @@ a {
         height: 3px;
         background-color: #339DFF;
         margin-top: -33px;
-        margin-left: 325px;
+        margin-left: 335px;
     }
     .dotHeader {
         margin-left: 4px;
@@ -568,6 +690,18 @@ a {
     .ContactUsDiv {
         top: 65vw;
         height: 48vw;
+    }
+    #lastWatchedProductsDivTitle {
+        position: relative;
+        text-align: center;
+        top: 20%;
+        font-size: 1.5vmax;
+        font-weight: 600;
+    }
+    
+    #lastWatchedProductsDivButton {
+        width: 300px;
+        height: 75px;
     }
 }
 
@@ -711,6 +845,15 @@ a {
     .ContactUsDiv {
         top: 78vw;
         height: 48vw;
+    }
+    #lastWatchedProductsDivTitle {
+        font-size: 1.25vmax;
+    }
+    
+    #lastWatchedProductsDivButton {
+        width: 250px;
+        height: 55px;
+        font-size: 25px;
     }
 }
 
@@ -856,4 +999,14 @@ a {
         top: 58vw;
         height: 48vw;
     }
+    #lastWatchedProductsDivTitle {
+        font-size: 0.9vmax;
+    }
+
+    #lastWatchedProductsDivButton {
+        width: 175px;
+        height: 38px;
+        font-size: 17px;
+    }
 }
+
