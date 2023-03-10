@@ -324,8 +324,8 @@ a {
 }
 
 #msform {
-    width: 400px;
-    margin: 50px auto;
+    width: 800px;
+    margin: auto;
     text-align: center;
     position: relative;
   }
@@ -356,24 +356,23 @@ a {
   }
 
   #msform .action-button {
-    width: 100px;
+    width: 200px;
     background: #339DFF;
     font-weight: bold;
     color: white;
     border: 0 none;
     border-radius: 1px;
     cursor: pointer;
-    padding: 10px;
     margin: 10px 5px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 17px;
   }
   #msform .action-button:hover, #msform .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
   }
 
   .fs-title {
-    font-size: 15px;
+    font-size: 18px;
     text-transform: uppercase;
     color: #2C3E50;
     margin-bottom: 10px;
@@ -689,7 +688,7 @@ a {
     }
     .ContactUsDiv {
         top: 65vw;
-        height: 48vw;
+        height: 58vw;
     }
     #lastWatchedProductsDivTitle {
         position: relative;
@@ -702,6 +701,29 @@ a {
     #lastWatchedProductsDivButton {
         width: 300px;
         height: 75px;
+    }
+
+    #msform {
+        width: 75%;
+    }
+
+    #msform input, #msform textarea {
+        height: 1vw;
+    }
+
+    #msform .action-button {
+        height: 5.5vw;
+        font-size: 15px;
+        padding: 0px;
+        width: 38%;
+    }
+
+    .fs-title {
+        font-size: 2vw;
+    }
+
+    #msform fieldset {
+        padding: 15px 25px;
     }
 }
 
@@ -844,7 +866,7 @@ a {
     }
     .ContactUsDiv {
         top: 78vw;
-        height: 48vw;
+        height: 68vw;
     }
     #lastWatchedProductsDivTitle {
         font-size: 1.25vmax;
@@ -854,6 +876,29 @@ a {
         width: 250px;
         height: 55px;
         font-size: 25px;
+    }
+
+    #msform {
+        width: 75%;
+    }
+
+    #msform input, #msform textarea {
+        height: 0.5vw;
+    }
+
+    #msform .action-button {
+        height: 5.5vw;
+        font-size: 15px;
+        padding: 0px;
+        width: 38%;
+    }
+
+    .fs-title {
+        font-size: 2.5vw;
+    }
+
+    #msform fieldset {
+        padding: 5px 15px;
     }
 }
 
@@ -868,7 +913,7 @@ a {
 
 
 
-@media screen and (max-width: 407px) {
+@media screen and (max-width: 408px) {
     .headerDivLogo {
         width: 90px;
         margin-left: -8px;
@@ -997,7 +1042,7 @@ a {
     }
     .ContactUsDiv {
         top: 58vw;
-        height: 48vw;
+        height: 88vw;
     }
     #lastWatchedProductsDivTitle {
         font-size: 0.9vmax;
@@ -1007,6 +1052,29 @@ a {
         width: 175px;
         height: 38px;
         font-size: 17px;
+    }
+
+    #msform {
+        width: 75%;
+    }
+
+    #msform input, #msform textarea {
+        height: 0.5vw;
+    }
+
+    #msform .action-button {
+        height: 5.5vw;
+        font-size: 12px;
+        padding: 0px;
+        width: 48%;
+    }
+
+    .fs-title {
+        font-size: 3vw;
+    }
+
+    #msform fieldset {
+        padding: 0px 5px;
     }
 }
 

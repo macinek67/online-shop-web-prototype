@@ -85,9 +85,9 @@
                         <fieldset>
                             <h2 class="fs-title">Wyślij zapytanie</h2>
                             <h3 class="fs-subtitle"></h3>
-                            <input type="number" name="email" placeholder="Numer klienta:" />
-                            <input type="text" name="pass" placeholder="Email:" />
-                            <input type="text" name="cpass" placeholder="Treść:" />
+                            <input type="number" name="email" placeholder="Numer klienta:" min="0"/>
+                            <input type="text" name="pass" placeholder="Email:"/>
+                            <input type="text" name="cpass" placeholder="Treść:"/>
                             <input type="button" name="next" class="next action-button" value="WYŚLIJ" />
                         </fieldset>
                     </form>
