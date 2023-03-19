@@ -66,7 +66,7 @@
                 <div class="blueLineHeader"></div>
             </div>
             <p id="lastWatchedProductsDivTitle">ZAWARTOŚĆ NIEDOSTĘPNA DLA NIEZALOGOWANYCH</p>
-            <input type="button" id="lastWatchedProductsDivButton" value="ZALOGUJ SIĘ">
+            <a href="Logging/singIn/index.php"><input type="button" id="lastWatchedProductsDivButton" value="ZALOGUJ SIĘ"></a>
         </div>
 
         <div class="theNewestProductsDiv" id="theNewestProductsDivID">
@@ -94,6 +94,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
 
@@ -105,8 +106,8 @@
         <p id="MainTitleLoginMenu">Witaj w gstore!</p>
         <div id="LoginMenuParting"></div>
         <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
-        <input type="button" id="logInButton" value="ZALOGUJ SIĘ">
-        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="">Zarejestruj się</a></p>
+        <a href="Logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
+        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="Logging/singUp/index.php">Zarejestruj się</a></p>
     </div>
 
     <script src="MainPageSCRIPT.js"></script>
