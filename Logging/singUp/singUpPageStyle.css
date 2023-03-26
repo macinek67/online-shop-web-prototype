@@ -32,7 +32,7 @@ html, body {
 .container {
     position: relative;
     width: 600px;
-    height: 465px;
+    padding-bottom: 39px;
     background: rgba(235, 239, 240);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(20px);
@@ -114,17 +114,35 @@ p {
     color: red;
 }
 
-#resetPassword {
-    position: relative;
-    top: 15px;
-    left: -60px;
-    color: #00a790;
-    float: left;
+.howOldContainer {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 5px;
 }
+
+.howOldContainer label {
+    position: relative;
+    left: -45px;
+    margin-left: 10px;
+    background: rgba(235, 239, 240);
+    border-style: solid;
+    width: 50%;
+    border-width: 1px;
+    padding: 10px;
+    border-color: #999;
+}
+
+.howOldContainer label a {
+    position: relative;
+    vertical-align: middle;
+    align-self: center;
+    top: 1px;
+}
+
 
 .logInButton {
     position: relative;
-    top: 30px;
+    top: 0px;
     width: 95%;
     background-color: #68d5f7;
     color: white;
@@ -139,14 +157,14 @@ hr {
 .orLabel {
     position: relative;
     top: -20px;
-    width: 75px;
+    width: 175px;
     display: inline-block;
     background: rgba(235, 239, 240, 1);
 }
 
 .singUpButton {
     position: relative;
-    top: 10px;
+    top: 0px;
     width: 95%;
     background-color: #68d5f7;
     color: white;
@@ -158,6 +176,7 @@ hr {
     .container {
         width: 90%;
         padding: 5px;
+        padding-bottom: 39px;
     }
 
     .label1 {

@@ -60,7 +60,7 @@ a {
     transform: translate(-50%, 0%);
     background-image: url("newsletterBaner1.png");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     cursor: pointer;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -851,18 +851,22 @@ a {
     .newsletterDiv {
         top: 0vw;
         height: 23.5vw;
+        border-radius: 10px;
     }
     .bestSellersDiv {
         top: 15vw;
         height: 32vw;
+        border-radius: 10px;
     }
     .lastWatchedProductsDiv {
         top: 30vw;
         height: 32vw;
+        border-radius: 10px;
     }
     .theNewestProductsDiv {
         top: 45vw;
         height: 32vw;
+        border-radius: 10px;
     }
     .ContactUsDiv {
         top: 78vw;
@@ -1016,7 +1020,7 @@ a {
     }
     
     .categoryHeaderText {
-        margin-top: -30px;
+        margin-top: -31px;
         margin-left: 23px;
         font-size: 12px;
     }
@@ -1027,18 +1031,22 @@ a {
     .newsletterDiv {
         top: -17vw;
         height: 23.5vw;
+        border-radius: 5px;
     }
     .bestSellersDiv {
         top: 0vw;
         height: 32vw;
+        border-radius: 5px;
     }
     .lastWatchedProductsDiv {
         top: 15vw;
         height: 32vw;
+        border-radius: 5px;
     }
     .theNewestProductsDiv {
         top: 30vw;
         height: 32vw;
+        border-radius: 5px;
     }
     .ContactUsDiv {
         top: 58vw;

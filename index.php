@@ -46,7 +46,7 @@
         <div class="newsletterDiv" id="newsletterDivID">
             <div>
                 <div class="dotHeader"></div>
-                <h2 class="categoryHeaderText">Zapisz się na newsletter</h2>
+                <h2 class="categoryHeaderText">Zapis do newslettera</h2>
                 <div class="blueLineHeader"></div>
             </div>
         </div>
@@ -56,6 +56,15 @@
                 <div class="dotHeader"></div>
                 <h2 class="categoryHeaderText">Najczęściej kupowane</h2>
                 <div class="blueLineHeader"></div>
+                <?php
+                    include('Logging/singIn/singInUser.php');
+                    session_start();
+                    if(isset($_SESSION['loggedIn'])){
+                        if($_SESSION['loggedIn'] == true) {
+                            echo "zalogowany";
+                        }
+                    }
+                ?>
             </div>
         </div>
 
@@ -96,8 +105,6 @@
         </div>
         
     </div>
-
-
 
 
 
