@@ -177,4 +177,10 @@ hr {
     p {
         left: 2%;
     }
+
+    #resetPassword {
+        position: absolute;
+        left: 3.5%;
+        top: 250px;
+    }
 }
