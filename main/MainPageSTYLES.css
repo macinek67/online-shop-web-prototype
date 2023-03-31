@@ -1,0 +1,1073 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+:root {
+    --mainColor: #68d5f7;
+}
+
+html, body {
+    margin: 0px;
+    background-color: #f5f5f5;
+    font-family: montserrat;
+    overflow: visible;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+a {
+    color: white;
+}
+
+.SuggestionsBaner {
+    position: relative;
+    background-image: url("../images/freeShipBackground.jpg");
+    width: 100%;
+    height: 300px;
+    top: 226px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.newsletterDiv {
+    position: relative;
+    height: 300px;
+    top: 500px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-image: url("../images/newsletterBaner1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.bestSellersDiv {
+    position: relative;
+    height: 350px;
+    top: 600px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 16px;
+}
+
+.lastWatchedProductsDiv {
+    position: relative;
+    height: 350px;
+    top: 700px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background: rgba(15, 126, 200, 0.39);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#lastWatchedProductsDivTitle {
+    position: relative;
+    text-align: center;
+    top: 15%;
+    font-size: 2.0vmax;
+    font-weight: 600;
+    font-family: arial, sans-serif;
+    color: #3c4142;
+}
+
+#lastWatchedProductsDivButton {
+    position: relative;
+    top: 8%;
+    border: none;
+    display: inline-block;
+    background: rgba(235, 239, 240, 1);
+    color: #339DFF;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 38px;
+    border-radius: 10px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 370px;
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.theNewestProductsDiv {
+    position: relative;
+    height: 350px;
+    top: 800px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 16px;
+}
+
+.theNewestProductsDivProductContainer {
+    height: 100%;
+    width: 100%; 
+    display: flex; 
+    flex-direction: row;
+    overflow-x: scroll;
+}
+
+.theNewestProductsDivProductContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.ContactUsDiv {
+    position: relative;
+    height: 500px;
+    top: 1000px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #ebeff0;
+    border-top-style: solid;
+    border-color: #339DFF;
+    border-top-width: 3px;
+    font-family: arial, sans-serif;
+}
+
+.SelectSugeestionButtons {
+    visibility: hidden;
+}
+
+.headerDiv {
+    position: fixed;
+    width: 100%;
+    height: 75px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0,0,0,0.25);
+    border-left: none;
+    border-right: none;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 999;
+}
+
+#coinIconID {
+    background-image: url("../images/coin.svg");
+}
+
+#chatIconID {
+    background-image: url("../images/chat-left-text.svg");
+}
+
+#starIconID {
+    background-image: url("../images/star.svg");
+}
+
+#bellIconID {
+    background-image: url("../images/bell.svg");
+}
+
+#cartIconID {
+    background-image: url("../images/cart2.svg");
+}
+
+#accountIconID {
+    background-image: url("../images/person-circle.svg");
+}
+
+.SelectSugeestionButtons {
+    position: relative;
+    background-color: white;
+    height: 35px;
+    border: none;
+    border-top-width: 4px;
+    border-top-style: solid;
+    border-top-color: white;
+    top: 300px;
+    width: 25%;
+    visibility: visible;
+    cursor: pointer;
+}
+
+.SelectSugeestionButtons:first-child, :not(.SelectSugeestionButtons) + .SelectSugeestionButtons {
+    border-top-color: #2ba3ff;
+}
+
+.logInMenu {
+    position: fixed;
+    border-radius: 5px;
+    width: 200px;
+    height: 300px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    left: 999em;
+    top: 75px;
+    z-index: 1000;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    background-color: rgba(127, 221, 245, 1);
+    background-image: linear-gradient(180deg, rgba(127, 221, 245, 1) 0%, rgba(38, 137, 237, 1) 100%);
+}
+
+.logInMenuArrow {
+    position: relative;
+    transform: rotate(45deg);
+    width: 15px;
+    height: 15px;
+    left: 86%;
+    top: -3%;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-bottom: none;
+    border-right: none;
+    background-color: rgba(127, 221, 245, 1);
+}
+
+#MainTitleLoginMenu {
+    font-weight: 700;
+    font-size: 22px;
+    color: white;
+    text-shadow: 1px 1.5px rgb(0, 0, 0, 0.4);
+}
+
+#SmallTextLoginMenu {
+    position: relative;
+    top: 3%;
+    color: white;
+    text-shadow: 1px 1px rgb(0, 0, 0, 0.4);
+}
+
+#LoginMenuParting {
+    width: 75%;
+    height: 2px;
+    margin-left: 12.5%;
+    background-color: rgb(49, 112, 221);
+}
+
+#logInButton {
+    position: relative;
+    top: 8%;
+    border: none;
+    display: inline-block;
+    background: #fff;
+    color: #339DFF;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 38px;
+    border-radius: 10px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 170px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+  
+#logInButton:hover, #lastWatchedProductsDivButton:hover {
+    box-shadow: 0 7px 7px rgba(83, 100, 255, 0.32);
+}
+
+#SingUpTitleLoginMenu {
+    position: relative;
+    top: 10.5%;
+    color: white;
+    text-shadow: 1px 1px rgb(0, 0, 0, 0.4);
+    font-size: 12px;
+}
+
+.dotHeader {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background: rgb(8,123,170);
+    background: linear-gradient(-125deg, rgba(8,123,170,1) 0%, rgba(33,148,255,1) 100%);
+    top: -35px;
+    border-radius: 55px;
+}
+
+.categoryHeaderText {
+    margin-top: -60px;
+    margin-left: 40px;
+    font-weight: bold;
+    color: #053850;
+}
+
+.contactUsTitle {
+    color: #59afff;
+    text-align: center;
+    margin-top: -3.925vw;
+    font-size: 6vw;
+    -webkit-text-stroke: 0.25vw #0084ff;
+}
+
+#msform {
+    width: 800px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+  }
+
+  #msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    position: relative;
+    border-radius: 10px;
+  }
+
+  #msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+  }
+
+  #msform .action-button {
+    width: 200px;
+    background: #339DFF;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  #msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
+  }
+
+  .fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+  }
+  .fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+
+
+
+
+
+
+@media screen and (min-width: 1286px) {
+    .SuggestionsBaner {
+        position: absolute;
+        width: 1280px;
+    }
+
+    .newsletterDiv {
+        width: 1280px;
+        top: 500px;
+    }
+
+    .bestSellersDiv {
+        width: 1280px;
+        top: 600px;
+    }
+
+    .lastWatchedProductsDiv {
+        width: 1280px;
+    }
+
+    .theNewestProductsDiv {
+        width: 1280px;
+    }
+
+    #lastWatchedProductsDivTitle {
+        font-size: 35px;
+    }
+
+    .contactUsTitle {
+        font-size: 100px;
+        margin-top: -60px;
+        -webkit-text-stroke: 4px #0084ff;
+    }
+
+}
+
+@media screen and (min-width: 1020px) and (max-width: 1285px) {
+    .SelectSugeestionButtons {
+        top: 23vw;
+    }
+    .SuggestionsBaner {
+        top: 226px;
+    }
+    .newsletterDiv {
+        top: 200px;
+    }
+    .bestSellersDiv {
+        top: 300px;
+    }
+
+    .lastWatchedProductsDiv {
+        top: 400px;
+    }
+
+    .theNewestProductsDiv {
+        top: 500px;
+    }
+
+    .ContactUsDiv {
+        top: 700px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 1019px) {
+    .headerDivLogo {
+        width: 150px;
+        margin-left: -18px;
+        cursor: pointer;
+    }
+
+    .headerDivSearch {
+        width: 25%;
+        min-width: 100px;
+        height: 35px;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.25);
+        margin-left: 65px;
+        padding: 0px;
+        padding-left: 5px;
+    }
+
+    .headerDivCategorySelect {
+        height: 37px;
+        width: 10%;
+        min-width: 160px;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.25);
+        border-left: none;
+        cursor: pointer;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    }
+
+    select.headerDivCategorySelect {
+        background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, var(--mainColor), var(--mainColor));
+        background-position:
+        calc(100% - 16px) calc(1em + 1px),
+        calc(100% - 8.1px) calc(1em + 1px),
+        calc(100% - 32px) 8px;
+        background-size:
+        8px 8px,
+        8px 8px,
+        1.5px 1.5em;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+    }
+
+    .headerDivSearchButton {
+        border: none;
+        height: 37px;
+        background-color: var(--mainColor);
+        width: 80px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .headerDivIcons {
+        width: 23px;
+        height: 23px;
+        margin-left: 20px;
+        cursor: pointer;
+        cursor: pointer;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+        background-color: transparent;
+    }
+
+    .headerDivIcons:first-child, :not(.headerDivIcons) + .headerDivIcons {
+        margin-left: 65px;
+    }
+    
+    .categoryHeaderText {
+        margin-top: -61px;
+        margin-left: 40px;
+        font-weight: bold;
+        color: #053850;
+    }
+
+    .blueLineHeader {
+        width: 67.5vw;
+        max-width: 950px;
+        height: 3px;
+        background-color: #339DFF;
+        margin-top: -33px;
+        margin-left: 335px;
+    }
+    .dotHeader {
+        margin-left: 4px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1018px) and (min-width: 557px) {
+    .headerDivLogo {
+        width: 0px;
+    }
+
+    .headerDivSearch {
+        width: 20%;
+        min-width: 60px;
+        height: 35px;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.25);
+        margin-left: 1px;
+        padding: 0px;
+        padding-left: 5px;
+    }
+
+    .headerDivCategorySelect {
+        height: 37px;
+        width: 10%;
+        min-width: 160px;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.25);
+        border-left: none;
+        cursor: pointer;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    }
+
+    select.headerDivCategorySelect {
+        background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, var(--mainColor), var(--mainColor));
+        background-position:
+        calc(100% - 16px) calc(1em + 1px),
+        calc(100% - 8.1px) calc(1em + 1px),
+        calc(100% - 32px) 8px;
+        background-size:
+        8px 8px,
+        8px 8px,
+        1.5px 1.5em;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+    }
+
+    .headerDivSearchButton {
+        border: none;
+        height: 37px;
+        background-color: var(--mainColor);
+        width: 50px;
+        padding: 0px;
+        font-size: 11px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .headerDivIcons {
+        width: 23px;
+        height: 23px;
+        margin-left: 10px;
+        cursor: pointer;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+        background-color: transparent;
+    }
+
+    .headerDivIcons:first-child, :not(.headerDivIcons) + .headerDivIcons {
+        margin-left: 15px;
+    }
+
+    .blueLineHeader {
+        width: 50.5vw;
+        max-width: 700px;
+        height: 3px;
+        background-color: #339DFF;
+        margin-top: -29px;
+        margin-left: 275px;
+    }
+
+    .dotHeader {
+        width: 20px;
+        height: 20px;
+        top: -25px;
+        margin-left: 4px;
+    }
+    
+    .categoryHeaderText {
+        margin-top: -46px;
+        margin-left: 30px;
+        font-size: 20px;
+    }
+    .SelectSugeestionButtons {
+        top: 23vw;
+    }
+    .newsletterDiv {
+        top: 10vw;
+        height: 23.5vw;
+    }
+    .bestSellersDiv {
+        top: 20vw;
+        height: 32vw;
+    }
+    .lastWatchedProductsDiv {
+        top: 30vw;
+        height: 32vw;
+    }
+    .theNewestProductsDiv {
+        top: 40vw;
+        height: 32vw;
+    }
+    .ContactUsDiv {
+        top: 65vw;
+        height: 58vw;
+    }
+    #lastWatchedProductsDivTitle {
+        position: relative;
+        text-align: center;
+        top: 20%;
+        font-size: 1.5vmax;
+        font-weight: 600;
+    }
+    
+    #lastWatchedProductsDivButton {
+        width: 300px;
+        height: 75px;
+    }
+
+    #msform {
+        width: 75%;
+    }
+
+    #msform input, #msform textarea {
+        height: 1vw;
+    }
+
+    #msform .action-button {
+        height: 5.5vw;
+        font-size: 15px;
+        padding: 0px;
+        width: 38%;
+    }
+
+    .fs-title {
+        font-size: 2vw;
+    }
+
+    #msform fieldset {
+        padding: 15px 25px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 556px) and (min-width: 408px) {
+    .headerDivLogo {
+        width: 100px;
+        margin-left: -18px;
+        cursor: pointer;
+    }
+
+    .headerDivSearch {
+        width: 25%;
+        min-width: 70px;
+        height: 35px;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.25);
+        margin-left: 1px;
+        padding: 0px;
+        padding-left: 5px;
+    }
+
+    .headerDivCategorySelect {
+        position: absolute;
+        left: 999em;
+        height: 0px;
+        width: 0px;
+        border: none;
+    }
+
+    select.headerDivCategorySelect {
+        background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, var(--mainColor), var(--mainColor));
+        background-position:
+        calc(100% - 16px) calc(1em + 1px),
+        calc(100% - 8.1px) calc(1em + 1px),
+        calc(100% - 32px) 8px;
+        background-size:
+        8px 8px,
+        8px 8px,
+        1.5px 1.5em;
+        background-repeat: no-repeat;
+        padding-left: 2px;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+    }
+
+    .headerDivSearchButton {
+        border: none;
+        height: 37px;
+        background-color: var(--mainColor);
+        width: 50px;
+        padding: 0px;
+        font-size: 11px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .headerDivIcons {
+        margin-left: 0px;
+        min-width: 23px;
+        cursor: pointer;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+        background-color: transparent;
+    }
+
+    .headerDivIcons:first-child, :not(.headerDivIcons) + .headerDivIcons {
+        margin-left: 6px;
+    }
+
+    .SelectSugeestionButtons {
+        position: relative;
+        background-color: white;
+        height: 35px;
+        border: none;
+        border-top-width: 4px;
+        border-top-style: solid;
+        border-top-color: white;
+        top: 100%;
+        width: 25%;
+        visibility: visible;
+        cursor: pointer;
+        font-size: 9.5px;
+    }
+
+    .blueLineHeader {
+        width: 31%;
+        height: 3px;
+        background-color: #339DFF;
+        margin-top: -28px;
+        margin-left: 270px;
+    }
+
+    .dotHeader {
+        width: 20px;
+        height: 20px;
+        top: -25px;
+        margin-left: 4px;
+    }
+    
+    .categoryHeaderText {
+        margin-top: -46px;
+        margin-left: 30px;
+        font-size: 20px;
+    }
+
+    .SelectSugeestionButtons {
+        top: 23vw;
+    }
+    .newsletterDiv {
+        top: 0vw;
+        height: 23.5vw;
+        border-radius: 10px;
+    }
+    .bestSellersDiv {
+        top: 15vw;
+        height: 32vw;
+        border-radius: 10px;
+    }
+    .lastWatchedProductsDiv {
+        top: 30vw;
+        height: 32vw;
+        border-radius: 10px;
+    }
+    .theNewestProductsDiv {
+        top: 45vw;
+        height: 32vw;
+        border-radius: 10px;
+    }
+    .ContactUsDiv {
+        top: 78vw;
+        height: 68vw;
+    }
+    #lastWatchedProductsDivTitle {
+        font-size: 1.25vmax;
+    }
+    
+    #lastWatchedProductsDivButton {
+        width: 250px;
+        height: 55px;
+        font-size: 25px;
+    }
+
+    #msform {
+        width: 75%;
+    }
+
+    #msform input, #msform textarea {
+        height: 0.5vw;
+    }
+
+    #msform .action-button {
+        height: 5.5vw;
+        font-size: 15px;
+        padding: 0px;
+        width: 38%;
+    }
+
+    .fs-title {
+        font-size: 2.5vw;
+    }
+
+    #msform fieldset {
+        padding: 5px 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 408px) {
+    .headerDivLogo {
+        width: 90px;
+        margin-left: -8px;
+        margin-top: -35px;
+        cursor: pointer;
+    }
+
+    .headerDivSearch {
+        position: absolute;
+        width: 72%;
+        min-width: 70px;
+        height: 35px;
+        border-width: 1px;
+        border-color: rgba(0,0,0,0.25);
+        margin-top: 28px;
+        left: 40%;
+        padding: 0px;
+        padding-left: 5px;
+        transform: translate(-50%, 0%);
+    }
+
+    .headerDivCategorySelect {
+        position: absolute;
+        left: 999em;
+        height: 0px;
+        width: 0px;
+        border: none;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+    }
+
+    .headerDivSearchButton {
+        position: absolute;
+        border: none;
+        height: 37px;
+        background-color: var(--mainColor);
+        width: 21%;
+        padding: 0px;
+        font-size: 11px;
+        color: white;
+        cursor: pointer;
+        margin-top: 28px;
+        left: 76%;
+    }
+
+    .headerDivIcons {
+        margin-left: 1px;
+        min-width: 23px;
+        cursor: pointer;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border: none;
+        background-color: transparent;
+        margin-top: -35px;
+    }
+
+    .headerDivIcons:first-child, :not(.headerDivIcons) + .headerDivIcons {
+        margin-left: 15px;
+    }
+
+    .SelectSugeestionButtons {
+        position: relative;
+        background-color: white;
+        height: 35px;
+        border: none;
+        border-top-width: 4px;
+        border-top-style: solid;
+        border-top-color: white;
+        top: 100%;
+        width: 25%;
+        visibility: visible;
+        cursor: pointer;
+        font-size: 7.5px;
+    }
+
+    .logInMenu {
+        top: 45px;
+    }
+    
+    .logInMenuArrow {
+        left: 84.5%;
+        top: -3%;
+    }
+
+    .blueLineHeader {
+        width: 35%;
+        height: 3px;
+        background-color: #339DFF;
+        margin-top: -17px;
+        margin-left: 165px;
+    }
+
+    .dotHeader {
+        width: 15px;
+        height: 15px;
+        top: -16px;
+        margin-left: 4px;
+    }
+    
+    .categoryHeaderText {
+        margin-top: -31px;
+        margin-left: 23px;
+        font-size: 12px;
+    }
+
+    .SelectSugeestionButtons {
+        top: 23vw;
+    }
+    .newsletterDiv {
+        top: -17vw;
+        height: 23.5vw;
+        border-radius: 5px;
+    }
+    .bestSellersDiv {
+        top: 0vw;
+        height: 32vw;
+        border-radius: 5px;
+    }
+    .lastWatchedProductsDiv {
+        top: 15vw;
+        height: 32vw;
+        border-radius: 5px;
+    }
+    .theNewestProductsDiv {
+        top: 30vw;
+        height: 32vw;
+        border-radius: 5px;
+    }
+    .ContactUsDiv {
+        top: 58vw;
+        height: 88vw;
+    }
+    #lastWatchedProductsDivTitle {
+        font-size: 0.9vmax;
+    }
+
+    #lastWatchedProductsDivButton {
+        width: 175px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+    #msform {
+        width: 75%;
+    }
+
+    #msform input, #msform textarea {
+        height: 0.5vw;
+    }
+
+    #msform .action-button {
+        height: 5.5vw;
+        font-size: 12px;
+        padding: 0px;
+        width: 48%;
+    }
+
+    .fs-title {
+        font-size: 3vw;
+    }
+
+    #msform fieldset {
+        padding: 0px 5px;
+    }
+}
+
