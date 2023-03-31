@@ -11,29 +11,10 @@ html, body {
     overflow: visible;
 }
 
-body::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+body::-webkit-scrollbar {
+    display: none;
 }
 
-body::-webkit-scrollbar
-{
-	width: 6px;
-	background-color: #F5F5F5;
-}
-
-body::-webkit-scrollbar-thumb
-{
-	background-color: #339DFF;	
-	background-image: -webkit-linear-gradient(45deg,
-    rgba(255, 255, 255, .2) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, .2) 50%,
-    rgba(255, 255, 255, .2) 75%,
-    transparent 75%,
-    transparent)
-}
 
 a {
     color: white;
@@ -41,7 +22,7 @@ a {
 
 .SuggestionsBaner {
     position: relative;
-    background-image: url("freeShipBackground.jpg");
+    background-image: url("../images/freeShipBackground.jpg");
     width: 100%;
     height: 300px;
     top: 226px;
@@ -58,7 +39,7 @@ a {
     top: 500px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background-image: url("newsletterBaner1.png");
+    background-image: url("../images/newsletterBaner1.png");
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
@@ -72,11 +53,7 @@ a {
     top: 600px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background: rgba(235, 239, 240, 0.27);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
 }
 
 .lastWatchedProductsDiv {
@@ -131,11 +108,19 @@ a {
     top: 800px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background: rgba(235, 239, 240, 0.27);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+}
+
+.theNewestProductsDivProductContainer {
+    height: 100%;
+    width: 100%; 
+    display: flex; 
+    flex-direction: row;
+    overflow-x: scroll;
+}
+
+.theNewestProductsDivProductContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .ContactUsDiv {
@@ -173,27 +158,27 @@ a {
 }
 
 #coinIconID {
-    background-image: url("coin.svg");
+    background-image: url("../images/coin.svg");
 }
 
 #chatIconID {
-    background-image: url("chat-left-text.svg");
+    background-image: url("../images/chat-left-text.svg");
 }
 
 #starIconID {
-    background-image: url("star.svg");
+    background-image: url("../images/star.svg");
 }
 
 #bellIconID {
-    background-image: url("bell.svg");
+    background-image: url("../images/bell.svg");
 }
 
 #cartIconID {
-    background-image: url("cart2.svg");
+    background-image: url("../images/cart2.svg");
 }
 
 #accountIconID {
-    background-image: url("person-circle.svg");
+    background-image: url("../images/person-circle.svg");
 }
 
 .SelectSugeestionButtons {

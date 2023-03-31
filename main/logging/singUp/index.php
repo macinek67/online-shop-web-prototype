@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="headerDiv">
-        <a href="../../index.php"><img src="../../gstore.png" class="headerDivLogo"></a>
+        <a href="../../index.php"><img src="../../../images/gstore.png" class="headerDivLogo"></a>
     </div>
     <form action="singUpUser.php" method="POST">
         <div class="container">

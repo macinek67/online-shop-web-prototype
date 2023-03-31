@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <link rel="stylesheet" href="MainPageSTYLES.css">
+    <link rel="stylesheet" href="productStyles.css">
 </head>
 <?php
-
+    require_once('php/classes.php');
+    session_start();
 ?>
 <body>
     <div class="headerDiv">
-        <img src="gstore.png" class="headerDivLogo">
+        <img src="../images/gstore.png" class="headerDivLogo">
         <input type="text" placeholder="czego szukasz?" class="headerDivSearch">
         <select class="headerDivCategorySelect">
             <option>Wszystkie kategorie</option>
@@ -56,14 +58,17 @@
                 <div class="dotHeader"></div>
                 <h2 class="categoryHeaderText">Najczęściej kupowane</h2>
                 <div class="blueLineHeader"></div>
+            </div>
+            <div class="theNewestProductsDivProductContainer" id="bestSellersProductsDivProductContainer">
                 <?php
-                    include('Logging/singIn/singInUser.php');
-                    session_start();
-                    if(isset($_SESSION['loggedIn'])){
-                        if($_SESSION['loggedIn'] == true) {
-                            echo "zalogowany";
-                        }
-                    }
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
                 ?>
             </div>
         </div>
@@ -74,8 +79,17 @@
                 <h2 class="categoryHeaderText">Ostatnio przeglądane</h2>
                 <div class="blueLineHeader"></div>
             </div>
-            <p id="lastWatchedProductsDivTitle">ZAWARTOŚĆ NIEDOSTĘPNA DLA NIEZALOGOWANYCH</p>
-            <a href="Logging/singIn/index.php"><input type="button" id="lastWatchedProductsDivButton" value="ZALOGUJ SIĘ"></a>
+                <?php
+                    if(isset($_SESSION['loggedIn'])){
+                        if($_SESSION['loggedIn'] != true) {
+                            echo <<< html
+                                <p id="lastWatchedProductsDivTitle">ZAWARTOŚĆ NIEDOSTĘPNA DLA NIEZALOGOWANYCH</p>
+                                <a href="logging/singIn/index.php"><input type="button" id="lastWatchedProductsDivButton" value="ZALOGUJ SIĘ"></a>
+                            html;
+                        } else
+                        echo "zalogowany";
+                    }
+                ?>
         </div>
 
         <div class="theNewestProductsDiv" id="theNewestProductsDivID">
@@ -83,6 +97,18 @@
                 <div class="dotHeader"></div>
                 <h2 class="categoryHeaderText">Najnowsze produkty</h2>
                 <div class="blueLineHeader"></div>
+            </div>
+	        <div class="theNewestProductsDivProductContainer" id="theNewestProductsDivProductContainer">
+                <?php
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                    $product1->createProduct();
+                ?>
             </div>
         </div>
 
@@ -113,8 +139,8 @@
         <p id="MainTitleLoginMenu">Witaj w gstore!</p>
         <div id="LoginMenuParting"></div>
         <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
-        <a href="Logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
-        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="Logging/singUp/index.php">Zarejestruj się</a></p>
+        <a href="logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
+        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="logging/singUp/index.php">Zarejestruj się</a></p>
     </div>
 
     <script src="MainPageSCRIPT.js"></script>
