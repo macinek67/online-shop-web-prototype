@@ -86,8 +86,19 @@
                                 <p id="lastWatchedProductsDivTitle">ZAWARTOŚĆ NIEDOSTĘPNA DLA NIEZALOGOWANYCH</p>
                                 <a href="logging/singIn/index.php"><input type="button" id="lastWatchedProductsDivButton" value="ZALOGUJ SIĘ"></a>
                             html;
-                        } else
-                        echo "zalogowany";
+                        } else {
+                            echo '<div class="theNewestProductsDivProductContainer" id="lastWatchedProductsProductContainer">';
+                                $product1->createProduct();
+                                $product1->createProduct();
+                                $product1->createProduct();
+                                $product1->createProduct();
+                                $product1->createProduct();
+                                $product1->createProduct();
+                                $product1->createProduct();
+                                $product1->createProduct();
+                            echo '</div>';
+                        }
+                        
                     }
                 ?>
         </div>

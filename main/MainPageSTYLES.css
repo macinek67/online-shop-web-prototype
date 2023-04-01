@@ -62,11 +62,6 @@ a {
     top: 700px;
     left: 50%;
     transform: translate(-50%, 0%);
-    background: rgba(15, 126, 200, 0.39);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
 }
 
 #lastWatchedProductsDivTitle {
@@ -82,16 +77,16 @@ a {
 #lastWatchedProductsDivButton {
     position: relative;
     top: 8%;
-    border: none;
     display: inline-block;
-    background: rgba(235, 239, 240, 1);
-    color: #339DFF;
-    text-decoration: none;
     font-size: 13px;
     line-height: 38px;
-    border-radius: 10px;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+    background: #339DFF;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    cursor: pointer;
+    margin: 10px 5px;
+    text-decoration: none;
     width: 370px;
     height: 100px;
     text-align: center;
@@ -271,8 +266,12 @@ a {
     font-weight: 700;
 }
   
-#logInButton:hover, #lastWatchedProductsDivButton:hover {
+#logInButton:hover {
     box-shadow: 0 7px 7px rgba(83, 100, 255, 0.32);
+}
+
+#lastWatchedProductsDivButton:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
 }
 
 #SingUpTitleLoginMenu {

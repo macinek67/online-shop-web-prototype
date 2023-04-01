@@ -19,15 +19,18 @@ addEventListener('click', (event) => { menu(); });
 
 let theNewestProductsDivProductContainer = document.getElementById("theNewestProductsDivProductContainer");
 let bestSellersProductsDivProductContainer = document.getElementById("bestSellersProductsDivProductContainer");
+let lastWatchedProductsProductContainer = document.getElementById("lastWatchedProductsProductContainer");
 
 function mouseDown() {
     theNewestProductsDivProductContainer.addEventListener("mousemove", getMouseDirection, false);
     bestSellersProductsDivProductContainer.addEventListener("mousemove", getMouseDirection1, false);
+    lastWatchedProductsProductContainer.addEventListener("mousemove", getMouseDirection2, false);
 }
 
 function mouseUp() {
     theNewestProductsDivProductContainer.removeEventListener("mousemove", getMouseDirection, false);
     bestSellersProductsDivProductContainer.removeEventListener("mousemove", getMouseDirection1, false);
+    lastWatchedProductsProductContainer.removeEventListener("mousemove", getMouseDirection2, false);
     countMove = 0;
 }
 
@@ -54,9 +57,22 @@ function getMouseDirection1(e) {
 
 }
 
+function getMouseDirection2(e) {
+    if (oldX < e.pageX) countMove--;
+    else countMove++;
+
+    lastWatchedProductsProductContainer.scrollLeft += countMove/15;
+    oldX = e.pageX;
+    oldY = e.pageY;
+
+}
+
 
 theNewestProductsDivProductContainer.addEventListener('mousedown', mouseDown);
 theNewestProductsDivProductContainer.addEventListener('mouseup', mouseUp);
 
 bestSellersProductsDivProductContainer.addEventListener('mousedown', mouseDown);
 bestSellersProductsDivProductContainer.addEventListener('mouseup', mouseUp);
+
+lastWatchedProductsProductContainer.addEventListener('mousedown', mouseDown);
+lastWatchedProductsProductContainer.addEventListener('mouseup', mouseUp);
