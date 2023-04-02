@@ -194,7 +194,7 @@ a {
     border-top-color: #2ba3ff;
 }
 
-.logInMenu {
+.logInMenu, .loggedUserMenu {
     position: fixed;
     border-radius: 5px;
     width: 200px;
@@ -211,7 +211,27 @@ a {
     background-image: linear-gradient(180deg, rgba(127, 221, 245, 1) 0%, rgba(38, 137, 237, 1) 100%);
 }
 
-.logInMenuArrow {
+.loggedUserMenu {
+    height: 100px;
+    background-color: white;
+    background-image: none;
+}
+
+.loggedUserMenu input {
+    position: relative;
+    height: 50px;
+    width: 94%;
+    background: #339DFF;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.logInMenuArrow, .loggedUserMenuArrow {
     position: relative;
     transform: rotate(45deg);
     width: 15px;
@@ -224,6 +244,11 @@ a {
     border-bottom: none;
     border-right: none;
     background-color: rgba(127, 221, 245, 1);
+}
+
+.loggedUserMenuArrow {
+    top: -8.6%;
+    background-color: white;
 }
 
 #MainTitleLoginMenu {

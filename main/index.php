@@ -145,14 +145,34 @@
 
 
 
-    <div class="logInMenu" id="logg">
-        <div class="logInMenuArrow"></div>
-        <p id="MainTitleLoginMenu">Witaj w gstore!</p>
-        <div id="LoginMenuParting"></div>
-        <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
-        <a href="logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
-        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="logging/singUp/index.php">Zarejestruj się</a></p>
-    </div>
+    <?php
+        if(isset($_SESSION['loggedIn'])){
+            if($_SESSION['loggedIn'] != true) {
+                echo <<< html
+                    <div class="logInMenu" id="logg">
+                        <div class="logInMenuArrow"></div>
+                        <p id="MainTitleLoginMenu">Witaj w gstore!</p>
+                        <div id="LoginMenuParting"></div>
+                        <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
+                        <a href="logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
+                        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="logging/singUp/index.php">Zarejestruj się</a></p>
+                    </div>
+                html;
+            } else {
+                echo <<< html
+                    <div class="loggedUserMenu" id="logg">
+                        <div class="loggedUserMenuArrow"></div>
+                        <form action="" method="POST">
+                            <input type="submit" name="logOut" value="KONTO">
+                        </form>
+                        <form action="php/logOutUser.php" method="POST">
+                            <input type="submit" name="logOut" value="WYLOGUJ">
+                        </form>
+                    </div>
+                html;
+            }
+        }
+    ?>
 
     <script src="MainPageSCRIPT.js"></script>
 </body>

@@ -11,6 +11,7 @@
     display: flex;
     min-width: 13.5%;
     margin-top: 0.5%;
+    font-size: 1em;
 }
 
 .theNewestProductsDivProductContainer div:first-of-type {
@@ -40,8 +41,8 @@
 .productPrice {
     position: relative;
     margin-top: 10%;
-    float: left;
-    font-size: 25px;
+    text-align: center;
+    font-size: 2em;
 }
 
 .productDiv label {
@@ -51,10 +52,158 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: box;
-   line-clamp: 2;
-   box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
 }
 
-.productDiv label {
-    font-size: 1em;
+.viewItemButton {
+    position: relative;
+    height: 10%;
+    top: 3%;
+    width: 94%;
+    background: #339DFF;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.viewItemButton:hover, .viewItemButton:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
+}
+
+@media screen and (min-width: 1020px) and (max-width: 1285px) {
+    .productDiv {
+        width: 16%;
+        min-width: 16%;
+    }
+}
+
+@media screen and (max-width: 1019px) and (min-width: 855px) {
+    .productDiv {
+        width: 18%;
+        min-width: 18%;
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 856px) and (min-width: 736px) {
+    .productDiv {
+        width: 18%;
+        min-width: 18%;
+        font-size: 0.8em;
+    }
+
+    .productPrice {
+        margin-top: 6%;
+    }
+
+    .viewItemButton {
+        top: 2%;
+    }
+}
+
+@media screen and (max-width: 735px) and (min-width: 617px) {
+    .productDiv {
+        width: 18%;
+        min-width: 18%;
+        font-size: 0.7em;
+    }
+
+    .productPrice {
+        margin-top: 1%;
+    }
+
+    .viewItemButton {
+        top: -2%;
+        font-size: 15px;
+        width: 92%;
+    }
+}
+
+@media screen and (max-width: 616px) and (min-width: 508px) {
+    .productDiv {
+        width: 18%;
+        min-width: 18%;
+        font-size: 0.6em;
+    }
+
+    .productPrice {
+        margin-top: 1%;
+        font-size: 1.8em;
+    }
+
+    .viewItemButton {
+        top: -2%;
+        font-size: 12px;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 507px) and (min-width: 376px) {
+    .productDiv {
+        width: 20%;
+        min-width: 20%;
+        font-size: 0.55em;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+        padding-bottom: 2px;
+    }
+
+    .productPrice {
+        margin-top: 1%;
+        font-size: 1.5em;
+    }
+
+    .viewItemButton {
+        top: -5%;
+        font-size: 10px;
+        width: 88%;
+    }
+}
+
+
+@media screen and (max-width: 375px) and (min-width: 312px) {
+    .productDiv {
+        width: 20%;
+        min-width: 20%;
+        font-size: 0.5em;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+        padding-bottom: 2px;
+    }
+
+    .productPrice {
+        margin-top: 1%;
+        font-size: 1.2em;
+    }
+
+    .viewItemButton {
+        top: -7%;
+        font-size: 9px;
+        width: 88%;
+    }
+}
+
+@media screen and (max-width: 311px) {
+    .productDiv {
+        width: 20%;
+        min-width: 20%;
+        font-size: 0.4em;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        padding-bottom: 2px;
+    }
+
+    .productPrice {
+        margin-top: 2%;
+        font-size: 1.2em;
+    }
+
+    .viewItemButton {
+        top: -10%;
+        font-size: 6.5px;
+        width: 80%;
+    }
 }

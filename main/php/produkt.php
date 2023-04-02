@@ -18,6 +18,7 @@ class Product {
                 <img src="$this->imgUrl">
                 <label>$this->title</label>
                 <label class="productPrice">$this->price zł</label>
+                <input type="submit" value="ZOBACZ" class="viewItemButton">
             </form>
         </div>
         html;
@@ -25,4 +26,4 @@ class Product {
 
 }
 
-$product1 = new Product("Czajnik elektryczny Adler AD1223 srebrny 1,7l", 80, "https://th.bing.com/th/id/R.01f0cb36977c04ed217a327ed427c7d8?rik=IF%2b32lzjkWnOjA&pid=ImgRaw&r=0");
+$product1 = new Product("Czajnik elektryczny Adler AD1223 srebrny 1,7l", "80.00", "https://th.bing.com/th/id/R.01f0cb36977c04ed217a327ed427c7d8?rik=IF%2b32lzjkWnOjA&pid=ImgRaw&r=0");

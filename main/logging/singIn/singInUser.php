@@ -6,7 +6,7 @@ if(isset($_POST['singInUser'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $result = $connect->query("SELECT * FROM user WHERE email='$email' AND pass='$password' LIMIT 1");
-    while($row = mysqli_fetch_assoc($result)) {
+    if($row = mysqli_fetch_assoc($result)) {
         if($row['email']==$email && $row['pass']==$password) {
             session_start();
             $_SESSION["loggedIn"] = true;
