@@ -212,24 +212,43 @@ a {
 }
 
 .loggedUserMenu {
-    height: 100px;
-    background-color: white;
+    height: 95px;
+    background-color: #339DFF;
     background-image: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.loggedUserMenu form {
+    position: relative;
+    margin-top: -7.5%;
 }
 
 .loggedUserMenu input {
     position: relative;
-    height: 50px;
-    width: 94%;
-    background: #339DFF;
+    width: 100%;
+    height: 54.5px;
+    background: transparent;
     font-weight: bold;
     color: white;
     border: 0 none;
-    border-radius: 1px;
     cursor: pointer;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 20px;
+    text-shadow: 0 1px 4px rgb(0, 0, 0, 0.7);
 }
+
+.loggedUserMenu form:last-of-type input {
+    padding-top: 20px;
+    border: 0 none;
+}
+
+.loggedUserMenu input:first-of-type {
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-radius: 1px;
+    border-color: black;
+ }
 
 .logInMenuArrow, .loggedUserMenuArrow {
     position: relative;
@@ -247,8 +266,8 @@ a {
 }
 
 .loggedUserMenuArrow {
-    top: -8.6%;
-    background-color: white;
+    top: -9%;
+    background-color: #339DFF;
 }
 
 #MainTitleLoginMenu {

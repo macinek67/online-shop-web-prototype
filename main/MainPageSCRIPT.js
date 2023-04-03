@@ -1,8 +1,10 @@
+let baner = document.getElementById("SuggestionsBanerID");
+
 function ChangedSuggestionBanner(suggestNumber) {
-    if(suggestNumber==1) { document.getElementById("Suggestion1").style.borderTopColor = "#2ba3ff"; document.getElementById("Suggestion2").style.borderTopColor = "White"; document.getElementById("Suggestion3").style.borderTopColor = "White"; document.getElementById("Suggestion4").style.borderTopColor = "White";}
-    if(suggestNumber==2) { document.getElementById("Suggestion1").style.borderTopColor = "White"; document.getElementById("Suggestion2").style.borderTopColor = "#2ba3ff"; document.getElementById("Suggestion3").style.borderTopColor = "White"; document.getElementById("Suggestion4").style.borderTopColor = "White";}
-    if(suggestNumber==3) { document.getElementById("Suggestion1").style.borderTopColor = "White"; document.getElementById("Suggestion2").style.borderTopColor = "White"; document.getElementById("Suggestion3").style.borderTopColor = "#2ba3ff"; document.getElementById("Suggestion4").style.borderTopColor = "White";}
-    if(suggestNumber==4) { document.getElementById("Suggestion1").style.borderTopColor = "White"; document.getElementById("Suggestion2").style.borderTopColor = "White"; document.getElementById("Suggestion3").style.borderTopColor = "White"; document.getElementById("Suggestion4").style.borderTopColor = "#2ba3ff";}
+    if(suggestNumber==1) { baner.style.backgroundImage = "url('../images/freeShipBackground.jpg')"; document.getElementById("Suggestion1").style.borderTopColor = "#2ba3ff"; document.getElementById("Suggestion2").style.borderTopColor = "White"; document.getElementById("Suggestion3").style.borderTopColor = "White"; document.getElementById("Suggestion4").style.borderTopColor = "White";}
+    if(suggestNumber==2) { baner.style.backgroundImage = "url('../images/monety.png')"; document.getElementById("Suggestion1").style.borderTopColor = "White"; document.getElementById("Suggestion2").style.borderTopColor = "#2ba3ff"; document.getElementById("Suggestion3").style.borderTopColor = "White"; document.getElementById("Suggestion4").style.borderTopColor = "White";}
+    if(suggestNumber==3) { baner.style.backgroundImage = "url('../images/okazje.png')"; document.getElementById("Suggestion1").style.borderTopColor = "White"; document.getElementById("Suggestion2").style.borderTopColor = "White"; document.getElementById("Suggestion3").style.borderTopColor = "#2ba3ff"; document.getElementById("Suggestion4").style.borderTopColor = "White";}
+    if(suggestNumber==4) { baner.style.backgroundImage = "url('../images/newsletterBaner1.png')"; document.getElementById("Suggestion1").style.borderTopColor = "White"; document.getElementById("Suggestion2").style.borderTopColor = "White"; document.getElementById("Suggestion3").style.borderTopColor = "White"; document.getElementById("Suggestion4").style.borderTopColor = "#2ba3ff";}
 }
 
 function AccountMenuOpen() { document.getElementById("accountIconID").focus(); }
@@ -54,7 +56,6 @@ function getMouseDirection1(e) {
     bestSellersProductsDivProductContainer.scrollLeft += countMove/15;
     oldX = e.pageX;
     oldY = e.pageY;
-
 }
 
 function getMouseDirection2(e) {
@@ -64,7 +65,6 @@ function getMouseDirection2(e) {
     lastWatchedProductsProductContainer.scrollLeft += countMove/15;
     oldX = e.pageX;
     oldY = e.pageY;
-
 }
 
 

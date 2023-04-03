@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <title>Gstore - sklep internetowy</title>
     <link rel="stylesheet" href="MainPageSTYLES.css">
     <link rel="stylesheet" href="productStyles.css">
 </head>
@@ -42,7 +42,7 @@
             <input type="button" id="Suggestion1" class="SelectSugeestionButtons" value="Darmowa dostawa" onclick="ChangedSuggestionBanner(1)">
             <input type="button" id="Suggestion2" class="SelectSugeestionButtons" value="Zbieraj monety" onclick="ChangedSuggestionBanner(2)">
             <input type="button" id="Suggestion3" class="SelectSugeestionButtons" value="Okazje" onclick="ChangedSuggestionBanner(3)">
-            <input type="button" id="Suggestion4" class="SelectSugeestionButtons" value="Nowości" onclick="ChangedSuggestionBanner(4)">
+            <input type="button" id="Suggestion4" class="SelectSugeestionButtons" value="Newsletter" onclick="ChangedSuggestionBanner(4)">
         </div>
 
         <div class="newsletterDiv" id="newsletterDivID">
@@ -162,7 +162,7 @@
                 echo <<< html
                     <div class="loggedUserMenu" id="logg">
                         <div class="loggedUserMenuArrow"></div>
-                        <form action="" method="POST">
+                        <form action="account/index.php" method="POST">
                             <input type="submit" name="logOut" value="KONTO">
                         </form>
                         <form action="php/logOutUser.php" method="POST">
