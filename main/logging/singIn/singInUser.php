@@ -10,7 +10,7 @@ if(isset($_POST['singInUser'])) {
         if($row['email']==$email && $row['pass']==$password) {
             session_start();
             $_SESSION["loggedIn"] = true;
-            $_SESSION["email"] = $email;
+            $_SESSION["user"] = $row;
             header("Location: ../../index.php");
         }
     }
