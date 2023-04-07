@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 31 Mar 2023, 17:38
+-- Czas generowania: 07 Kwi 2023, 22:44
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -29,8 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
+  `name` varchar(25) DEFAULT NULL,
   `email` varchar(40) NOT NULL,
   `pass` varchar(40) NOT NULL,
+  `createDate` varchar(10) NOT NULL,
+  `monety` int(11) NOT NULL,
   `isAdmin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -38,8 +41,9 @@ CREATE TABLE `user` (
 -- Zrzut danych tabeli `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `pass`, `isAdmin`) VALUES
-(10, 'tak@gmail.com', 'ofc', 0);
+INSERT INTO `user` (`id`, `name`, `email`, `pass`, `createDate`, `monety`, `isAdmin`) VALUES
+(51, 'user51', 'tak@gmail.com', 'ofc', '2023-04-06', 0, 1),
+(52, 'user52', 'marcingawron222@gmail.com', '123', '2023-04-07', 0, 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -59,7 +63,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../MainPageSTYLES.css">
     <link rel="stylesheet" href="cartPageStyles.css">
 </head>
+<?php
+    require_once('../php/classes.php');
+    session_start();
+    ?>
 <body>
     <div class="headerDiv">
         <image src="../../images/gstore.png" class="headerDivLogo" id="ReturnToMainPage">
@@ -29,9 +33,27 @@
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
 
+    <div class="cartMainContainer">
+        <div class="cartItemsContainer">
+            <?php
+                $xd = new CartItem($product1);
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+                $xd->createProduct();
+            ?>
+        </div>
+        <div class="sideCartPanel">
 
-
-    
+        </div>
+    </div>
 
 
 

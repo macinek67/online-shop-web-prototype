@@ -1,0 +1,23 @@
+.cartMainContainer {
+    position: relative;
+    width: 1280px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    top: 125px;
+}
+
+.cartItemsContainer {
+    position: relative;
+    width: 62.5%;
+}
+
+.sideCartPanel {
+    position: relative;
+    width: 35%;
+    background-color: white;
+    height: 256px;
+    margin-left: 2.5%;
+    margin-top: 14.5px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
