@@ -1,5 +1,5 @@
 <?php
 
-include("produkt.php");
+include("product/produkt.php");
 
 ?>

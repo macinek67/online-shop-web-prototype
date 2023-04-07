@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="accountPageStyle.css">
+    <link rel="stylesheet" href="accountPageStyles.css">
     <link rel="stylesheet" href="../MainPageSTYLES.css">
 </head>
 <?php
@@ -29,13 +29,14 @@
         <input type="button" id="starIconID" class="headerDivIcons">
         <input type="button" id="chatIconID" class="headerDivIcons">
         <input type="button" id="bellIconID" class="headerDivIcons">
-        <input type="button" id="cartIconID" class="headerDivIcons">
+        <input type="button" id="cartIconID" class="headerDivIcons" onclick="AccountPageGoToCartFunction()">
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
 
 
 
     <div class="accountSettingsContainer">
+
         <div class="userInfoMainDiv">
             <div>
                 <?php
@@ -67,12 +68,27 @@
                 ?>
             </div>
         </div>
+
+
+
+        <div class="mainUserSettingsDiv">
+            <div class="">
+
+            </div>
+
+
+            <div>
+
+            </div>
+        </div>
+
+
     </div>
 
 
     <div class="loggedUserMenu" id="logg">
         <div class="loggedUserMenuArrow"></div>
-        <form action="account/index.php" method="POST">
+        <form action="index.php" method="POST">
             <input type="submit" name="logOut" value="KONTO">
         </form>
         <form action="../php/logOutUser.php" method="POST">
@@ -87,6 +103,10 @@
 
     function ReturnToMainPageFunction() {
         window.location="../index.php";
+    }
+
+    function AccountPageGoToCartFunction() {
+        window.location="../cart/index.php";
     }
 
 </script>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gstore - sklep internetowy</title>
     <link rel="stylesheet" href="MainPageSTYLES.css">
-    <link rel="stylesheet" href="productStyles.css">
+    <link rel="stylesheet" href="php/product/productStyles.css">
 </head>
 <?php
     require_once('php/classes.php');
@@ -29,7 +29,7 @@
         <input type="button" id="starIconID" class="headerDivIcons">
         <input type="button" id="chatIconID" class="headerDivIcons">
         <input type="button" id="bellIconID" class="headerDivIcons">
-        <input type="button" id="cartIconID" class="headerDivIcons">
+        <input type="button" id="cartIconID" class="headerDivIcons" onclick="MainPageGoToCartFunction()">
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
 

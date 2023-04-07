@@ -1,3 +1,7 @@
+function MainPageGoToCartFunction() {
+    window.location="cart/index.php";
+}
+
 let baner = document.getElementById("SuggestionsBanerID");
 
 function ChangedSuggestionBanner(suggestNumber) {
