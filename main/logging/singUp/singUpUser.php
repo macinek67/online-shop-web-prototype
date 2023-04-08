@@ -7,6 +7,11 @@ if(isset($_POST['singUpUser'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $date = date('Y-m-d');
+    $result = $connect->query("SELECT * FROM user WHERE email='$email' AND pass='$password' LIMIT 1");
+    if($row = mysqli_fetch_assoc($result)) {
+        header("Location: index.php");
+        return;
+    }
     $result = $connect->query("INSERT INTO user(email, pass, isAdmin) VALUES('$email','$password', 0)");
     $result = $connect->query("SELECT * FROM user WHERE email='$email' AND pass='$password' LIMIT 1");
     if($row = mysqli_fetch_assoc($result)) {

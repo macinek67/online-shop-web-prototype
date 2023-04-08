@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Kwi 2023, 22:44
+-- Czas generowania: 09 Kwi 2023, 00:34
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(25) DEFAULT NULL,
   `email` varchar(40) NOT NULL,
   `pass` varchar(40) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `user` (
 -- Zrzut danych tabeli `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `pass`, `createDate`, `monety`, `isAdmin`) VALUES
+INSERT INTO `user` (`user_id`, `name`, `email`, `pass`, `createDate`, `monety`, `isAdmin`) VALUES
 (51, 'user51', 'tak@gmail.com', 'ofc', '2023-04-06', 0, 1),
 (52, 'user52', 'marcingawron222@gmail.com', '123', '2023-04-07', 0, 0);
 
@@ -53,7 +53,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `pass`, `createDate`, `monety`, `isAd
 -- Indeksy dla tabeli `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT dla zrzuconych tabel
@@ -63,7 +63,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

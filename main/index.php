@@ -63,14 +63,11 @@
             </div>
             <div class="theNewestProductsDivProductContainer" id="bestSellersProductsDivProductContainer">
                 <?php
-                    $product1->createProduct();
-                    $product2->createProduct();
-                    $product3->createProduct();
-                    $product4->createProduct();
-                    $product5->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
+                    $result = $connect->query("SELECT * FROM product ORDER BY product_boughtCount DESC LIMIT 20");
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                        $prdct->createProduct();
+                    }
                 ?>
             </div>
         </div>
@@ -90,14 +87,12 @@
                             html;
                         } else {
                             echo '<div class="theNewestProductsDivProductContainer" id="lastWatchedProductsProductContainer">';
-                                $product1->createProduct();
-                                $product1->createProduct();
-                                $product1->createProduct();
-                                $product1->createProduct();
-                                $product1->createProduct();
-                                $product1->createProduct();
-                                $product1->createProduct();
-                                $product1->createProduct();
+                            $userID = $_SESSION["user"]['user_id'];
+                            $result = $connect->query("SELECT * FROM product JOIN lastwatchedproducts USING(product_id) WHERE lastwatchedproducts.user_id=$userID ORDER BY id DESC LIMIT 20");
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                                $prdct->createProduct();
+                            }
                             echo '</div>';
                         }
                         
@@ -113,14 +108,11 @@
             </div>
 	        <div class="theNewestProductsDivProductContainer" id="theNewestProductsDivProductContainer">
                 <?php
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
+                    $result = $connect->query("SELECT * FROM product ORDER BY product_id DESC LIMIT 20");
+                    while($row = mysqli_fetch_assoc($result)) {
+                        $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                        $prdct->createProduct();
+                    }
                 ?>
             </div>
         </div>

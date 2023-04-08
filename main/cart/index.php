@@ -33,44 +33,62 @@
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
 
-    <div class="cartMainContainer">
-        <div class="cartItemsContainer">
-            <?php
-                $xd = new CartItem($product1);
-                $xd1 = new CartItem($product2);
-                $xd2 = new CartItem($product3);
-                $xd3 = new CartItem($product4);
-                $xd4 = new CartItem($product5);
-                $xd1->createProduct();
-                $xd2->createProduct();
-                $xd3->createProduct();
-                $xd4->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
-            ?>
-        </div>
-        <div class="sideCartPanel">
-
-        </div>
-    </div>
-
+    <?php
+        if(isset($_SESSION['loggedIn'])){
+            if($_SESSION['loggedIn'] == true) {
+                echo <<< html
+                    <div class="cartMainContainer">
+                        <div class="cartItemsContainer">
+                html;
+                        $userID = $_SESSION["user"]['user_id'];
+                        $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                            $CartPrdct = new CartItem($row['product_id'], $prdct);
+                            $CartPrdct->createProduct();
+                        }
+                        echo <<< html
+                        </div>
+                        <div class="sideCartPanel">
+                
+                        </div>
+                    </div>
+                html;
+            }
+        }
+    ?>
 
 
 
-    <div class="loggedUserMenu" id="logg">
-        <div class="loggedUserMenuArrow"></div>
-        <form action="../account/index.php" method="POST">
-            <input type="submit" name="logOut" value="KONTO">
-        </form>
-        <form action="../php/logOutUser.php" method="POST" style="margin-top: -30px">
-            <input type="submit" name="logOut" value="WYLOGUJ">
-        </form>
-    </div>
+
+<?php
+        if(isset($_SESSION['loggedIn'])){
+            if($_SESSION['loggedIn'] != true) {
+                echo <<< html
+                    <div class="logInMenu" id="logg">
+                        <div class="logInMenuArrow"></div>
+                        <p id="MainTitleLoginMenu">Witaj w gstore!</p>
+                        <div id="LoginMenuParting"></div>
+                        <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
+                        <a href="../logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
+                        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="../logging/singUp/index.php">Zarejestruj się</a></p>
+                    </div>
+                html;
+            } else {
+                echo <<< html
+                    <div class="loggedUserMenu" id="logg">
+                        <div class="loggedUserMenuArrow"></div>
+                        <form action="../account/index.php" method="POST">
+                            <input type="submit" name="logOut" value="KONTO">
+                        </form>
+                        <form action="../php/logOutUser.php" method="POST" style="margin-top: -30px;">
+                            <input type="submit" name="logOut" value="WYLOGUJ">
+                        </form>
+                    </div>
+                html;
+            }
+        }
+    ?>
     
 </body>
 <script src="../MainPageSCRIPT.js"></script>

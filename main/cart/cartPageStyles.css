@@ -12,6 +12,10 @@
     width: 62.5%;
 }
 
+.cartItemsContainer div:last-of-type {
+    margin-bottom: 250px;
+}
+
 
 @media screen and (min-width: 821px) {
     .sideCartPanel {
