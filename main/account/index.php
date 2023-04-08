@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../MainPageSTYLES.css">
 </head>
 <?php
-    require_once('../php/classes.php');
     session_start();
+    require_once('../php/classes.php');
 ?>
 <body>
     <div class="headerDiv">

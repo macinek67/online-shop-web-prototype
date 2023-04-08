@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    require_once('../php/classes.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +12,6 @@
     <link rel="stylesheet" href="../MainPageSTYLES.css">
     <link rel="stylesheet" href="cartPageStyles.css">
 </head>
-<?php
-    require_once('../php/classes.php');
-    session_start();
-    ?>
 <body>
     <div class="headerDiv">
         <image src="../../images/gstore.png" class="headerDivLogo" id="ReturnToMainPage">
@@ -37,10 +37,14 @@
         <div class="cartItemsContainer">
             <?php
                 $xd = new CartItem($product1);
-                $xd->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
-                $xd->createProduct();
+                $xd1 = new CartItem($product2);
+                $xd2 = new CartItem($product3);
+                $xd3 = new CartItem($product4);
+                $xd4 = new CartItem($product5);
+                $xd1->createProduct();
+                $xd2->createProduct();
+                $xd3->createProduct();
+                $xd4->createProduct();
                 $xd->createProduct();
                 $xd->createProduct();
                 $xd->createProduct();
@@ -63,7 +67,7 @@
         <form action="../account/index.php" method="POST">
             <input type="submit" name="logOut" value="KONTO">
         </form>
-        <form action="../php/logOutUser.php" method="POST">
+        <form action="../php/logOutUser.php" method="POST" style="margin-top: -30px">
             <input type="submit" name="logOut" value="WYLOGUJ">
         </form>
     </div>

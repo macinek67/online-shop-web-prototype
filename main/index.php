@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="php/product/productStyles.css">
 </head>
 <?php
-    require_once('php/classes.php');
     session_start();
+    require_once('php/classes.php');
+    if($_SESSION["loggedIn"] == null)
+        $_SESSION["loggedIn"] = false;
 ?>
 <body>
     <div class="headerDiv">
@@ -62,10 +64,10 @@
             <div class="theNewestProductsDivProductContainer" id="bestSellersProductsDivProductContainer">
                 <?php
                     $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
-                    $product1->createProduct();
+                    $product2->createProduct();
+                    $product3->createProduct();
+                    $product4->createProduct();
+                    $product5->createProduct();
                     $product1->createProduct();
                     $product1->createProduct();
                     $product1->createProduct();

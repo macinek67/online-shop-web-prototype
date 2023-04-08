@@ -100,6 +100,7 @@
 
     .productPrice {
         margin-top: 6%;
+        font-size: 1.8em;
     }
 
     .viewItemButton {
@@ -116,6 +117,7 @@
 
     .productPrice {
         margin-top: 1%;
+        font-size: 1.7em;
     }
 
     .viewItemButton {
@@ -134,7 +136,7 @@
 
     .productPrice {
         margin-top: 1%;
-        font-size: 1.8em;
+        font-size: 1.6em;
     }
 
     .viewItemButton {
@@ -146,9 +148,9 @@
 
 @media screen and (max-width: 507px) and (min-width: 376px) {
     .productDiv {
-        width: 20%;
-        min-width: 20%;
-        font-size: 0.55em;
+        width: 18%;
+        min-width: 18%;
+        font-size: 0.52em;
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
         padding-bottom: 2px;
     }
@@ -168,9 +170,9 @@
 
 @media screen and (max-width: 375px) and (min-width: 312px) {
     .productDiv {
-        width: 20%;
-        min-width: 20%;
-        font-size: 0.5em;
+        width: 18%;
+        min-width: 18%;
+        font-size: 0.4em;
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
         padding-bottom: 2px;
     }
@@ -189,9 +191,9 @@
 
 @media screen and (max-width: 311px) {
     .productDiv {
-        width: 20%;
-        min-width: 20%;
-        font-size: 0.4em;
+        width: 18%;
+        min-width: 18%;
+        font-size: 0.35em;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
         padding-bottom: 2px;
     }
