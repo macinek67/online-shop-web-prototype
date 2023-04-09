@@ -37,10 +37,16 @@
 .cartItemMainDiv input[type = number] {
     position: relative;
     height: 25%;
-    top: 37%;
+    top: 40%;
     text-align: center;
     width: 5%;
     left: 5%;
+}
+
+.cartItemMainDiv input[type = number]::-webkit-outer-spin-button,
+.cartItemMainDiv input[type = number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .cartItemPrice {
@@ -98,6 +104,10 @@
         width: 37%;
     }
 
+    .cartItemMainDiv input[type = number] {
+        width: 7%;
+    }
+
     .cartItemPrice {
         font-size: 20px;
         width: 20%;
@@ -132,7 +142,7 @@
     }
 
     .cartItemMainDiv input[type = number] {
-        top: 42%;
+        top: 44%;
     }
 
     .cartItemMainDiv input[type = submit] {
@@ -166,7 +176,7 @@
     }
 
     .cartItemMainDiv input[type = number] {
-        top: 37%;
+        top: 39%;
     }
 
     .cartItemMainDiv input[type = submit] {

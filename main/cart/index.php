@@ -50,7 +50,37 @@
                         echo <<< html
                         </div>
                         <div class="sideCartPanel">
-                
+                            <label class="cartItemsSumPriceText">Wartość produktów</label>
+                            <label class="cartItemsSumPrice">
+                        html;
+                        $cartSumPrice = 0;
+                        $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $cartSumPrice += $row['product_price']*$row['product_quantity']; 
+                        }
+                        echo <<< html
+                            $cartSumPrice zł
+                            </label>
+                            <label class="cartShipCostText">Dostawa od</label>
+                            <label class="cartShipCost">
+                        html;
+                        if($cartSumPrice > 399) $shipCost = "0.00";
+                        else $shipCost = "9.99";
+                        echo <<< html
+                            $shipCost zł
+                            </label>
+                            <hr>
+                            <label class="cartFinalPriceText">Razem z dostawą</label>
+                            <label class="cartFinalPrice">
+                        html;
+                        $finalPrice = $cartSumPrice + $shipCost;
+                        echo <<< html
+                            $finalPrice zł
+                            </label>
+                            <form action="" method="POST">
+                                <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
+                            </form>
+                            <label class="continueShopping" id="continueShoppingID">KONTYNUUJ ZAKUPY</label>
                         </div>
                     </div>
                 html;
@@ -58,46 +88,72 @@
         }
     ?>
 
+    <div class="bottomCartPanel">
+        <label class="cartFinalPriceText">Razem z dostawą</label>
+        <label class="cartFinalPrice"><?php echo $finalPrice ?> zł</label>
+        <form action="" method="POST">
+            <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
+            <input type="button" value="KONTYNUUJ ZAKUPY" class="continueShopping" onclick="ReturnToMainPageFunction()">
+        </form>
+    </div>
+
 
 
 
 <?php
-        if(isset($_SESSION['loggedIn'])){
-            if($_SESSION['loggedIn'] != true) {
-                echo <<< html
-                    <div class="logInMenu" id="logg">
-                        <div class="logInMenuArrow"></div>
-                        <p id="MainTitleLoginMenu">Witaj w gstore!</p>
-                        <div id="LoginMenuParting"></div>
-                        <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
-                        <a href="../logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
-                        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="../logging/singUp/index.php">Zarejestruj się</a></p>
-                    </div>
-                html;
-            } else {
-                echo <<< html
-                    <div class="loggedUserMenu" id="logg">
-                        <div class="loggedUserMenuArrow"></div>
-                        <form action="../account/index.php" method="POST">
-                            <input type="submit" name="logOut" value="KONTO">
-                        </form>
-                        <form action="../php/logOutUser.php" method="POST" style="margin-top: -30px;">
-                            <input type="submit" name="logOut" value="WYLOGUJ">
-                        </form>
-                    </div>
-                html;
-            }
+    if(isset($_SESSION['loggedIn'])){
+        if($_SESSION['loggedIn'] != true) {
+            echo <<< html
+                <div class="logInMenu" id="logg">
+                    <div class="logInMenuArrow"></div>
+                    <p id="MainTitleLoginMenu">Witaj w gstore!</p>
+                    <div id="LoginMenuParting"></div>
+                    <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
+                    <a href="../logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
+                    <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="../logging/singUp/index.php">Zarejestruj się</a></p>
+                </div>
+            html;
+        } else {
+            echo <<< html
+                <div class="loggedUserMenu" id="logg">
+                    <div class="loggedUserMenuArrow"></div>
+                    <form action="../account/index.php" method="POST">
+                        <input type="submit" name="logOut" value="KONTO">
+                    </form>
+                    <form action="../php/logOutUser.php" method="POST" style="margin-top: -30px;">
+                        <input type="submit" name="logOut" value="WYLOGUJ">
+                    </form>
+                </div>
+            html;
         }
-    ?>
+    }
+?>
     
 </body>
 <script src="../MainPageSCRIPT.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
     let ReturnToMainPage = document.getElementById("ReturnToMainPage");
     ReturnToMainPage.addEventListener('click', ReturnToMainPageFunction);
 
+    let continueShopping = document.getElementById("continueShoppingID");
+    continueShopping.addEventListener('click', ReturnToMainPageFunction);
+
     function ReturnToMainPageFunction() {
         window.location="../index.php";
     }
+
+    function changeQuantity() {
+        let eventTarget = event.target;
+        $.ajax({
+            type: "POST",
+            url: '../php/cartProduct/changeQuantityProduct.php',
+            data:{action:'changeQuantity', quantity:event.target.value, productId:eventTarget.parentElement.children[0].value},
+            success:function() {
+                window.location.reload();
+            }
+        });
+    }
+
 </script>
 </html>
