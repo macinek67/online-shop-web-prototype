@@ -1,5 +1,3 @@
-
-
 <style>
     <?php include 'cartItemStyles.css'; ?>
 </style>
@@ -32,7 +30,7 @@ class CartItem {
             <div class="cartItemMainDiv">
             <input type="hidden" name="id" value="$this->id">
             <img src="$img">
-            <label class="cartItemTitle">$title</label>
+            <label class="cartItemTitle" onclick="">$title</label>
             <input type="number" min="1" value="$quantity" onchange="changeQuantity()">
             <label class="cartItemPrice">$price zł</label>
             <form action="../php/cartProduct/deleteCartProduct.php" method="POST">

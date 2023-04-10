@@ -25,10 +25,7 @@
             </optgroup>
         </select>
         <input type="button" class="headerDivSearchButton" value="SZUKAJ">
-        <input type="button" id="coinIconID" class="headerDivIcons">
-        <input type="button" id="starIconID" class="headerDivIcons">
-        <input type="button" id="chatIconID" class="headerDivIcons">
-        <input type="button" id="bellIconID" class="headerDivIcons">
+        <input type="button" id="starIconID" class="headerDivIcons" onclick="CartPageGoToFavoritesFunction()">
         <input type="button" id="cartIconID" class="headerDivIcons" onclick="AccountPageGoToCartFunction()">
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
@@ -83,19 +80,22 @@
                             <label class="continueShopping" id="continueShoppingID">KONTYNUUJ ZAKUPY</label>
                         </div>
                     </div>
+                    <div class="bottomCartPanel">
+                        <label class="cartFinalPriceText">Razem z dostawą</label>
+                        <label class="cartFinalPrice">
+                    html;
+                    echo $finalPrice;
+                    echo <<< html
+                        zł</label>
+                        <form action="" method="POST">
+                            <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
+                            <input type="button" value="KONTYNUUJ ZAKUPY" class="continueShopping" onclick="ReturnToMainPageFunction()">
+                        </form>
+                    </div>
                 html;
             }
         }
     ?>
-
-    <div class="bottomCartPanel">
-        <label class="cartFinalPriceText">Razem z dostawą</label>
-        <label class="cartFinalPrice"><?php echo $finalPrice ?> zł</label>
-        <form action="" method="POST">
-            <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
-            <input type="button" value="KONTYNUUJ ZAKUPY" class="continueShopping" onclick="ReturnToMainPageFunction()">
-        </form>
-    </div>
 
 
 
@@ -153,6 +153,10 @@
                 window.location.reload();
             }
         });
+    }
+
+    function CartPageGoToFavoritesFunction() {
+            window.location="../favorites/index.php";
     }
 
 </script>

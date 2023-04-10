@@ -2,6 +2,10 @@ function MainPageGoToCartFunction() {
     window.location="cart/index.php";
 }
 
+function MainPageGoToFavoritesFunction() {
+    window.location="favorites/index.php";
+}
+
 let baner = document.getElementById("SuggestionsBanerID");
 
 function ChangedSuggestionBanner(suggestNumber) {

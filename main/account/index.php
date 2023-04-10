@@ -25,10 +25,7 @@
             </optgroup>
         </select>
         <input type="button" class="headerDivSearchButton" value="SZUKAJ">
-        <input type="button" id="coinIconID" class="headerDivIcons">
-        <input type="button" id="starIconID" class="headerDivIcons">
-        <input type="button" id="chatIconID" class="headerDivIcons">
-        <input type="button" id="bellIconID" class="headerDivIcons">
+        <input type="button" id="starIconID" class="headerDivIcons" onclick="AccountPageGoToFavoritesFunction()">
         <input type="button" id="cartIconID" class="headerDivIcons" onclick="AccountPageGoToCartFunction()">
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
@@ -108,6 +105,11 @@
     function AccountPageGoToCartFunction() {
         window.location="../cart/index.php";
     }
+
+    function AccountPageGoToFavoritesFunction() {
+    window.location="../favorites/index.php";
+}
+
 
 </script>
 </html>
