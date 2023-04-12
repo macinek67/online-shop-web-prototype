@@ -356,9 +356,9 @@ a {
     margin: auto;
     text-align: center;
     position: relative;
-  }
+}
 
-  #msform fieldset {
+#msform fieldset {
     background: white;
     border: 0 none;
     border-radius: 3px;
@@ -369,9 +369,9 @@ a {
     margin: 0 10%;
     position: relative;
     border-radius: 10px;
-  }
+}
 
-  #msform input, #msform textarea {
+#msform input, #msform textarea {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -381,9 +381,9 @@ a {
     font-family: montserrat;
     color: #2C3E50;
     font-size: 13px;
-  }
+}
 
-  #msform .action-button {
+#msform .action-button {
     width: 200px;
     background: #339DFF;
     font-weight: bold;
@@ -394,25 +394,30 @@ a {
     margin: 10px 5px;
     text-decoration: none;
     font-size: 17px;
-  }
-  #msform .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
-  }
+}
 
-  .fs-title {
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
+}
+
+.fs-title {
     font-size: 18px;
     text-transform: uppercase;
     color: #2C3E50;
     margin-bottom: 10px;
-  }
-  .fs-subtitle {
+}
+
+.fs-subtitle {
     font-weight: normal;
     font-size: 13px;
     color: #666;
     margin-bottom: 20px;
-  }
+}
 
-
+#searchBarFormId {
+    position: absolute;
+    visibility: hidden;
+}
 
 
 

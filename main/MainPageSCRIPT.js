@@ -75,6 +75,16 @@ function getMouseDirection2(e) {
     oldY = e.pageY;
 }
 
+var searchBar = document.getElementById("searchBarId");
+var searchBarSubmit = document.getElementById("SearchButtonSubmit");
+let searchBarForm = document.getElementById("searchBarFormId");
+let categorySelectId = document.getElementById("headerDivCategorySelectId");
+
+searchBarSubmit.addEventListener("click", function(event) {
+    searchBarForm.elements[0].value = searchBar.value;
+    searchBarForm.elements[1].value = categorySelectId.value;
+    searchBarForm.submit();
+});
 
 theNewestProductsDivProductContainer.addEventListener('mousedown', mouseDown);
 theNewestProductsDivProductContainer.addEventListener('mouseup', mouseUp);

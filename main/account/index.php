@@ -15,16 +15,14 @@
 <body>
     <div class="headerDiv">
         <image src="../../images/gstore.png" class="headerDivLogo" id="ReturnToMainPage">
-        <input type="text" placeholder="czego szukasz?" class="headerDivSearch">
-        <select class="headerDivCategorySelect">
+        <input type="text" id="searchBarId" placeholder="czego szukasz?" class="headerDivSearch">
+        <select class="headerDivCategorySelect" id="headerDivCategorySelectId">
             <option>Wszystkie kategorie</option>
             <optgroup label="Kategorie">
-                <option value="parrot">Elektronika</option>
-                <option value="macaw">Moda</option>
-                <option value="albatross">Motoryzacja</option>
+                <?php showCategories(); ?>
             </optgroup>
         </select>
-        <input type="button" class="headerDivSearchButton" value="SZUKAJ">
+        <input type="button" id="SearchButtonSubmit" class="headerDivSearchButton" value="SZUKAJ">
         <input type="button" id="starIconID" class="headerDivIcons" onclick="AccountPageGoToFavoritesFunction()">
         <input type="button" id="cartIconID" class="headerDivIcons" onclick="AccountPageGoToCartFunction()">
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
@@ -92,6 +90,12 @@
             <input type="submit" name="logOut" value="WYLOGUJ">
         </form>
     </div>
+
+    <form action="../search/index.php" id="searchBarFormId" method="POST">
+        <input type="hidden" id="searchBarContextId" name="searchBarContext" value="">
+        <input type="hidden" id="searchBarSelectedCategoryId" name="searchBarSelectedCategory" value="Wszystkie kategorie">
+    </form>
+
 </body>
 <script src="../MainPageSCRIPT.js"></script>
 <script>
@@ -109,7 +113,6 @@
     function AccountPageGoToFavoritesFunction() {
     window.location="../favorites/index.php";
 }
-
 
 </script>
 </html>

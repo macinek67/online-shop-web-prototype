@@ -19,9 +19,7 @@
         <select class="headerDivCategorySelect">
             <option>Wszystkie kategorie</option>
             <optgroup label="Kategorie">
-                <option value="parrot">Elektronika</option>
-                <option value="macaw">Moda</option>
-                <option value="albatross">Motoryzacja</option>
+                <?php showCategories(); ?>
             </optgroup>
         </select>
         <input type="button" class="headerDivSearchButton" value="SZUKAJ">

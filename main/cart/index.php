@@ -15,16 +15,14 @@
 <body>
     <div class="headerDiv">
         <image src="../../images/gstore.png" class="headerDivLogo" id="ReturnToMainPage">
-        <input type="text" placeholder="czego szukasz?" class="headerDivSearch">
-        <select class="headerDivCategorySelect">
+        <input type="text" id="searchBarId" placeholder="czego szukasz?" class="headerDivSearch">
+        <select class="headerDivCategorySelect" id="headerDivCategorySelectId">
             <option>Wszystkie kategorie</option>
             <optgroup label="Kategorie">
-                <option value="parrot">Elektronika</option>
-                <option value="macaw">Moda</option>
-                <option value="albatross">Motoryzacja</option>
+                <?php showCategories(); ?>
             </optgroup>
         </select>
-        <input type="button" class="headerDivSearchButton" value="SZUKAJ">
+        <input type="button" id="SearchButtonSubmit" class="headerDivSearchButton" value="SZUKAJ">
         <input type="button" id="starIconID" class="headerDivIcons" onclick="CartPageGoToFavoritesFunction()">
         <input type="button" id="cartIconID" class="headerDivIcons" onclick="AccountPageGoToCartFunction()">
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
@@ -100,34 +98,39 @@
 
 
 
-<?php
-    if(isset($_SESSION['loggedIn'])){
-        if($_SESSION['loggedIn'] != true) {
-            echo <<< html
-                <div class="logInMenu" id="logg">
-                    <div class="logInMenuArrow"></div>
-                    <p id="MainTitleLoginMenu">Witaj w gstore!</p>
-                    <div id="LoginMenuParting"></div>
-                    <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
-                    <a href="../logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
-                    <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="../logging/singUp/index.php">Zarejestruj się</a></p>
-                </div>
-            html;
-        } else {
-            echo <<< html
-                <div class="loggedUserMenu" id="logg">
-                    <div class="loggedUserMenuArrow"></div>
-                    <form action="../account/index.php" method="POST">
-                        <input type="submit" name="logOut" value="KONTO">
-                    </form>
-                    <form action="../php/logOutUser.php" method="POST" style="margin-top: -30px;">
-                        <input type="submit" name="logOut" value="WYLOGUJ">
-                    </form>
-                </div>
-            html;
+    <?php
+        if(isset($_SESSION['loggedIn'])){
+            if($_SESSION['loggedIn'] != true) {
+                echo <<< html
+                    <div class="logInMenu" id="logg">
+                        <div class="logInMenuArrow"></div>
+                        <p id="MainTitleLoginMenu">Witaj w gstore!</p>
+                        <div id="LoginMenuParting"></div>
+                        <p id="SmallTextLoginMenu">Zaloguj się i zobacz swoje zakupy, obserwowane oferty i powiadomienia.</p>
+                        <a href="../logging/singIn/index.php"><input type="button" id="logInButton" value="ZALOGUJ SIĘ"></a>
+                        <p id="SingUpTitleLoginMenu">Nie masz konta? <a href="../logging/singUp/index.php">Zarejestruj się</a></p>
+                    </div>
+                html;
+            } else {
+                echo <<< html
+                    <div class="loggedUserMenu" id="logg">
+                        <div class="loggedUserMenuArrow"></div>
+                        <form action="../account/index.php" method="POST">
+                            <input type="submit" name="logOut" value="KONTO">
+                        </form>
+                        <form action="../php/logOutUser.php" method="POST" style="margin-top: -30px;">
+                            <input type="submit" name="logOut" value="WYLOGUJ">
+                        </form>
+                    </div>
+                html;
+            }
         }
-    }
-?>
+    ?>
+
+    <form action="../search/index.php" id="searchBarFormId" method="POST">
+        <input type="hidden" id="searchBarContextId" name="searchBarContext" value="">
+        <input type="hidden" id="searchBarSelectedCategoryId" name="searchBarSelectedCategory" value="Wszystkie kategorie">
+    </form>
     
 </body>
 <script src="../MainPageSCRIPT.js"></script>
@@ -156,7 +159,7 @@
     }
 
     function CartPageGoToFavoritesFunction() {
-            window.location="../favorites/index.php";
+        window.location="../favorites/index.php";
     }
 
 </script>

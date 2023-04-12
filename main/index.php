@@ -16,17 +16,15 @@
 ?>
 <body>
     <div class="headerDiv">
-        <img src="../images/gstore.png" class="headerDivLogo">
-        <input type="text" placeholder="czego szukasz?" class="headerDivSearch">
-        <select class="headerDivCategorySelect">
+        <img src="../images/gstore.png" class="headerDivLogo" onclick='window.location="index.php";'>
+        <input type="text" id="searchBarId" placeholder="czego szukasz?" class="headerDivSearch">
+        <select class="headerDivCategorySelect" id="headerDivCategorySelectId">
             <option>Wszystkie kategorie</option>
             <optgroup label="Kategorie">
-                <option value="parrot">Elektronika</option>
-                <option value="macaw">Moda</option>
-                <option value="albatross">Motoryzacja</option>
+                <?php showCategories(); ?>
             </optgroup>
         </select>
-        <input type="button" class="headerDivSearchButton" value="SZUKAJ">
+        <input type="button" id="SearchButtonSubmit" class="headerDivSearchButton" value="SZUKAJ">
         <input type="button" id="starIconID" class="headerDivIcons" onclick="MainPageGoToFavoritesFunction()">
         <input type="button" id="cartIconID" class="headerDivIcons" onclick="MainPageGoToCartFunction()">
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
@@ -165,6 +163,12 @@
         }
     ?>
 
+    <form action="search/index.php" id="searchBarFormId" method="POST">
+        <input type="hidden" id="searchBarContextId" name="searchBarContext" value="">
+        <input type="hidden" id="searchBarSelectedCategoryId" name="searchBarSelectedCategory" value="Wszystkie kategorie">
+    </form>
+
     <script src="MainPageSCRIPT.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </body>
 </html>
