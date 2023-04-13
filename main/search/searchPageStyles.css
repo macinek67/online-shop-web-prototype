@@ -4,3 +4,71 @@
     margin: auto;
     top: 125px;
 }
+
+.whatSearchingTitle {
+    font-weight: 500;
+    font-size: 30px;
+    
+}
+
+.searchFiltersForm {
+    width: 65%;
+    height: 75px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    line-height: 75px;
+    margin-top: 30px;
+}
+
+.FiltersFormOfertsTitle {
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.searchFormFilters {
+    position: relative;
+    height: 45px;
+    line-height: 200%;
+    margin: auto;
+    margin-left: 20%;
+}
+
+.searchFiltersFormCurrentPage {
+    position: relative;
+    height: 45px;
+    width: 45px;
+    margin-left: -40%;
+    text-align: center;
+}
+
+.searchFiltersForm input[type = number]::-webkit-outer-spin-button,
+.searchFiltersForm input[type = number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.FiltersFormCurrentPageSelectTopDiv label {
+    position: relative;
+    font-weight: 500;
+    margin-left: 10%;
+}
+
+.bottomChangePageDiv {
+    margin-top: 25px; 
+    text-align: center;
+}
+
+.bottomChangePageDivSubmitButton {
+    width: 35px;
+    height: 35px;
+    background-color: #2acdff;
+    border-style: solid;
+    margin-left: -1px;
+    cursor: pointer;
+    color: rgb(46, 46, 46);
+    font-size: 17px;
+    border-color: rgb(43, 42, 42);
+    border-width: 0.5px;
+}
