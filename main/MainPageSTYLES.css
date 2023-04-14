@@ -104,6 +104,7 @@ a {
     left: 50%;
     transform: translate(-50%, 0%);
     border-radius: 16px;
+    margin-bottom: 900px;
 }
 
 .theNewestProductsDivProductContainer {
@@ -351,75 +352,10 @@ a {
     -webkit-text-stroke: 0.25vw #0084ff;
 }
 
-#msform {
-    width: 800px;
-    margin: auto;
-    text-align: center;
-    position: relative;
-}
-
-#msform fieldset {
-    background: white;
-    border: 0 none;
-    border-radius: 3px;
-    box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.5);
-    padding: 20px 30px;
-    box-sizing: border-box;
-    width: 80%;
-    margin: 0 10%;
-    position: relative;
-    border-radius: 10px;
-}
-
-#msform input, #msform textarea {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    font-family: montserrat;
-    color: #2C3E50;
-    font-size: 13px;
-}
-
-#msform .action-button {
-    width: 200px;
-    background: #339DFF;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 1px;
-    cursor: pointer;
-    margin: 10px 5px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-#msform .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
-}
-
-.fs-title {
-    font-size: 18px;
-    text-transform: uppercase;
-    color: #2C3E50;
-    margin-bottom: 10px;
-}
-
-.fs-subtitle {
-    font-weight: normal;
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
 #searchBarFormId {
     position: absolute;
     visibility: hidden;
 }
-
-
 
 
 
@@ -590,6 +526,7 @@ a {
     .dotHeader {
         margin-left: 4px;
     }
+
 }
 
 
@@ -735,28 +672,8 @@ a {
         width: 300px;
         height: 75px;
     }
-
-    #msform {
-        width: 75%;
-    }
-
-    #msform input, #msform textarea {
-        height: 1vw;
-    }
-
-    #msform .action-button {
-        height: 5.5vw;
-        font-size: 15px;
-        padding: 0px;
-        width: 38%;
-    }
-
-    .fs-title {
-        font-size: 2vw;
-    }
-
-    #msform fieldset {
-        padding: 15px 25px;
+    .pageFooter {
+        font-size: 10px;
     }
 }
 

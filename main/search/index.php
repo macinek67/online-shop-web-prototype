@@ -46,7 +46,7 @@
                 <?php
                     if(isset($_POST['searchingCurrentPage'])) $currentPage = $_POST['searchingCurrentPage'];
                     else $currentPage = 1;
-                    $productsPerPage = 1;
+                    $productsPerPage = 25;
                     $title = strtolower($_POST['searchBarContext']);
                     $category = $_POST['searchBarSelectedCategory'];
                     if($category != "Wszystkie kategorie")

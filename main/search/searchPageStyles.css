@@ -7,8 +7,7 @@
 
 .whatSearchingTitle {
     font-weight: 500;
-    font-size: 30px;
-    
+    font-size: 30px; 
 }
 
 .searchFiltersForm {
@@ -18,7 +17,11 @@
     display: flex;
     flex-direction: row;
     line-height: 75px;
-    margin-top: 30px;
+    margin-top: 45px;
+    margin-bottom: 0px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(102, 102, 102, 0.5);
 }
 
 .FiltersFormOfertsTitle {
@@ -32,7 +35,8 @@
     height: 45px;
     line-height: 200%;
     margin: auto;
-    margin-left: 20%;
+    left: -4%;
+    
 }
 
 .searchFiltersFormCurrentPage {
@@ -41,6 +45,7 @@
     width: 45px;
     margin-left: -40%;
     text-align: center;
+    top: -1%;
 }
 
 .searchFiltersForm input[type = number]::-webkit-outer-spin-button,
@@ -56,14 +61,15 @@
 }
 
 .bottomChangePageDiv {
-    margin-top: 25px; 
+    margin-top: 30px; 
     text-align: center;
+    margin-bottom: 150px;
 }
 
 .bottomChangePageDivSubmitButton {
     width: 35px;
     height: 35px;
-    background-color: #2acdff;
+    background-color: #68d5f7;
     border-style: solid;
     margin-left: -1px;
     cursor: pointer;
@@ -71,4 +77,55 @@
     font-size: 17px;
     border-color: rgb(43, 42, 42);
     border-width: 0.5px;
+}
+
+@media screen and (max-width: 1300px) {
+    .searcheditemsMainContainer {
+        width: 98.5%;
+        left: 50%;
+        transform: translate(-50%, -0%);
+    }
+}
+
+@media screen and (min-width: 424px) and (max-width: 593px) {
+    .FiltersFormOfertsTitle {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .searchFormFilters {
+        float: left;
+    }
+}
+
+@media screen and (min-width: 1px) and (max-width: 423px) {
+    .searcheditemsMainContainer {
+        width: 100%;
+        top: 105px;
+    }
+
+    .whatSearchingTitle {
+        position: relative;
+        font-size: 25px;
+        left: 3%;
+    }
+
+    .searchFiltersForm {
+        margin-top: 25px;
+    }
+
+    .searchFormFilters {
+        left: 30%;
+        transform: translate(-30%, -0%);
+    }
+
+    .FiltersFormOfertsTitle {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .FiltersFormCurrentPageSelectTopDiv {
+        position: absolute;
+        visibility: hidden;
+    }
 }

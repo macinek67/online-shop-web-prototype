@@ -1,0 +1,158 @@
+.searchedItemMainDiv {
+    position: relative;
+    width: 98.5%;
+    height: 150px;
+    background-color: white;
+    padding: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(102, 102, 102, 0.5);
+}
+
+.searchedItemMainDiv:hover {
+    background-color: rgba(235, 239, 240, 0.27);
+    cursor: pointer;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.searchedItemMainDiv img {
+    width: 150px;
+    height: 150px;
+}
+
+.searchedItemTitle {
+    position: relative;
+    text-transform: uppercase;
+    width: 90%;
+    height: 20%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;
+    line-clamp: 1;
+    box-orient: vertical;
+    font-size: 25px;
+    left: 13px;
+}
+
+.searchedItemImageAndTitleContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchedItemProperties {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 64vw;
+    max-width: 80%;
+    height: 12%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;
+    line-clamp: 1;
+    box-orient: vertical;
+    font-size: 15px;
+    left: 163px;
+    top: -72%;
+    color: rgb(61, 61, 61);
+}
+
+.searchedItemProperties label {
+    margin-right: 3%;
+}
+
+.searchedItemPrice {
+    position: relative;
+    display: inline-block;
+    left: 163px;
+    margin-top: -90px;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.searchedItemBoughtCount {
+    position: relative;
+    left: 163px;
+    display:inline-block;
+    margin-top: -48px;
+    font-size: 15px;
+    color: #00c3ff;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 594px) and (max-width: 1300px) {
+    .searchedItemMainDiv {
+        width: 95.75%;
+    }
+}
+
+@media screen and (min-width: 424px) and (max-width: 593px) {
+    .searchedItemMainDiv {
+        width: 94.75%;
+        height: 125px;
+    }
+
+    .searchedItemMainDiv img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .searchedItemTitle {
+        font-size: 20px;
+    }
+
+    .searchedItemProperties {
+        left: 138px;
+    }
+
+    .searchedItemPrice {
+        left: 138px;
+        margin-top: -75px;
+    }
+
+    .searchedItemBoughtCount {
+        left: 138px;
+        margin-top: -38px;
+    }
+}
+
+@media screen and (min-width: 1px) and (max-width: 423px) {
+    .searchedItemMainDiv {
+        width: 92.75%;
+        height: 100px;
+    }
+
+    .searchedItemMainDiv img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .searchedItemTitle {
+        font-size: 13px;
+        width: 60%;
+    }
+
+    .searchedItemProperties {
+        left: 113px;
+        top: -76%;
+        height: 13%;
+        font-size: 11px;
+        width: 57vw;
+    }
+
+    .searchedItemPrice {
+        left: 113px;
+        margin-top: -70px;
+    }
+
+    .searchedItemBoughtCount {
+        left: 113px;
+        margin-top: -35px;
+    }
+}
