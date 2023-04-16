@@ -65,15 +65,27 @@
         </div>
 
 
-
         <div class="mainUserSettingsDiv">
-            <div class="">
-
+            <div class="userSettings">
+                <label class="namePropertyToChange">Ustawienia użytkownika</label><br>
+                <label>Twoja nazwa</label>
+                <input type="button" id="slide_button" value="ZMIEŃ">
+                <div id="slide">
+                    <?php $userName = $_SESSION["user"]['name']; ?>
+                    <form action="../php/accountActions/changeUserName.php" method="POST">
+                        <input type="text" id="currentNameButton" value='<?php echo $userName; ?>' disabled="true"><br>
+                        <label>Nowa nazwa</label><br>
+                        <input type="text" name="newNameValue" id="newNameButton" value=''>
+                        <input type="submit" name="changeNameSubmited" value="ZAPISZ" class="saveFormButton">
+                    </form>
+                </div><br>
+                <label class="namePropertyToChange">Twój email</label>
+                <input type="button" id="slide_button" value="ZMIEŃ">
             </div>
 
 
-            <div>
-
+            <div class="nie">
+                e
             </div>
         </div>
 
@@ -97,6 +109,7 @@
     </form>
 
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script src="../MainPageSCRIPT.js"></script>
 <script>
     let ReturnToMainPage = document.getElementById("ReturnToMainPage");
@@ -111,8 +124,25 @@
     }
 
     function AccountPageGoToFavoritesFunction() {
-    window.location="../favorites/index.php";
-}
+        window.location="../favorites/index.php";
+    }
+
+    let changeNameSlider = 0;
+
+    $('#slide_button').click(function() {
+        if(changeNameSlider == 0) {
+            $('#slide').animate({height: 'show'}, 200,);
+            changeNameSlider = 1;
+        } else {
+            $('#slide').animate({height: 'hide'}, 200,);
+            changeNameSlider = 0;
+        }
+    });
+
+    $('#slide').animate({
+        height: 'hide'
+    }, 0, function() {
+    });
 
 </script>
 </html>

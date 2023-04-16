@@ -1,7 +1,6 @@
 .accountSettingsContainer {
     position: relative;
     width: 1280px;
-    background-color: white;
     margin: auto;
     top: 125px;
 }
@@ -15,6 +14,7 @@
     padding: 2%;
     display: flex;
     flex-direction: row;
+    background-color: white;
 }
 
 .mainTitleInUserInfoDiv {
@@ -59,6 +59,79 @@
 .accountOldTimer {
     color: #00c3ff;
 }
+
+.mainUserSettingsDiv {
+    position: relative;
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.userSettings {
+    background-color: white;
+    width: 46%;
+    padding: 20px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.userSettings label:nth-child(1) {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.userSettings label:nth-child(3) {
+    margin-top: 30px;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.userSettings #slide_button {
+    float: right;
+    margin-top: 30px;
+    border: 0;
+    background-color: transparent;
+    color: #00a790;
+    cursor: pointer;
+}
+
+#currentNameButton, #newNameButton {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 20px;
+}
+
+.saveFormButton {
+    position: relative;
+    background: #339DFF;
+    color: white;
+    border: 0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.namePropertyToChange {
+    margin-top: 30px;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.nie {
+    margin-left: 25px;
+    background-color: white;
+    width: 46%;
+    padding: 20px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
+
 
 @media screen and (min-width: 553px) and (max-width: 1279px) {
     .accountSettingsContainer {
