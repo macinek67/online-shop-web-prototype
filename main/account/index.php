@@ -69,18 +69,34 @@
             <div class="userSettings">
                 <label class="namePropertyToChange">Ustawienia użytkownika</label><br>
                 <label>Twoja nazwa</label>
-                <input type="button" id="slide_button" value="ZMIEŃ">
+                <input type="button" id="slide_button" class="slide_button" value="ZMIEŃ">
                 <div id="slide">
                     <?php $userName = $_SESSION["user"]['name']; ?>
                     <form action="../php/accountActions/changeUserName.php" method="POST">
-                        <input type="text" id="currentNameButton" value='<?php echo $userName; ?>' disabled="true"><br>
-                        <label>Nowa nazwa</label><br>
-                        <input type="text" name="newNameValue" id="newNameButton" value=''>
+                        <br><input type="text" id="currentNameButton" class="userSettingsButton" value='<?php echo $userName; ?>'><br>
                         <input type="submit" name="changeNameSubmited" value="ZAPISZ" class="saveFormButton">
                     </form>
                 </div><br>
                 <label class="namePropertyToChange">Twój email</label>
-                <input type="button" id="slide_button" value="ZMIEŃ">
+                <input type="button" id="slide_button1" class="slide_button" value="ZMIEŃ">
+                <div id="slide1">
+                    <?php $userName = $_SESSION["user"]['email']; ?>
+                    <form action="../php/accountActions/changeUserName.php" method="POST">
+                        <br><input type="text" id="currentNameButton" class="userSettingsButton" value='<?php echo $userName; ?>'><br>
+                        <input type="password" id="currentNameButton" class="userSettingsButton" placeholder="potwierdź hasło" value=''><br>
+                        <input type="submit" name="changeNameSubmited" value="ZAPISZ" class="saveFormButton">
+                    </form>
+                </div><br>
+                <label class="namePropertyToChange">Twoje hasło</label>
+                <input type="button" id="slide_button2" class="slide_button" value="ZMIEŃ">
+                <div id="slide2">
+                    <form action="../php/accountActions/changeUserName.php" method="POST">
+                        <br><input type="text" id="currentNameButton" class="userSettingsButton" value='' placeholder="stare hasło"><br>
+                        <input type="password" id="currentNameButton" class="userSettingsButton" placeholder="nowe hasło" value=''><br>
+                        <input type="password" id="currentNameButton" class="userSettingsButton" placeholder="potwierdź hasło" value=''><br>
+                        <input type="submit" name="changeNameSubmited" value="ZAPISZ" class="saveFormButton">
+                    </form>
+                </div>
             </div>
 
 
@@ -139,7 +155,41 @@
         }
     });
 
+    let changeNameSlider1 = 0;
+
+    $('#slide_button1').click(function() {
+        if(changeNameSlider1 == 0) {
+            $('#slide1').animate({height: 'show'}, 200,);
+            changeNameSlider1 = 1;
+        } else {
+            $('#slide1').animate({height: 'hide'}, 200,);
+            changeNameSlider1 = 0;
+        }
+    });
+
+    let changeNameSlider2 = 0;
+
+$('#slide_button2').click(function() {
+    if(changeNameSlider2 == 0) {
+        $('#slide2').animate({height: 'show'}, 200,);
+        changeNameSlider2 = 1;
+    } else {
+        $('#slide2').animate({height: 'hide'}, 200,);
+        changeNameSlider2 = 0;
+    }
+});
+
     $('#slide').animate({
+        height: 'hide'
+    }, 0, function() {
+    });
+
+    $('#slide1').animate({
+        height: 'hide'
+    }, 0, function() {
+    });
+
+    $('#slide2').animate({
         height: 'hide'
     }, 0, function() {
     });

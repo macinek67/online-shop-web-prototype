@@ -72,8 +72,9 @@
                         echo <<< html
                             $finalPrice zł
                             </label>
-                            <form action="" method="POST">
+                            <form action="shipAndPaymentPage.php" method="POST">
                                 <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
+                                <input type="hidden" name="sumPriceProducts" value='$cartSumPrice'>
                             </form>
                             <label class="continueShopping" id="continueShoppingID">KONTYNUUJ ZAKUPY</label>
                         </div>
@@ -85,8 +86,9 @@
                     echo $finalPrice;
                     echo <<< html
                         zł</label>
-                        <form action="" method="POST">
+                        <form action="shipAndPaymentPage.php" method="POST">
                             <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
+                            <input type="hidden" name="sumPriceProducts" value='$cartSumPrice'>
                             <input type="button" value="KONTYNUUJ ZAKUPY" class="continueShopping" onclick="ReturnToMainPageFunction()">
                         </form>
                     </div>
