@@ -19,23 +19,23 @@
     </div>
 
 
-    <form class="orderForm">
+    <form class="orderForm" method="POST" id="orderFormid">
         <div class="shippingAdresDiv">
             <label class="boldlabel">Dane odbiorcy przesyłki</label>
             <hr>
             <div id="shippingAdresDivFormId">
                 <label class="TypeAdresButton">imię</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Jan"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Jan" id="orderNameId"><br><br>
                 <label class="TypeAdresButton">nazwisko</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Kowalski"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Kowalski" id="orderSurmaneId"><br><br>
                 <label class="TypeAdresButton">telefon komórkowy</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. 000000000"><br><br>
+                <input type="number" class="shippingAdresButton" placeholder="np. 000000000" id="orderTelephoneNumberId"><br><br>
                 <label class="TypeAdresButton">ulica i numer</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Przemysłowa 10/10"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Przemysłowa 10/10" id="orderStreetAdressId"><br><br>
                 <label class="TypeAdresButton">kod pocztowy</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. 00-000"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. 00-000" id="orderPostCodeId"><br><br>
                 <label class="TypeAdresButton">miejscowość</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Warszawa"><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Warszawa" id="orderCityId"><br>
             </div>
         </div>
 
@@ -43,14 +43,17 @@
         <div class="shippingMethodDiv">
             <label class="boldlabel">Metody dostawy</label>
             <hr>
-            <input type="radio" name="shippingType" value="Kurier">
+            <input type="radio" name="shippingType" value="14.99" checked="checked">
             <label class="shippingMethodLabelText">Kurier</label><label class="shippingCostlabel">14.99 zł</label><br>
-            <input type="radio" name="shippingType" value="Kurier za pobraniem">
+            <input type="radio" name="shippingType" value="19.99">
             <label class="shippingMethodLabelText">Kurier za pobraniem</label><label class="shippingCostlabel">19.99 zł</label><br>
-            <input type="radio" name="shippingType" value="Paczkomat inPost" id="paczkomatRadio">
-            <label class="shippingMethodLabelText">Paczkomat inPost</label>
             <?php
                 $cartSumPrice = $_POST['sumPriceProducts'];
+                if($cartSumPrice < 399) echo '<input type="radio" name="shippingType" value="9.99" id="paczkomatRadio">';
+                else echo '<input type="radio" name="shippingType" value="0.00" id="paczkomatRadio">';
+            ?>
+            <label class="shippingMethodLabelText">Paczkomat inPost</label>
+            <?php
                 if($cartSumPrice < 399) echo "<label class='shippingCostlabel'>9.99 zł</label>";
                 else {
                     echo "<label class='shippingCostlabel' style='text-decoration: line-through;'>9.99 zł</label>";
@@ -59,9 +62,10 @@
             ?>
             <div id="slide">
                 <label class="TypeAdresButton">kod paczkomatu</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. LIM02M"><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. LIM02M" id="orderPaczkomatCode"><br>
             </div>
         </div>
+
 
         <div class="paymentMethodDiv">
             <label class="boldlabel">Metody płatności</label>
@@ -73,6 +77,22 @@
             <div class="paymentMethodContainer" id="googlepayContainer" onclick="GooglepayPaymentMethodSelected()">
                 <img src="../../images/googlePayImage.svg">
                 <label>Google Pay</label>
+            </div>
+        </div>
+
+
+        <div class="summaryOrderDiv">
+            <label class="boldlabel">Podsumowanie</label>
+            <hr>
+            <div>
+                <label class="summaryDivLeftLabels">Produkty </label>
+                <label class="summaryDivRightLabels">zł</label><label class="summaryDivRightLabels" id="cartProductsSumPriceId"><?php echo $cartSumPrice; ?></label><br>
+                <label class="summaryDivLeftLabels">Dostawa</label>
+                <label class="summaryDivRightLabels">zł</label><label class="summaryDivRightLabels" id="shipCostSummaryId">14.99</label>
+                <hr>
+                <label class="summaryDivLeftLabels">Razem</label>
+                <label class="summaryDivRightLabels">zł</label><label class="summaryDivRightLabels" id="orderFinalPriceId"><?php echo $cartSumPrice+14.99; ?></label><br>
+                <input type="button" id="orderFormSubmitButtonId" class="orderFormSubmitButton" value="KUPUJE I PŁACE" onclick="checkOrderValid()">
             </div>
         </div>
     </form>
@@ -118,7 +138,11 @@
         let selectPaczkomatSlide = 0;
 
         $('input[name="shippingType"]').change(function() {
-            if(this.value == "Paczkomat inPost")
+            document.getElementById("shipCostSummaryId").innerText = this.value;
+            let finalPrice = document.getElementById("orderFinalPriceId");
+            let cartProductsPrice = document.getElementById("cartProductsSumPriceId");
+            finalPrice.innerHTML = parseFloat(cartProductsPrice.innerHTML)+parseFloat(this.value);
+            if(this.value == "9.99" || this.value == "0.00")
                 $('#slide').animate({height: 'show'}, 200,);
             else
                 $('#slide').animate({height: 'hide'}, 200,);
@@ -129,6 +153,7 @@
         }, 0, function() {
         });
 
+        document.getElementById("blikContainer").style.borderWidth = "2px";
         function blikPaymentMethodSelected() {
             document.getElementById("blikContainer").style.borderWidth = "2px";
             document.getElementById("googlepayContainer").style.borderWidth = "1px";
@@ -138,6 +163,47 @@
             document.getElementById("blikContainer").style.borderWidth = "1px";
             document.getElementById("googlepayContainer").style.borderWidth = "2px";
         }
+
+        function isEmpty(str) {
+            return !str.trim().length;
+        }
+
+        function checkOrderValid() {
+            let name = document.getElementById("orderNameId");
+            let surname = document.getElementById("orderSurmaneId");
+            let telephoneNumber = document.getElementById("orderTelephoneNumberId");
+            let streetAdress = document.getElementById("orderStreetAdressId");
+            let postCode = document.getElementById("orderPostCodeId");
+            let city = document.getElementById("orderCityId");
+            let isValid = true;
+
+            if(isEmpty(name.value)) { name.style.borderColor = "red"; isValid = false}
+            else name.style.borderColor = "black";
+            if(isEmpty(surname.value)) { surname.style.borderColor = "red"; isValid = false}
+            else surname.style.borderColor = "black";
+            if(isEmpty(telephoneNumber.value)) { telephoneNumber.style.borderColor = "red"; isValid = false}
+            else telephoneNumber.style.borderColor = "black";
+            if(isEmpty(streetAdress.value)) { streetAdress.style.borderColor = "red"; isValid = false}
+            else streetAdress.style.borderColor = "black";
+            if(isEmpty(postCode.value)) { postCode.style.borderColor = "red"; isValid = false}
+            else postCode.style.borderColor = "black";
+            if(isEmpty(city.value)) { city.style.borderColor = "red"; isValid = false}
+            else city.style.borderColor = "black";
+            if(telephoneNumber.value.length!=9) { telephoneNumber.style.borderColor = "red"; isValid = false}
+            else telephoneNumber.style.borderColor = "black";
+            if(postCode.value.length!=6) { postCode.style.borderColor = "red"; isValid = false}
+            else postCode.style.borderColor = "black";
+            if(document.getElementById("paczkomatRadio").checked) {
+                let paczkomatCode = document.getElementById("orderPaczkomatCode");
+                if(isEmpty(paczkomatCode.value)) { paczkomatCode.style.borderColor = "red"; isValid = false}
+            else paczkomatCode.style.borderColor = "black";
+            }
+
+            if(isValid == true) {
+                document.getElementById("orderFormid").submit();
+            }
+        }
+
     </script>
 </body>
 </html>

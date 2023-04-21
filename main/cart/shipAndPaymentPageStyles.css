@@ -5,7 +5,7 @@
     margin-top: 125px;
 }
 
-.shippingAdresDiv, .shippingMethodDiv, .paymentMethodDiv {
+.shippingAdresDiv, .shippingMethodDiv, .paymentMethodDiv, .summaryOrderDiv {
     background-color: white;
     padding-bottom: 20px;
 }
@@ -41,7 +41,7 @@
     border-width: 2px;
 }
 
-.shippingMethodDiv, .paymentMethodDiv {
+.shippingMethodDiv, .paymentMethodDiv, .summaryOrderDiv {
     position: relative;
     margin-top: 25px;
 }
@@ -90,8 +90,52 @@ form input[type = "radio"] {
     margin-left: 20px;
 }
 
+.summaryDivLeftLabels {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.summaryDivRightLabels {
+    position: relative;
+    margin-top: 20px;
+    float: right;
+    padding-right: 20px;
+}
+
+.orderFormSubmitButton {
+    position: relative;
+    height: 50px;
+    margin-left: 20px;
+    width: calc(100% - 40px);
+    background: #339DFF;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.orderFormSubmitButton:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #339DFF;
+}
+
 @media screen and (max-width: 1279px) {
     .orderForm {
         width: 98%;
+    }
+}
+
+@media screen and (max-width: 329px) {
+    .shippingAdresButton {
+        width: 200px;
+    }
+
+    .paymentMethodContainer {
+        width: 200px;
     }
 }
