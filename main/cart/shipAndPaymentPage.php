@@ -19,23 +19,23 @@
     </div>
 
 
-    <form class="orderForm" method="POST" id="orderFormid">
+    <form class="orderForm" action="orderFinished.php" method="POST" id="orderFormid">
         <div class="shippingAdresDiv">
             <label class="boldlabel">Dane odbiorcy przesyłki</label>
             <hr>
             <div id="shippingAdresDivFormId">
                 <label class="TypeAdresButton">imię</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Jan" id="orderNameId"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Jan" id="orderNameId" name="orderName"><br><br>
                 <label class="TypeAdresButton">nazwisko</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Kowalski" id="orderSurmaneId"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Kowalski" id="orderSurmaneId" name="orderSurname"><br><br>
                 <label class="TypeAdresButton">telefon komórkowy</label><br>
-                <input type="number" class="shippingAdresButton" placeholder="np. 000000000" id="orderTelephoneNumberId"><br><br>
+                <input type="number" class="shippingAdresButton" placeholder="np. 000000000" id="orderTelephoneNumberId" name="orderTelephone"><br><br>
                 <label class="TypeAdresButton">ulica i numer</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Przemysłowa 10/10" id="orderStreetAdressId"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Przemysłowa 10/10" id="orderStreetAdressId" name="orderAdress"><br><br>
                 <label class="TypeAdresButton">kod pocztowy</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. 00-000" id="orderPostCodeId"><br><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. 00-000" id="orderPostCodeId" name="orderPostcode"><br><br>
                 <label class="TypeAdresButton">miejscowość</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. Warszawa" id="orderCityId"><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. Warszawa" id="orderCityId" name="orderCity"><br>
             </div>
         </div>
 
@@ -48,6 +48,7 @@
             <input type="radio" name="shippingType" value="19.99">
             <label class="shippingMethodLabelText">Kurier za pobraniem</label><label class="shippingCostlabel">19.99 zł</label><br>
             <?php
+                $productsInOrder = $_POST['cartProducts'];
                 $cartSumPrice = $_POST['sumPriceProducts'];
                 if($cartSumPrice < 399) echo '<input type="radio" name="shippingType" value="9.99" id="paczkomatRadio">';
                 else echo '<input type="radio" name="shippingType" value="0.00" id="paczkomatRadio">';
@@ -62,7 +63,7 @@
             ?>
             <div id="slide">
                 <label class="TypeAdresButton">kod paczkomatu</label><br>
-                <input type="text" class="shippingAdresButton" placeholder="np. LIM02M" id="orderPaczkomatCode"><br>
+                <input type="text" class="shippingAdresButton" placeholder="np. LIM02M" id="orderPaczkomatCode" name="orderPaczkomatCodePost"><br>
             </div>
         </div>
 
@@ -93,6 +94,10 @@
                 <label class="summaryDivLeftLabels">Razem</label>
                 <label class="summaryDivRightLabels">zł</label><label class="summaryDivRightLabels" id="orderFinalPriceId"><?php echo $cartSumPrice+14.99; ?></label><br>
                 <input type="button" id="orderFormSubmitButtonId" class="orderFormSubmitButton" value="KUPUJE I PŁACE" onclick="checkOrderValid()">
+                <input type="hidden" name="shipCostPost" value="14.99" id="shipCostPostId">
+                <input type="hidden" name="finalPricePost" value='<?php echo $cartSumPrice+14.99; ?>' id="finalPricePostid">
+                <input type="hidden" name="paymentTypePost" value="blik" id="paymentTypePostId">
+                <input type="hidden" name="orderedProducts" value='<?php echo $productsInOrder ?>'>
             </div>
         </div>
     </form>
@@ -141,7 +146,9 @@
             document.getElementById("shipCostSummaryId").innerText = this.value;
             let finalPrice = document.getElementById("orderFinalPriceId");
             let cartProductsPrice = document.getElementById("cartProductsSumPriceId");
+            document.getElementById("shipCostPostId").value = this.value;
             finalPrice.innerHTML = parseFloat(cartProductsPrice.innerHTML)+parseFloat(this.value);
+            document.getElementById("finalPricePostid").value = parseFloat(cartProductsPrice.innerHTML)+parseFloat(this.value);
             if(this.value == "9.99" || this.value == "0.00")
                 $('#slide').animate({height: 'show'}, 200,);
             else
@@ -157,11 +164,13 @@
         function blikPaymentMethodSelected() {
             document.getElementById("blikContainer").style.borderWidth = "2px";
             document.getElementById("googlepayContainer").style.borderWidth = "1px";
+            document.getElementById("paymentTypePostId").value = "blik";
         }
 
         function GooglepayPaymentMethodSelected() {
             document.getElementById("blikContainer").style.borderWidth = "1px";
             document.getElementById("googlepayContainer").style.borderWidth = "2px";
+            document.getElementById("paymentTypePostId").value = "googlepay";
         }
 
         function isEmpty(str) {

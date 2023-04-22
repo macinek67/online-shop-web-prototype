@@ -94,12 +94,6 @@
                 }
                 $countProducts++;
             }
-            // $array = array('kot' => "e", 'pies' => "litte", 'swinia' => "array", 2);
-            // $serialized_array = serialize($array); 
-            // print_r($serialized_array);
-            // echo "          " . $serialized_array[1];
-            // $serialized_array = unserialize($serialized_array); 
-            // print_r($serialized_array);
         ?>
         <div class="bottomChangePageDiv">
             <?php

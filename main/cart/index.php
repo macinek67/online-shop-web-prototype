@@ -37,11 +37,15 @@
                 html;
                         $userID = $_SESSION["user"]['user_id'];
                         $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
+                        $cartProcutsArray = [];
+                        $productsCount = 0;
                         while($row = mysqli_fetch_assoc($result)) {
                             $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
                             $CartPrdct = new CartItem($row['product_id'], $prdct);
                             $CartPrdct->createProduct();
+                            $cartProcutsArray[$productsCount++] = ['product_id' => $row['product_id'], 'product_quantity' => $row['product_quantity']];
                         }
+                        $serializedcartProcutsArray = serialize($cartProcutsArray);
                         echo <<< html
                         </div>
                         <div class="sideCartPanel">
@@ -75,6 +79,7 @@
                             <form action="shipAndPaymentPage.php" method="POST">
                                 <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
                                 <input type="hidden" name="sumPriceProducts" value='$cartSumPrice'>
+                                <input type="hidden" name="cartProducts" value='$serializedcartProcutsArray'>
                             </form>
                             <label class="continueShopping" id="continueShoppingID">KONTYNUUJ ZAKUPY</label>
                         </div>
@@ -89,6 +94,7 @@
                         <form action="shipAndPaymentPage.php" method="POST">
                             <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
                             <input type="hidden" name="sumPriceProducts" value='$cartSumPrice'>
+                            <input type="hidden" name="cartProducts" value='$serializedcartProcutsArray'>
                             <input type="button" value="KONTYNUUJ ZAKUPY" class="continueShopping" onclick="ReturnToMainPageFunction()">
                         </form>
                     </div>
