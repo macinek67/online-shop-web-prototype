@@ -41,12 +41,9 @@
                     echo "<p class='emailInUserInfoDiv'>"; 
                         echo $_SESSION["user"]['email']; 
                     echo "</p>";
-                    echo "<label class='monetyTextInUserInfoDiv'>"; 
-                        echo "Masz " . $_SESSION["user"]['monety'] . " Monet"; 
-                    echo "</label>";
                     if($_SESSION['user']['isAdmin'] != 1) $permissions = "Użytkownik";
                     else $permissions = "Administrator";
-                    echo "<label class='permissionsTextInUserInfoDiv'>"; 
+                    echo "<label class='monetyTextInUserInfoDiv'>"; 
                         echo $permissions; 
                     echo "</label>";
                 ?>
@@ -98,14 +95,17 @@
                     </form>
                 </div>
             </div>
-
-
-            <div class="nie">
-                e
-            </div>
         </div>
 
 
+        <div class="userOrdersContainer">
+            <label class="userOrdersBoldText">Zamówienia użytkownika</label><br>
+            <?php
+                $xd = 'a:2:{i:0;a:2:{s:10:"product_id";s:1:"4";s:16:"product_quantity";s:1:"1";}i:1;a:2:{s:10:"product_id";s:1:"3";s:16:"product_quantity";s:1:"9";}}';
+                $produkty = new userOrder($xd);
+                $produkty->createOrderView();
+            ?>
+        </div>
     </div>
 
 

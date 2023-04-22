@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 21 Kwi 2023, 21:48
+-- Czas generowania: 22 Kwi 2023, 22:48
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -39,10 +39,8 @@ CREATE TABLE `cartproduct` (
 --
 
 INSERT INTO `cartproduct` (`id`, `user_id`, `product_id`, `product_quantity`) VALUES
-(7, 51, 4, 9),
-(8, 51, 6, 1),
-(9, 51, 11111111, 1),
-(10, 51, 3, 1);
+(7, 51, 4, 1),
+(10, 51, 3, 9);
 
 -- --------------------------------------------------------
 
@@ -102,6 +100,30 @@ CREATE TABLE `lastwatchedproducts` (
 
 INSERT INTO `lastwatchedproducts` (`id`, `user_id`, `product_id`) VALUES
 (3, 51, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `order_value` float NOT NULL,
+  `ship` float NOT NULL,
+  `payment_type` varchar(25) NOT NULL,
+  `shipping_adress` varchar(2000) NOT NULL,
+  `ordered_products` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Zrzut danych tabeli `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `order_value`, `ship`, `payment_type`, `shipping_adress`, `ordered_products`) VALUES
+(10, 51, 3532.99, 14.99, 'blik', 'a:6:{s:4:\"name\";s:3:\"Jan\";s:7:\"surname\";s:8:\"Kowalski\";s:9:\"telephone\";s:9:\"111111111\";s:5:\"sreet\";s:15:\"Stara Wieś 901\";s:8:\"postcode\";s:6:\"34-600\";s:4:\"city\";s:8:\"Limanowa\";}', 'a:2:{i:0;a:2:{s:10:\"product_id\";s:1:\"4\";s:16:\"product_quantity\";s:1:\"1\";}i:1;a:2:{s:10:\"product_id\";s:1:\"3\";s:16:\"product_quantity\";s:1:\"9\";}}'),
+(11, 51, 3532.99, 14.99, 'blik', 'a:6:{s:4:\"name\";s:3:\"Jan\";s:7:\"surname\";s:8:\"Kowalski\";s:9:\"telephone\";s:9:\"111111111\";s:5:\"sreet\";s:15:\"Stara Wieś 901\";s:8:\"postcode\";s:6:\"34-600\";s:4:\"city\";s:8:\"Limanowa\";}', 'a:2:{i:0;a:2:{s:10:\"product_id\";s:1:\"4\";s:16:\"product_quantity\";s:1:\"1\";}i:1;a:2:{s:10:\"product_id\";s:1:\"3\";s:16:\"product_quantity\";s:1:\"9\";}}');
 
 -- --------------------------------------------------------
 
@@ -185,6 +207,12 @@ ALTER TABLE `lastwatchedproducts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `product`
 --
 ALTER TABLE `product`
@@ -223,6 +251,12 @@ ALTER TABLE `favoriteproduct`
 --
 ALTER TABLE `lastwatchedproducts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT dla tabeli `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT dla tabeli `product`

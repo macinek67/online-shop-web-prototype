@@ -21,8 +21,5 @@
 
     $result = $connect->query("INSERT INTO orders(user_id, order_value, ship, payment_type, shipping_adress, ordered_products) VALUES('$userID','$finalPrice', '$shipCost', '$paymentType', '$serializedShipping_array', '$orderedProductsArray')");
     header("Location: orderConfirmedPage.php");
-    //print_r($serializedShipping_array);
-    // $serialized_array = unserialize($serialized_array); 
-    // print_r($serialized_array);
 
 ?>
