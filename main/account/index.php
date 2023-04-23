@@ -99,11 +99,11 @@
 
 
         <div class="userOrdersContainer">
-            <label class="userOrdersBoldText">Zamówienia użytkownika</label><br>
+            <div class="userOrdersTextContainer">
+                <label class="userOrdersBoldText">Zamówienia użytkownika</label>
+            </div>
             <?php
-                $xd = 'a:2:{i:0;a:2:{s:10:"product_id";s:1:"4";s:16:"product_quantity";s:1:"1";}i:1;a:2:{s:10:"product_id";s:1:"3";s:16:"product_quantity";s:1:"9";}}';
-                $produkty = new userOrder($xd);
-                $produkty->createOrderView();
+                createOrderView();
             ?>
         </div>
     </div>

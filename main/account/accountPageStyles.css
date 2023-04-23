@@ -132,11 +132,12 @@
     font-size: 15px;
 }
 
-.userOrdersContainer {
-    margin-top: 50px;
+.userOrdersTextContainer {
+    margin-top: 80px;
     background-color: white;
     width: 100%;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
 }
 
 .userOrdersBoldText {
@@ -149,6 +150,10 @@
     padding-bottom: 20px;
 }
 
+.userOrdersContainer {
+    position: relative;
+    bottom: 30px;
+}
 
 
 

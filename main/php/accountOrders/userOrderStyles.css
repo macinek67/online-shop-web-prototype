@@ -1,0 +1,86 @@
+.userOrderItemContainer {
+    width: 100%;
+    height: 175px;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.userOrderLeftInfo {
+    width: 18rem;
+    height: 100%;
+    background-color: rgb(235, 235, 235);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.userOrderRightPhotos {
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    overflow-x: scroll hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.statusLabel {
+    padding-left: 1.25rem;
+    padding-top: 1.65rem;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.datelabel {
+    padding-left: 1.25rem;
+    padding-top: 1.35rem;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.numberLabel {
+    padding-left: 1.25rem;
+    padding-top: 0.25rem;
+    display: inline-block;
+    font-size: 13px;
+    color: rgb(63, 63, 63);
+}
+
+.valueLabel {
+    padding-left: 1.25rem;
+    padding-top: 1.35rem;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.productImage {
+    height: 125px;
+    width: 125px;
+    margin-top: 25px;
+    margin-left: 5px;
+}
+
+@media screen and (max-width: 400px) {
+    .statusLabel {
+        padding-left: 0.85rem;
+    }
+
+    .datelabel {
+        padding-left: 0.85rem;
+    }
+
+    .numberLabel {
+        padding-left: 0.85rem;
+    }
+
+    .valueLabel {
+        padding-left: 0.85rem;
+    }
+}
