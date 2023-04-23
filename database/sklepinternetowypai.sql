@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Kwi 2023, 22:48
+-- Czas generowania: 24 Kwi 2023, 00:30
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -33,14 +33,6 @@ CREATE TABLE `cartproduct` (
   `product_id` int(11) NOT NULL,
   `product_quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Zrzut danych tabeli `cartproduct`
---
-
-INSERT INTO `cartproduct` (`id`, `user_id`, `product_id`, `product_quantity`) VALUES
-(7, 51, 4, 1),
-(10, 51, 3, 9);
 
 -- --------------------------------------------------------
 
@@ -114,16 +106,18 @@ CREATE TABLE `orders` (
   `ship` float NOT NULL,
   `payment_type` varchar(25) NOT NULL,
   `shipping_adress` varchar(2000) NOT NULL,
-  `ordered_products` varchar(2000) NOT NULL
+  `ordered_products` varchar(2000) NOT NULL,
+  `order_date` varchar(10) NOT NULL,
+  `status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Zrzut danych tabeli `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `order_value`, `ship`, `payment_type`, `shipping_adress`, `ordered_products`) VALUES
-(10, 51, 3532.99, 14.99, 'blik', 'a:6:{s:4:\"name\";s:3:\"Jan\";s:7:\"surname\";s:8:\"Kowalski\";s:9:\"telephone\";s:9:\"111111111\";s:5:\"sreet\";s:15:\"Stara Wieś 901\";s:8:\"postcode\";s:6:\"34-600\";s:4:\"city\";s:8:\"Limanowa\";}', 'a:2:{i:0;a:2:{s:10:\"product_id\";s:1:\"4\";s:16:\"product_quantity\";s:1:\"1\";}i:1;a:2:{s:10:\"product_id\";s:1:\"3\";s:16:\"product_quantity\";s:1:\"9\";}}'),
-(11, 51, 3532.99, 14.99, 'blik', 'a:6:{s:4:\"name\";s:3:\"Jan\";s:7:\"surname\";s:8:\"Kowalski\";s:9:\"telephone\";s:9:\"111111111\";s:5:\"sreet\";s:15:\"Stara Wieś 901\";s:8:\"postcode\";s:6:\"34-600\";s:4:\"city\";s:8:\"Limanowa\";}', 'a:2:{i:0;a:2:{s:10:\"product_id\";s:1:\"4\";s:16:\"product_quantity\";s:1:\"1\";}i:1;a:2:{s:10:\"product_id\";s:1:\"3\";s:16:\"product_quantity\";s:1:\"9\";}}');
+INSERT INTO `orders` (`id`, `user_id`, `order_value`, `ship`, `payment_type`, `shipping_adress`, `ordered_products`, `order_date`, `status`) VALUES
+(14, 51, 7984, 0, 'googlepay', 'a:1:{s:13:\"paczkomatCode\";s:6:\"LIM02M\";}', 'a:5:{i:0;a:2:{s:10:\"product_id\";s:1:\"4\";s:16:\"product_quantity\";s:1:\"1\";}i:1;a:2:{s:10:\"product_id\";s:1:\"3\";s:16:\"product_quantity\";s:1:\"9\";}i:2;a:2:{s:10:\"product_id\";s:1:\"7\";s:16:\"product_quantity\";s:1:\"2\";}i:3;a:2:{s:10:\"product_id\";s:3:\"208\";s:16:\"product_quantity\";s:1:\"1\";}i:4;a:2:{s:10:\"product_id\";s:3:\"209\";s:16:\"product_quantity\";s:1:\"1\";}}', '2023-04-23', 'Wysłane'),
+(18, 51, 1712.99, 14.99, 'googlepay', 'a:6:{s:4:\"name\";s:5:\"Kamil\";s:7:\"surname\";s:8:\"Kowalski\";s:9:\"telephone\";s:9:\"123456789\";s:5:\"sreet\";s:14:\"Stara Wieś 18\";s:8:\"postcode\";s:6:\"34-600\";s:4:\"city\";s:8:\"Limanowa\";}', 'a:1:{i:0;a:2:{s:10:\"product_id\";s:3:\"208\";s:16:\"product_quantity\";s:1:\"2\";}}', '2023-04-23', 'Nowe');
 
 -- --------------------------------------------------------
 
@@ -232,7 +226,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `cartproduct`
 --
 ALTER TABLE `cartproduct`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT dla tabeli `category`
@@ -256,7 +250,7 @@ ALTER TABLE `lastwatchedproducts`
 -- AUTO_INCREMENT dla tabeli `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT dla tabeli `product`

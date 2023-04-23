@@ -1,0 +1,95 @@
+.productMainContainer {
+    width: 1280px;
+    margin: auto;
+    margin-top: 125px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.photosGallery {
+    width: 500px;
+    height: 500px;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+}
+
+.rightGalleryProductInfo {
+    width: calc(100% - 500px);
+    height: 500px;
+}
+
+.galleryImg {
+    width: 500px;
+    height: 500px;
+}
+
+.photosGallery::-webkit-scrollbar {
+    display: none;
+}
+
+.arrowsContainer {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: transparent;
+}
+
+.galleryArrowRight, .galleryArrowLeft {
+    position: relative;
+    float: right;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    background-color: rgba(165, 165, 165, 0.25);
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.galleryArrowLeft {
+    position: relative;
+    float: left;
+    visibility: hidden;
+}
+
+.titleLabel {
+    position: relative;
+    text-transform: uppercase;
+    height: 6%;
+    width: 90%;
+    padding-top: 20px;
+    padding-left: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: box;
+    line-clamp: 1;
+    box-orient: vertical;
+    font-size: 23px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1280px) {
+    .productMainContainer {
+        /* flex-direction: column; */
+        width: 98%;
+    }
+}
