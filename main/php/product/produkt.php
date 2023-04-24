@@ -20,7 +20,7 @@ class Product {
     function createProduct() {
         echo <<< html
         <div class="productDiv">
-            <form action="">
+            <form action="productPage/index.php" method="POST">
                 <img src="$this->imgUrl">
                 <label>$this->title</label>
                 <label class="productPrice">$this->price zł</label>

@@ -25,6 +25,13 @@
     $orderProductsArray = unserialize($orderedProductsArray);
     foreach ($orderProductsArray as &$cartProduct) {
         $cartProductToRemove = $cartProduct['product_id'];
+        $orderedProductCount = $cartProduct['product_quantity'];
+        $result = $connect->query("SELECT * FROM product WHERE product_id='$cartProductToRemove'");
+        if($row = mysqli_fetch_assoc($result)) {
+            $newProduct_magazinePieces = $row['product_magazinePieces']-$orderedProductCount;
+            $newProduct_boughtCount = $row['product_boughtCount']+$orderedProductCount;
+            $result = $connect->query("UPDATE product SET product_magazinePieces='$newProduct_magazinePieces', product_boughtCount='$newProduct_boughtCount' WHERE product_id='$cartProductToRemove' LIMIT 1");
+        }
         $result = $connect->query("DELETE FROM cartproduct WHERE user_id='$userID' AND product_id='$cartProductToRemove'");
     }
 
