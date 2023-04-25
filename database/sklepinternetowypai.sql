@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 24 Kwi 2023, 22:18
+-- Czas generowania: 25 Kwi 2023, 21:05
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -71,7 +71,7 @@ CREATE TABLE `favoriteproduct` (
 --
 
 INSERT INTO `favoriteproduct` (`id`, `user_id`, `product_id`) VALUES
-(7, 51, 4);
+(10, 51, 4);
 
 -- --------------------------------------------------------
 
@@ -132,7 +132,8 @@ CREATE TABLE `product` (
   `product_title` varchar(255) NOT NULL,
   `product_price` varchar(25) NOT NULL,
   `product_regularPrice` varchar(25) NOT NULL,
-  `product_description` varchar(2000) NOT NULL,
+  `product_properties` varchar(5000) NOT NULL,
+  `product_description` mediumtext NOT NULL,
   `category_id` int(11) NOT NULL,
   `product_img` varchar(2000) NOT NULL,
   `product_boughtCount` int(11) NOT NULL
@@ -142,14 +143,14 @@ CREATE TABLE `product` (
 -- Zrzut danych tabeli `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_magazinePieces`, `product_title`, `product_price`, `product_regularPrice`, `product_description`, `category_id`, `product_img`, `product_boughtCount`) VALUES
-(3, 0, 'Czajnik elektryczny Adler AD1223 srebrny 1,7l', '80.00', '99.99', '', 1, 'https://duka.com/media/catalog/product/cache/88c2480cc32e03bb6d6f41df6024675d/1/2/1214343_16755108672_1.jpg', 0),
-(4, 2, 'Samsung Galaxy S22 5G SM-S901 8/128GB Czarny', '2599.99', '2798.00', '', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 12),
-(5, 0, 'Procesor AMD Ryzen 9 5900X, 3.7 GHz, 64 MB, BOX (100-100000061WOF)', '1570.11', '1570.11', '', 1, 'https://images.morele.net/i1064/7267022_0_i1064.jpg', 0),
-(7, 0, 'Gigabyte B650 AORUS ELITE AX', '1249.00', '1449.00', '', 1, 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/10/pr_2022_10_10_9_40_29_690_02.jpg', 0),
-(208, 0, 'Corsair iCUE H150i RGB PRO XT 3x120mm', '849.00', '999.99', '', 1, 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/1/pr_2020_1_30_12_7_50_593_03.jpg', 0),
-(209, 0, 'Samsung 2TB M.2 PCIe Gen4 NVMe 990 PRO', '1119.00', '1119.00', '', 1, 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2022/10/pr_2022_10_20_6_19_50_837_00.jpg', 0),
-(210, 0, 'Acer Nitro VG240YBMIIX czarny', '599.00', '599.00', '', 1, 'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2018/7/pr_2018_7_23_8_51_23_525_05.jpg', 0);
+INSERT INTO `product` (`product_id`, `product_magazinePieces`, `product_title`, `product_price`, `product_regularPrice`, `product_properties`, `product_description`, `category_id`, `product_img`, `product_boughtCount`) VALUES
+(3, 0, 'Czajnik elektryczny Adler AD1223 srebrny 1,7l', '80.00', '99.99', '', '', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 0),
+(4, 0, 'Samsung Galaxy S22 5G SM-S901 8/128GB Czarny', '2599.99', '2798.00', 'a:6:{i:0;a:2:{i:0;s:9:\"Kategoria\";i:1;s:11:\"Elektronika\";}i:1;a:2:{i:0;s:9:\"Producent\";i:1;s:7:\"SAMSUNG\";}i:2;a:2:{i:0;s:5:\"Kolor\";i:1;s:6:\"czarny\";}i:3;a:2:{i:0;s:12:\"Pamięć RAM\";i:1;s:3:\"8GB\";}i:4;a:2:{i:0;s:8:\"Pamięć\";i:1;s:5:\"128GB\";}i:5;a:2:{i:0;s:12:\"Kod produktu\";i:1;s:7:\"SM-S901\";}}', 'Za działanie Galaxy S22 odpowiada najszybszy w historii Galaxy procesor. Wykonany w procesie 4 nm i wspierany 8 GB RAM przyczynia się do szybkiej i energooszczędnej pracy smartfona. Możesz uruchomić nawet zaawansowaną grę 3D i nie zauważysz opóźnień. A możliwość szybkiego przetwarzania danych przełoży się na polepszenie jakości zdjęć i filmów. \r\n<br><br>\r\nGalaxy S22 dysponuje 3-krotnym zoomem optycznym wspomaganym optyczną stabilizacją obrazu (OIS). Nawet, jeśli fotografowany obiekt jest daleko, możesz wykonać zbliżenie i pokazać go, nie tracąc na jakości obrazu. \r\n<br><br>\r\nDodatkowo aparat używa nieskompresowanych danych, zawierających więcej szczegółów o kolorach, ostrości i kontraście, poprawiając Twoje fotografie. Smartfon wyposażono w baterię o pojemności 3700 mAh oraz wspiera szybkie ładowanie 25 W*. Wszystko po to, by umożliwić Ci jak najdłuższe oglądanie filmów, wideoczaty ze znajomymi czy granie oraz skrócenie czasu potrzebnego do naładowania baterii.\r\n<br><br>\r\n Z Galaxy S22 noce nabierają wspaniałych kolorów. Aparat w smartfonie otrzymał duże piksele (2 µm), które lepiej wyłapują światło, by nawet robione po zmierzchu zdjęcia i filmy zachwycały bogatą paletą barw, wiernością odwzorowania detali czy świetnym kontrastem. Dodatkowo aparat wspiera sztuczna inteligencja, która dobiera optymalne ustawienia.', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 12),
+(5, 0, 'Procesor AMD Ryzen 9 5900X, 3.7 GHz, 64 MB, BOX (100-100000061WOF)', '1570.11', '1570.11', '', '', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 0),
+(7, 0, 'Gigabyte B650 AORUS ELITE AX', '1249.00', '1449.00', '', '', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 0),
+(208, 0, 'Corsair iCUE H150i RGB PRO XT 3x120mm', '849.00', '999.99', '', '', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 0),
+(209, 0, 'Samsung 2TB M.2 PCIe Gen4 NVMe 990 PRO', '1119.00', '1119.00', '', '', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 0),
+(210, 0, 'Acer Nitro VG240YBMIIX czarny', '599.00', '599.00', '', '', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 0);
 
 -- --------------------------------------------------------
 
@@ -229,7 +230,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `cartproduct`
 --
 ALTER TABLE `cartproduct`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT dla tabeli `category`
@@ -241,7 +242,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT dla tabeli `favoriteproduct`
 --
 ALTER TABLE `favoriteproduct`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT dla tabeli `lastwatchedproducts`

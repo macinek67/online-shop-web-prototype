@@ -42,7 +42,7 @@
     float: right;
     top: 50%;
     transform: translateY(-50%);
-    width: calc(var(--gallery-width) / 10);
+    width: calc(var(--gallery-height) / 10);
     height: calc(var(--gallery-width) / 10);
     font-size: calc((var(--gallery-width) / 10)-1);
     background-color: rgba(165, 165, 165, 0.25);
@@ -145,7 +145,7 @@
     width: 3rem;
     height: 3rem;
     background-image: url("../../images/star.svg");
-    border: 4px solid transparent; /* or whatever color */
+    border: 9px solid transparent;
     box-sizing: border-box;
     background-size: cover;
     background-repeat: no-repeat;
@@ -159,7 +159,7 @@
     width: 3rem;
 }
 
-.addToCartButton {
+.addToCartButton, .addToCartOutOfStockButton {
     width: 13rem;
     margin-left: 0.5rem;
     background-color: rgb(26, 26, 26);
@@ -168,4 +168,112 @@
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.addToCartOutOfStockButton {
+    cursor: not-allowed;
+}
+
+.productProperiesContainer {
+    width: 98%;
+    max-width: 1280px;
+    margin: auto;
+    margin-top: 35px;
+    background-color: white;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.properiesBoldLabel, .descriptionBoldLabel {
+    padding-top: 20px;
+    padding-left: 0.75rem;
+    padding-bottom: 20px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.propertyContainer, .propertyContainerOdd {
+    width: 100%;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgba(170, 170, 170, 0.575);
+}
+
+.propertyNameLabel {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 8%;
+    line-height: 3rem;
+    width: calc(15rem - 5%);
+}
+
+.propertyValueLabel {
+    display: inline-block;
+    font-size: 1rem;
+    margin-left: 22%;
+    line-height: 3rem;
+}
+
+ .propertyContainerOdd {
+    background-color: #f5f5f5;
+ }
+
+.propertyContainer:hover, .propertyContainerOdd:hover {
+    background-color: #d9d9d9;
+}
+
+.productDescriptionContainer {
+    width: 98%;
+    max-width: 1280px;
+    margin: auto;
+    margin-top: 35px;
+    background-color: white;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+    padding-bottom: 25px;
+}
+
+.descriptionValueLabel {
+    padding-inline: 3.75rem;
+    writing-mode: horizontal-tb;
+}
+
+@media screen and (max-width: 720px) {
+    .productMainContainer {
+        flex-direction: column;
+    }
+
+    :root {
+        --gallery-width: 98%;
+    }
+
+    .photosGallery {
+        margin: auto;
+    }
+
+    .rightGalleryProductInfo {
+        width: 98%;
+    }
+
+    .buttonsContainer {
+        margin-top: 2.25rem;
+        margin-bottom: 2.25rem;
+    }    
+
+    .propertyValueLabel {
+        margin-left: 0%;
+        padding-inline: 8%;
+    }
+    
+}
+
+@media screen and (max-width: 423px) {
+    :root {
+        --gallery-height: 18rem;
+    }
+
+    .regularPriceLabel, .regularPriceValueLabel, .discountPercentLabel {
+        font-size: 0.85rem;
+    }
 }

@@ -1,5 +1,12 @@
 <script>
+    var productImageUrls = [];
+
+    // function adjustAllImageWidth(imgArray) {
+    //     if ($(window).width() <= 780)window.location.reload();
+    // }
+
     function adjustImageWidth(imgUrl) {
+        productImageUrls.push(imgUrl);
         let imagesGalleryWidth = document.getElementById("photosGalleryId").offsetWidth;
         let imagesGalleryHeight = document.getElementById("photosGalleryId").offsetHeight;
         let img = document.getElementById(imgUrl);
@@ -14,6 +21,8 @@
             img.style.width = imagesGalleryWidth;
         }
     }
+
+    //addEventListener('resize', (event) => { adjustAllImageWidth(productImageUrls); });
 </script>
 <?php
     session_start();
@@ -23,8 +32,8 @@
     if($row = mysqli_fetch_assoc($result)) {
         $currentProduct = $row;
     }
-    $arr = serialize(['Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg']);
-    $result = $connect->query("UPDATE product SET product_img='$arr' WHERE product_id='$productId' LIMIT 1");
+    //$arr = serialize(['Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg']);
+    //$result = $connect->query("UPDATE product SET product_img='$arr' WHERE product_id='$productId' LIMIT 1");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,10 +83,10 @@
             ?>
         </div>
         <div class="rightGalleryProductInfo">
-            <label class="titlelabel"><?php echo $currentProduct['product_title']; ?>SAMSUNG GALAXY S22 5G SM-S901 8/128GB CZARNYSAMSUNG GALAXY S22 5G SM-S901 8/128GB CZARNY</label>
+            <label class="titlelabel"><?php echo $currentProduct['product_title']; ?></label>
             <?php
                 if($currentProduct['product_price']<$currentProduct['product_regularPrice']) {
-                    $discount = "-" . intval(100-($currentProduct['product_price']/$currentProduct['product_regularPrice'])*100) . "%";
+                    $discount = "-" . intval(100-round(($currentProduct['product_price']/$currentProduct['product_regularPrice'])*100)) . "%";
                     echo "<label class='productDiscountPriceLabel'>$currentProduct[product_price] zł</label>
                     <label> w tym VAT</label><br>
                     <label class='regularPriceLabel'>Cena początkowa: </label>
@@ -91,14 +100,47 @@
                 if($currentProduct['product_magazinePieces']==0) echo "<label class='outofStockLabel'> $currentProduct[product_magazinePieces]</label>";
                 else echo "<label class='howManyProductsLabel'> $currentProduct[product_magazinePieces]</label>";
                 echo "<label> sztuk</label><br>
-                <label class='howManySoldLabel'>● sprzedano: $currentProduct[product_boughtCount] sztuki</label>
+                <label class='howManySoldLabel'>● sprzedano: $currentProduct[product_boughtCount] sztuki</label><br>
                 <div class='buttonsContainer'>
-                    <div class='favoriteButtonContainer'><input type='button' class='addToFavoritesButton' onclick='addToFavorites()'></div>
-                    <input type='button' class='addToCartButton' value='Dodaj do koszyka' onclick='addToCart()'>
-                </div>
-                ";
+                    <div class='favoriteButtonContainer'><input type='button' class='addToFavoritesButton' onclick='addToFavorites()'></div>";
+                    if($currentProduct['product_magazinePieces']>0) echo "<input type='button' class='addToCartButton' value='Dodaj do koszyka' onclick='addToCart()'>";
+                    else echo "<input type='button' class='addToCartOutOfStockButton' value='BRAK TOWARU' onclick='addToCart()' disabled='true'>";
+                    echo "
+                </div>";
             ?>
         </div>
+    </div>
+
+    <div class="productProperiesContainer">
+        <label class="properiesBoldLabel">Szczegóły</label>
+        <?php
+            $result = $connect->query("SELECT * FROM category WHERE category_id='$currentProduct[category_id]' LIMIT 1");
+            if($row = mysqli_fetch_assoc($result)) {
+                $currentProductCategory = $row['name'];
+            }
+            // $prop = serialize([0 => ["Kategoria", $currentProductCategory],
+            //     1 => ["Producent", "SAMSUNG"],
+            //     2 => ["Kolor", "czarny"],
+            //     3 => ["Pamięć RAM", "8GB"],
+            //     4 => ["Pamięć", "128GB"],
+            //     5 => ["Kod produktu", "SM-S901"]
+            // ]);
+            //$result = $connect->query("UPDATE product SET product_properties='$prop' WHERE product_id='$productId' LIMIT 1");
+            $productProperties = unserialize($currentProduct['product_properties']);
+            $i = 0;
+            foreach ($productProperties as &$productProperty) {
+                if($i++%2==0) echo "<div class='propertyContainer'>";
+                else echo "<div class='propertyContainerOdd'>";
+                    echo "<label class='propertyNameLabel'>$productProperty[0]:</label> 
+                    <label class='propertyValueLabel'>$productProperty[1]</label>
+                </div>";
+            }
+        ?>
+    </div>
+
+    <div class="productDescriptionContainer">
+        <label class="descriptionBoldLabel">Opis</label><br>
+        <div class="descriptionValueLabel"><?php echo $currentProduct['product_description'] ?></div>
     </div>
 
 
