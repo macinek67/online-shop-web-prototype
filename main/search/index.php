@@ -153,10 +153,16 @@
 
 
     <script src="../MainPageSCRIPT.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
         function submitChangePageForm(id) {
             document.getElementById("formChangePageNumerId").value = id;
             document.getElementById('searchFiltersFormId').submit();
+        }
+
+        function goToProductPage(productId) {
+            document.getElementById("goToProductId").value = productId;
+            document.getElementById("goToProductPageForm").submit();
         }
     </script>
 </body>

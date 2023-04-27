@@ -34,8 +34,8 @@
                 $productId = $product['product_id'];
                 $orderedProduct = $connect->query("SELECT * FROM product WHERE product_id='$productId' LIMIT 1");
                 if($row = mysqli_fetch_assoc($orderedProduct))
-                    $orderedProductImage = $row['product_img'];
-                echo "<img src='$orderedProductImage' class='productImage'>";
+                    $orderedProductImage = unserialize($row['product_img'])[0];
+                echo "<img src='../../uploadedProductImages/$orderedProductImage' class='productImage'>";
             }
             echo <<< html
                 </div>

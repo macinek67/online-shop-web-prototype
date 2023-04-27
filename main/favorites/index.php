@@ -13,18 +13,18 @@
     <link rel="stylesheet" href="favoritesPageStyles.css">
 </head>
 <body>
-<div class="headerDiv" style="top: 0;">
-        <image src="../../images/gstore.png" class="headerDivLogo" id="ReturnToMainPage">
-        <input type="text" placeholder="czego szukasz?" class="headerDivSearch">
-        <select class="headerDivCategorySelect">
+    <div class="headerDiv" style="top: 0;">
+        <img src="../../images/gstore.png" class="headerDivLogo" onclick='window.location="../index.php";'>
+        <input type="text" id="searchBarId" placeholder="czego szukasz?" class="headerDivSearch">
+        <select class="headerDivCategorySelect" id="headerDivCategorySelectId">
             <option>Wszystkie kategorie</option>
             <optgroup label="Kategorie">
                 <?php showCategories(); ?>
             </optgroup>
         </select>
-        <input type="button" class="headerDivSearchButton" value="SZUKAJ">
-        <input type="button" id="starIconID" class="headerDivIcons">
-        <input type="button" id="cartIconID" class="headerDivIcons" onclick="FavoritesPageGoToCartFunction()">
+        <input type="button" id="SearchButtonSubmit" class="headerDivSearchButton" value="SZUKAJ">
+        <input type="button" id="starIconID" class="headerDivIcons" onclick='window.location="../favorites/index.php";'>
+        <input type="button" id="cartIconID" class="headerDivIcons" onclick='window.location="../cart/index.php";'>
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
 
@@ -71,6 +71,11 @@
         }
     ?>
 
+    <form action="../search/index.php" id="searchBarFormId" method="POST">
+        <input type="hidden" id="searchBarContextId" name="searchBarContext" value="">
+        <input type="hidden" id="searchBarSelectedCategoryId" name="searchBarSelectedCategory" value="Wszystkie kategorie">
+    </form>
+
     <script src="../MainPageSCRIPT.js"></script>
     <script>
         let ReturnToMainPage = document.getElementById("ReturnToMainPage");
@@ -83,6 +88,12 @@
         function FavoritesPageGoToCartFunction() {
             window.location="../cart/index.php";
         }
+
+        function goToProductPage(productId) {
+            document.getElementById("goToProductId").value = productId;
+            document.getElementById("goToProductPageForm").submit();
+        }
+
     </script>
 </body>
 </html>

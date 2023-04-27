@@ -170,5 +170,10 @@
         window.location="../favorites/index.php";
     }
 
+    function goToProductPage(productId) {
+            document.getElementById("goToProductId").value = productId;
+            document.getElementById("goToProductPageForm").submit();
+    }
+
 </script>
 </html>

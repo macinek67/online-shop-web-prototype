@@ -6,22 +6,24 @@ class Product {
     public $title;
     public $price;
     public $imgUrl;
+    public $mainImg;
   
-    function __construct($id, $title, $price, $imgUrl) {
+    function __construct($id, $title, $price) {
         $this->id = $id;
         $this->title = $title;
         $this->price = $price;
-        $this->imgUrl = $imgUrl;
-        // $connect = @new mysqli("localhost", "root", "", "sklepinternetowypai");
-        // $result = $connect->query("INSERT INTO product(product_title, product_price, product_description, product_img) VALUES('$this->title','$this->price', '', '$this->imgUrl')");
-        // $connect->close();
+        $connect = @new mysqli("localhost", "root", "", "sklepinternetowypai");
+        $result = $connect->query("SELECT * FROM product WHERE product_id='$this->id'");
+        if($row = mysqli_fetch_assoc($result)) {
+            $this->mainImg = unserialize($row['product_img'])[0];
+        }
     }
 
     function createProduct() {
         echo <<< html
         <div class="productDiv">
             <form action="productPage/index.php" method="POST">
-                <img src="$this->imgUrl">
+                <img src="../uploadedProductImages/$this->mainImg">
                 <label>$this->title</label>
                 <label class="productPrice">$this->price zł</label>
                 <input type="hidden" name="id" value="$this->id">

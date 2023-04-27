@@ -34,6 +34,10 @@
     }
     //$arr = serialize(['Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg']);
     //$result = $connect->query("UPDATE product SET product_img='$arr' WHERE product_id='$productId' LIMIT 1");
+    $userId = $_SESSION["user"]['user_id'];
+    $result = $connect->query("SELECT * FROM lastwatchedproducts WHERE user_id='$userId' AND product_id='$productId'");
+    if(($row = mysqli_fetch_assoc($result))) $result = $connect->query("DELETE FROM lastwatchedproducts WHERE user_id='$userId' AND product_id='$productId'");
+    $result = $connect->query("INSERT INTO lastwatchedproducts(user_id, product_id) VALUES('$userId', '$productId')");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,7 +104,7 @@
                 if($currentProduct['product_magazinePieces']==0) echo "<label class='outofStockLabel'> $currentProduct[product_magazinePieces]</label>";
                 else echo "<label class='howManyProductsLabel'> $currentProduct[product_magazinePieces]</label>";
                 echo "<label> sztuk</label><br>
-                <label class='howManySoldLabel'>● sprzedano: $currentProduct[product_boughtCount] sztuki</label><br>
+                <label class='howManySoldLabel'>● sprzedano: $currentProduct[product_boughtCount] sztuk</label><br>
                 <div class='buttonsContainer'>
                     <div class='favoriteButtonContainer'><input type='button' class='addToFavoritesButton' onclick='addToFavorites()'></div>";
                     if($currentProduct['product_magazinePieces']>0) echo "<input type='button' class='addToCartButton' value='Dodaj do koszyka' onclick='addToCart()'>";
@@ -175,7 +179,7 @@
         }
     ?>
 
-    <form action="index.php" id="searchBarFormId" method="POST">
+    <form action="../search/index.php" id="searchBarFormId" method="POST">
         <input type="hidden" id="searchBarContextId" name="searchBarContext" value="">
         <input type="hidden" id="searchBarSelectedCategoryId" name="searchBarSelectedCategory" value="Wszystkie kategorie">
     </form>

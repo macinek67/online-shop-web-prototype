@@ -60,7 +60,7 @@
                 <?php
                     $result = $connect->query("SELECT * FROM product ORDER BY product_boughtCount DESC LIMIT 20");
                     while($row = mysqli_fetch_assoc($result)) {
-                        $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                        $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price']);
                         $prdct->createProduct();
                     }
                 ?>
@@ -85,7 +85,7 @@
                             $userID = $_SESSION["user"]['user_id'];
                             $result = $connect->query("SELECT * FROM product JOIN lastwatchedproducts USING(product_id) WHERE lastwatchedproducts.user_id=$userID ORDER BY id DESC LIMIT 20");
                             while($row = mysqli_fetch_assoc($result)) {
-                                $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                                $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price']);
                                 $prdct->createProduct();
                             }
                             echo '</div>';
@@ -105,7 +105,7 @@
                 <?php
                     $result = $connect->query("SELECT * FROM product ORDER BY product_id DESC LIMIT 20");
                     while($row = mysqli_fetch_assoc($result)) {
-                        $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                        $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price']);
                         $prdct->createProduct();
                     }
                 ?>

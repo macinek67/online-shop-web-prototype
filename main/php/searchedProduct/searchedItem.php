@@ -6,48 +6,42 @@
 
 class SearchedItem {
     public $product;
+    public $mainImg;
+    public $id;
   
     function __construct(Product $product) {
         $this->product = $product;
     }
 
     function createProduct() {
-        $img = $this->product->imgUrl;
         $title = $this->product->title;
         $price = $this->product->price;
-        $id = $this->product->id;
+        $this->id = $this->product->id;
         $connect = @new mysqli("localhost", "root", "", "sklepinternetowypai");
-        $result = $connect->query("SELECT product_boughtCount FROM product WHERE product_id='$id' LIMIT 1");
-        $popularity = 0;
+        $result = $connect->query("SELECT * FROM product WHERE product_id='$this->id'");
         if($row = mysqli_fetch_assoc($result)) {
+            $this->mainImg = unserialize($row['product_img'])[0];
             $popularity = $row['product_boughtCount'];
+            $propertiesArray = unserialize($row['product_properties']);
         }
         echo <<< html
-            <div class="searchedItemMainDiv">
-                <input type="hidden" name="id" value="$id">
+            <div class="searchedItemMainDiv" onclick="goToProductPage($this->id)">
+                <form method="POST" id="goToProductPageForm" action="../productPage/index.php" style="position: absolute; visibility: hidden;">
+                    <input type="hidden" id="goToProductId" name="id" value="$this->id">
+                </form>
                 <div class="searchedItemImageAndTitleContainer">
-                    <img src="$img">
-                    <label class="searchedItemTitle" onclick="">$title</label>
+                    <img src="../../uploadedProductImages/$this->mainImg">
+                    <label class="searchedItemTitle">$title</label>
                 </div>
                 <div class="searchedItemProperties">
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieskiyy</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
-                    <label>Kolor: niebieski</label>
+        html;
+                foreach ($propertiesArray as &$productProperty) {
+                        echo "<label>$productProperty[0]: $productProperty[1]</label>";
+                }
+        echo <<< html
                 </div>
                 <label class="searchedItemPrice">$price zł</label><br>
                 <label class="searchedItemBoughtCount">Kupiono $popularity razy</label>
-                <form action="../php/favoriteProduct/deleteFavoriteProduct.php" method="POST">
-                    <input type="hidden" name="id" value="$id">
-                </form>
             </div>
         html;
     }
