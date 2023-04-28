@@ -85,3 +85,10 @@
     background-color: #0077ff;
     cursor: pointer;
 }
+
+.searchedCategoriesDiv {
+    margin-top: 25px;
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
+}

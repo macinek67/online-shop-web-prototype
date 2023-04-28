@@ -1,0 +1,10 @@
+.addNewProductContainer {
+    width: 98%;
+    max-width: 1280px;
+    background-color: white;
+    height: 300px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    margin-top: 125px;
+    padding-top: 25px;
+}

@@ -11,55 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../MainPageSTYLES.css">
-    <style>
-        .addNewCategoryMainContainer {
-            width: 98%;
-            max-width: 900px;
-            height: 125px;
-            margin: auto;
-            margin-top: 125px;
-            background-color: white;
-            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .mainLabel {
-            margin-left: 20px;
-            margin-top: 20px;
-            display: inline-block;
-            font-weight: 600;
-        }
-
-        .newCategoryForm {
-            margin-left: 20px;
-            margin-top: 20px;
-        }
-
-        .newCategoryForm input[type = "text"] {
-            height: 2rem;
-            width: 10rem;
-        }
-
-        .newCategoryForm input[type = "submit"] {
-            height: 2rem;
-            width: 5rem;
-            background-color: #7e2df7;
-            color: white;
-            border-style: solid;
-            border-width: 1px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .goBackLabel {
-            float: right;
-            margin-right: 20px;
-            margin-top: 20px;
-            cursor: pointer;
-            color: #00a790;
-        }
-    </style>
-
+    <link rel="stylesheet" href="addNewProductPageStyles.css">
 </head>
 <body>
     <div class="headerDiv" style="top: 0;">
@@ -67,30 +19,16 @@
         <input type="button" id="accountIconID" class="headerDivIcons" onclick="AccountMenuOpen()">
     </div>
 
-    <div class="addNewCategoryMainContainer">
-        <?php
-            $categoryToEdit = "";
-            if(isset($_POST['category'])) {
-                $catagoryId = $_POST['category'];
-                $result = $connect->query("SELECT * FROM category WHERE category_id='$catagoryId'");
-                if($row = mysqli_fetch_assoc($result)) $categoryToEdit = $row['name'];
-            }
-            if($categoryToEdit == "") echo "<label class='mainLabel'>Dodaj nową kategorie</label>";
-            else echo "<label class='mainLabel'>Edytuj kategorie</label>";
-        ?>
-        <label class="goBackLabel" onclick='window.location="index.php";'>WRÓĆ</label>
-        <form class="newCategoryForm" action="addNewCategoryAction.php" method="POST">
-            <input type="text" name="categoryName" value='<?php echo $categoryToEdit ?>'>
-            <?php
-                if($categoryToEdit == "") echo "<input type='hidden' name='method' value='addCategory'>";
-                else { 
-                    echo "<input type='hidden' name='method' value='editCategory'>";
-                    echo "<input type='hidden' name='oldName' value='$categoryToEdit'>";
-                }
-            ?>
-            <input type="submit" name="addNewCategorySubmited" value="ZAPISZ">
+
+
+    <div class="addNewProductContainer">
+        <form class="productSelectedImagesContainer" action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
         </form>
     </div>
+
+
+
 
     <?php
         echo <<< html
@@ -117,4 +55,7 @@
 </body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="../MainPageSCRIPT.js"></script>
+    <script>
+
+    </script>
 </html>

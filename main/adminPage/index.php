@@ -22,22 +22,39 @@
 
     <div class="adminPageMainContainer">
         <label class="mainlabelBold">Panel administratora Gstore</label>
-        <div class="addnewProductDiv">
+        <div class="addnewProductDiv" onclick='window.location="addNewProductPage.php";'>
             <label>DODAJ PRODUKT</label>
         </div>
-        <div class="addnewCategoryDiv" onclick='document.getElementById("categoryForm").submit()'>
+        <div class="addnewCategoryDiv" onclick='window.location="addNewCategoryPage.php";'>
             <label>DODAJ KATEGORIE</label>
-            <form style="position: absolute; visibility: hidden;" id="categoryForm" action="addNewCategoryPage.php" method="POST">
-                <input type="hidden" name="category" value="">
-            </form>
         </div>
         <label class="editCategoryLabel">Edytuj Kategorie</label>
-        <div class="searchProductDiv">
-            <input type="text" placeholder="szukaj" class="searchProductFilter">
-            <input type="button" value="" class="searchConfirm">
+        <?php
+            $searchedCategoryText = "";
+            if(isset($_POST['searchedCategoryText'])) $searchedCategoryText = $_POST['searchedCategoryText'];
+        ?>
+        <form class="searchProductDiv" action="index.php" method="POST" id="searchCategoryFormId">
+            <input type="text" placeholder="szukaj" name="searchedCategoryText" value='<?php echo $searchedCategoryText ?>' class="searchProductFilter">
+            <input type="button" value="" onclick="searchCategory()" class="searchConfirm">
+        </form>
+        <div class="searchedCategoriesDiv">
+            <?php
+                $result = $connect->query("SELECT * FROM category WHERE name LIKE('%$searchedCategoryText%')");
+                while($row = mysqli_fetch_assoc($result)) {
+                    $category = new searchedCategory($row['category_id']);
+                    $category->createView();
+                }
+            ?>
         </div>
     </div>
 
+    <form action="../php/searchedCategory/deleteCategory.php" method="POST" style="position: absolute; visibility: hidden;" id="categoryDeleteFormId">
+        <input type="hidden" name="categoryIdToDelete" value="" id="categoryToDeleteButtonId">
+    </form>
+
+    <form action="addNewCategoryPage.php" method="POST" style="position: absolute; visibility: hidden;" id="categoryEditFormId">
+        <input type="hidden" name="category" value="" id="categoryToEditButtonId">
+    </form>
 
     <?php
         echo <<< html
@@ -64,4 +81,20 @@
 </body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="../MainPageSCRIPT.js"></script>
+    <script>
+        function searchCategory() {
+            document.getElementById("searchCategoryFormId").submit();
+        }
+
+        function deleteCategoryRequest(id) {
+            document.getElementById("categoryToDeleteButtonId").value = id;
+            document.getElementById("categoryDeleteFormId").submit();
+        }
+
+        function editCategoryRequest(id) {
+            document.getElementById("categoryToEditButtonId").value = id;
+            document.getElementById("categoryEditFormId").submit();
+        }
+
+    </script>
 </html>
