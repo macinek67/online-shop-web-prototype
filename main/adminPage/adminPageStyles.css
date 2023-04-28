@@ -1,0 +1,87 @@
+.adminPageMainContainer {
+    width: 98%;
+    max-width: 1280px;
+    margin: auto;
+    background-color: white;
+    margin-top: 125px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mainlabelBold {
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding-top: 20px;
+    display: block;
+    text-align: center;
+}
+
+.addnewProductDiv {
+    margin-top: 20px;
+    width: 12rem;
+    height: 3rem;
+    background-color: #f7234d;
+    color: white;
+    text-align: center;
+    line-height: 3rem;
+    margin-left: 20px;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.addnewProductDiv label {
+    cursor: pointer;
+}
+
+.addnewCategoryDiv {
+    margin-top: 20px;
+    width: 12rem;
+    height: 3rem;
+    background-color: #7e2df7;
+    color: white;
+    text-align: center;
+    line-height: 3rem;
+    margin-left: 20px;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.addnewCategoryDiv label {
+    cursor: pointer;
+}
+
+.editCategoryLabel {
+    margin-top: 50px;
+    margin-left: 20px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.searchProductDiv {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+.searchProductFilter {
+    height: 2.5rem;
+    width: 11rem;
+    text-indent: 0.5rem;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-right: 0;
+}
+
+.searchConfirm {
+    width: 2.5rem;
+    background-image: url("../../images/search.svg");
+    border: 9px solid transparent;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #0077ff;
+    cursor: pointer;
+}
