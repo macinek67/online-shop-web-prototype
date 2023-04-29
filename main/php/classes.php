@@ -8,5 +8,6 @@ include("showCategories.php");
 include("searchedProduct/searchedItem.php");
 include("accountOrders/userOrder.php");
 include("searchedCategory/searchedCategory.php");
+include("adminPageSearchedProduct/adminPageProduct.php");
 
 ?>

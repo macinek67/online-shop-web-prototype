@@ -27,6 +27,7 @@
     cursor: pointer;
     color: #00a790;
     text-decoration: underline;
+    font-weight: 600;
 }
 
 .categoryToDeleteDLabel, .categoryToDeleteDLabelDisabled {
@@ -35,6 +36,7 @@
     cursor: pointer;
     color: #bd0000;
     text-decoration: underline;
+    font-weight: 600;
 }
 
 .categoryToDeleteDLabelDisabled {

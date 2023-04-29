@@ -28,10 +28,12 @@
         <div class="addnewCategoryDiv" onclick='window.location="addNewCategoryPage.php";'>
             <label>DODAJ KATEGORIE</label>
         </div>
-        <label class="editCategoryLabel">Edytuj Kategorie</label>
+        <label class="editCategoryLabel">Edytuj kategorie</label>
         <?php
             $searchedCategoryText = "";
             if(isset($_POST['searchedCategoryText'])) $searchedCategoryText = $_POST['searchedCategoryText'];
+            $searchedProductText = "";
+            if(isset($_POST['searchedProductText'])) $searchedProductText = $_POST['searchedProductText'];
         ?>
         <form class="searchProductDiv" action="index.php" method="POST" id="searchCategoryFormId">
             <input type="text" placeholder="szukaj" name="searchedCategoryText" value='<?php echo $searchedCategoryText ?>' class="searchProductFilter">
@@ -46,6 +48,21 @@
                 }
             ?>
         </div>
+        <label class="editCategoryLabel">Edytuj produkt</label>
+        <form class="searchProductDiv" action="index.php" method="POST" id="searchProductFormId">
+            <input type="text" placeholder="szukaj" name="searchedProductText" value='<?php echo $searchedProductText ?>' class="searchProductFilter">
+            <input type="button" value="" onclick="searchProduct()" class="searchConfirm">
+        </form>
+        <div class="searchedCategoriesDiv">
+            <?php
+                $result = $connect->query("SELECT * FROM product WHERE product_title LIKE('%$searchedProductText%')");
+                while($row = mysqli_fetch_assoc($result)) {
+                    $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                    $searchedProduct = new AdminPageProduct($prdct);
+                    $searchedProduct->createProduct();
+                }
+            ?>
+        </div>
     </div>
 
     <form action="../php/searchedCategory/deleteCategory.php" method="POST" style="position: absolute; visibility: hidden;" id="categoryDeleteFormId">
@@ -54,6 +71,14 @@
 
     <form action="addNewCategoryPage.php" method="POST" style="position: absolute; visibility: hidden;" id="categoryEditFormId">
         <input type="hidden" name="category" value="" id="categoryToEditButtonId">
+    </form>
+
+    <form action="../php/adminPageSearchedProduct/deleteProduct.php" method="POST" style="position: absolute; visibility: hidden;" id="productDeleteFormId">
+        <input type="hidden" name="productIdToDelete" value="" id="productToDeleteButtonId">
+    </form>
+
+    <form action="../php/adminPageSearchedProduct/restoreProduct.php" method="POST" style="position: absolute; visibility: hidden;" id="productRestoreFormId">
+        <input type="hidden" name="productIdToRestore" value="" id="productRestoreButtonId">
     </form>
 
     <?php
@@ -94,6 +119,25 @@
         function editCategoryRequest(id) {
             document.getElementById("categoryToEditButtonId").value = id;
             document.getElementById("categoryEditFormId").submit();
+        }
+
+        function searchProduct() {
+            document.getElementById("searchProductFormId").submit();
+        }
+
+        function goToProductPage(productId) {
+            document.getElementById("goToProductId").value = productId;
+            document.getElementById("goToProductPageForm").submit();
+        }
+
+        function deleteCategoryRequest(id) {
+            document.getElementById("productToDeleteButtonId").value = id;
+            document.getElementById("productDeleteFormId").submit();
+        }
+
+        function restoreCategoryRequest(id) {
+            document.getElementById("productRestoreButtonId").value = id;
+            document.getElementById("productRestoreFormId").submit();
         }
 
     </script>

@@ -15,7 +15,7 @@
 <body>
     <div class="headerDiv">
         <image src="../../images/gstore.png" class="headerDivLogo" id="ReturnToMainPage">
-        <input type="text" id="searchBarId" placeholder="czego szukasz?" class="headerDivSearch">
+        <input type="text" id="searchBarId" placeholder="czego szukasz?" class="headerDivSearch" style="height: 37px;">
         <select class="headerDivCategorySelect" id="headerDivCategorySelectId">
             <option>Wszystkie kategorie</option>
             <optgroup label="Kategorie">
