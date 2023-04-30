@@ -78,20 +78,20 @@
                 <input type="button" id="slide_button1" class="slide_button" value="ZMIEŃ">
                 <div id="slide1">
                     <?php $userName = $_SESSION["user"]['email']; ?>
-                    <form action="../php/accountActions/changeUserName.php" method="POST">
-                        <br><input type="text" id="currentNameButton" class="userSettingsButton" value='<?php echo $userName; ?>'><br>
-                        <input type="password" id="currentNameButton" class="userSettingsButton" placeholder="potwierdź hasło" value=''><br>
-                        <input type="submit" name="changeNameSubmited" value="ZAPISZ" class="saveFormButton">
+                    <form action="../php/accountActions/changeEmail.php" method="POST">
+                        <br><input type="text" id="currentNameButton" name="email" class="userSettingsButton" value='<?php echo $userName; ?>'><br>
+                        <input type="password" id="currentNameButton" name="password" class="userSettingsButton" placeholder="potwierdź hasło" value=''><br>
+                        <input type="submit" name="changeEmailSubmited" value="ZAPISZ" class="saveFormButton">
                     </form>
                 </div><br>
                 <label class="namePropertyToChange">Twoje hasło</label>
                 <input type="button" id="slide_button2" class="slide_button" value="ZMIEŃ">
                 <div id="slide2">
-                    <form action="../php/accountActions/changeUserName.php" method="POST">
-                        <br><input type="text" id="currentNameButton" class="userSettingsButton" value='' placeholder="stare hasło"><br>
-                        <input type="password" id="currentNameButton" class="userSettingsButton" placeholder="nowe hasło" value=''><br>
-                        <input type="password" id="currentNameButton" class="userSettingsButton" placeholder="potwierdź hasło" value=''><br>
-                        <input type="submit" name="changeNameSubmited" value="ZAPISZ" class="saveFormButton">
+                    <form action="../php/accountActions/changePassword.php" method="POST">
+                        <br><input type="password" id="currentNameButton" name="oldPassword" class="userSettingsButton" value='' placeholder="stare hasło"><br>
+                        <input type="password" id="currentNameButton" name="newPassword" class="userSettingsButton" placeholder="nowe hasło" value=''><br>
+                        <input type="password" id="currentNameButton" name="newPasswordConfirm" class="userSettingsButton" placeholder="potwierdź hasło" value=''><br>
+                        <input type="submit" name="changePasswordSubmited" value="ZAPISZ" class="saveFormButton">
                     </form>
                 </div>
             </div>

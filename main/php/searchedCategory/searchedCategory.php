@@ -22,7 +22,7 @@ class searchedCategory {
                     <label class="categoryToEditLabel" onclick='editCategoryRequest($this->id)'>Edytuj</label>
             html;
                     $result = $connect->query("SELECT * FROM product WHERE category_id='$this->id' AND isSuspended='no'");
-                    if(!($row = mysqli_fetch_assoc($result))) echo "<label class='categoryToDeleteDLabel' onclick='deleteCategoryRequest($this->id)'>Usuń</label>";
+                    if(!($row = mysqli_fetch_assoc($result))) echo "<label class='categoryToDeleteDLabel' onclick='deleteCategoryRequest(7)'>Usuń</label>";
                     else echo "<label class='categoryToDeleteDLabelDisabled'>Usuń</label>";
                 echo "</div>";
         }

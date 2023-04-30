@@ -40,7 +40,7 @@ class AdminPageProduct {
         echo <<< html
                 </div>
                 <label class="searchedItemPrice">$price zł</label><br>
-                <label class="editLabel">Edytuj</label><br>
+                <label class="editLabel" onclick='editProductRequest($this->id)'>Edytuj</label><br>
          html;
             if($row['isSuspended'] == "no") echo "<label class='deleteLabel' onclick='deleteCategoryRequest($this->id)'>Usuń</label>";
             else if($row['isSuspended'] == "yes") echo "<label class='deleteLabel' onclick='restoreCategoryRequest($this->id)'>Przywróć</label>";

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="php/product/productStyles.css">
 </head>
 <?php
+    error_reporting(E_ERROR | E_PARSE);
     session_start();
     require_once('php/classes.php');
     if($_SESSION["loggedIn"] == null)

@@ -1,9 +1,4 @@
 <script>
-    var productImageUrls = [];
-
-    // function adjustAllImageWidth(imgArray) {
-    //     if ($(window).width() <= 780)window.location.reload();
-    // }
 
     function adjustImageWidth(imgUrl) {
         productImageUrls.push(imgUrl);
@@ -21,8 +16,6 @@
             img.style.width = imagesGalleryWidth;
         }
     }
-
-    //addEventListener('resize', (event) => { adjustAllImageWidth(productImageUrls); });
 </script>
 <?php
     session_start();
@@ -32,8 +25,8 @@
     if($row = mysqli_fetch_assoc($result)) {
         $currentProduct = $row;
     }
-    //$arr = serialize(['Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg', 'Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg']);
-    //$result = $connect->query("UPDATE product SET product_img='$arr' WHERE product_id='$productId' LIMIT 1");
+    // $arr = serialize(['Zabawka-edukacyjna-FISHER-PRICE-Taneczny-DJ-HND41-front.jpg', 'Zabawka-edukacyjna-FISHER-PRICE-Taneczny-DJ-HND41-opakowanie.jpg',]);
+    // $result = $connect->query("UPDATE product SET product_img='$arr' WHERE product_id='$productId' LIMIT 1");
     $userId = $_SESSION["user"]['user_id'];
     $result = $connect->query("SELECT * FROM lastwatchedproducts WHERE user_id='$userId' AND product_id='$productId'");
     if(($row = mysqli_fetch_assoc($result))) $result = $connect->query("DELETE FROM lastwatchedproducts WHERE user_id='$userId' AND product_id='$productId'");
@@ -123,13 +116,10 @@
                 $currentProductCategory = $row['name'];
             }
             // $prop = serialize([0 => ["Kategoria", $currentProductCategory],
-            //     1 => ["Producent", "SAMSUNG"],
-            //     2 => ["Kolor", "czarny"],
-            //     3 => ["Pamięć RAM", "8GB"],
-            //     4 => ["Pamięć", "128GB"],
-            //     5 => ["Kod produktu", "SM-S901"]
+            //     1 => ["Producent", "FISHER PRICE"],
+            //     2 => ["Kolor", "różno-kolory"],
             // ]);
-            //$result = $connect->query("UPDATE product SET product_properties='$prop' WHERE product_id='$productId' LIMIT 1");
+            // $result = $connect->query("UPDATE product SET product_properties='$prop' WHERE product_id='$productId' LIMIT 1");
             $productProperties = unserialize($currentProduct['product_properties']);
             $i = 0;
             foreach ($productProperties as &$productProperty) {

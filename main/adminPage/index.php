@@ -81,6 +81,10 @@
         <input type="hidden" name="productIdToRestore" value="" id="productRestoreButtonId">
     </form>
 
+    <form action="addNewProductPage.php" method="POST" style="position: absolute; visibility: hidden;" id="productEditFormId">
+        <input type="hidden" name="productId" value="" id="productEditButtonId">
+    </form>
+
     <?php
         echo <<< html
             <div class="loggedUserMenu" id="logg">
@@ -112,6 +116,7 @@
         }
 
         function deleteCategoryRequest(id) {
+            alert("e");
             document.getElementById("categoryToDeleteButtonId").value = id;
             document.getElementById("categoryDeleteFormId").submit();
         }
@@ -138,6 +143,11 @@
         function restoreCategoryRequest(id) {
             document.getElementById("productRestoreButtonId").value = id;
             document.getElementById("productRestoreFormId").submit();
+        }
+
+        function editProductRequest(id) {
+            document.getElementById("productEditButtonId").value = id;
+            document.getElementById("productEditFormId").submit();
         }
 
     </script>
