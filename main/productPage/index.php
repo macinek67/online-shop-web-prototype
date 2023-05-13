@@ -24,8 +24,6 @@
     if($row = mysqli_fetch_assoc($result)) {
         $currentProduct = $row;
     }
-    // $arr = serialize(['Zabawka-edukacyjna-FISHER-PRICE-Taneczny-DJ-HND41-front.jpg', 'Zabawka-edukacyjna-FISHER-PRICE-Taneczny-DJ-HND41-opakowanie.jpg',]);
-    // $result = $connect->query("UPDATE product SET product_img='$arr' WHERE product_id='$productId' LIMIT 1");
     $userId = $_SESSION["user"]['user_id'];
     $result = $connect->query("SELECT * FROM lastwatchedproducts WHERE user_id='$userId' AND product_id='$productId'");
     if(($row = mysqli_fetch_assoc($result))) $result = $connect->query("DELETE FROM lastwatchedproducts WHERE user_id='$userId' AND product_id='$productId'");
@@ -114,19 +112,15 @@
             if($row = mysqli_fetch_assoc($result)) {
                 $currentProductCategory = $row['name'];
             }
-            // $prop = serialize([0 => ["Kategoria", $currentProductCategory],
-            //     1 => ["Producent", "FISHER PRICE"],
-            //     2 => ["Kolor", "różno-kolory"],
-            // ]);
-            // $result = $connect->query("UPDATE product SET product_properties='$prop' WHERE product_id='$productId' LIMIT 1");
             $productProperties = unserialize($currentProduct['product_properties']);
             $i = 0;
             foreach ($productProperties as &$productProperty) {
                 if($i++%2==0) echo "<div class='propertyContainer'>";
                 else echo "<div class='propertyContainerOdd'>";
-                    echo "<label class='propertyNameLabel'>$productProperty[0]:</label> 
-                    <label class='propertyValueLabel'>$productProperty[1]</label>
-                </div>";
+                    echo "<label class='propertyNameLabel'>$productProperty[0]:</label>";
+                    if($productProperty[0] != "Kategoria") echo "<label class='propertyValueLabel'>$productProperty[1]</label>";
+                    else echo "<label class='propertyValueLabel'>$currentProductCategory</label>";
+                echo "</div>";
             }
         ?>
     </div>

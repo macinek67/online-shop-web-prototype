@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 01 Maj 2023, 00:03
+-- Czas generowania: 13 Maj 2023, 20:11
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -39,7 +39,8 @@ CREATE TABLE `cartproduct` (
 --
 
 INSERT INTO `cartproduct` (`id`, `user_id`, `product_id`, `product_quantity`) VALUES
-(21, 51, 3, 1);
+(21, 51, 3, 5),
+(22, 51, 212, 1);
 
 -- --------------------------------------------------------
 
@@ -58,10 +59,7 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `name`) VALUES
 (1, 'Elektronika'),
-(2, 'Moda'),
-(7, 'Organizacje charytatywne'),
-(9, 'Dziecko'),
-(10, 'Uroda');
+(9, 'Dziecko');
 
 -- --------------------------------------------------------
 
@@ -80,7 +78,9 @@ CREATE TABLE `favoriteproduct` (
 --
 
 INSERT INTO `favoriteproduct` (`id`, `user_id`, `product_id`) VALUES
-(10, 51, 4);
+(10, 51, 4),
+(11, 51, 211),
+(12, 51, 212);
 
 -- --------------------------------------------------------
 
@@ -106,9 +106,16 @@ INSERT INTO `lastwatchedproducts` (`id`, `user_id`, `product_id`) VALUES
 (277, 51, 5),
 (280, 51, 7),
 (284, 51, 210),
-(298, 51, 3),
-(314, 51, 4),
-(315, 51, 211);
+(568, 51, 212),
+(583, 51, 4),
+(589, 51, 211),
+(598, 51, 214),
+(599, 51, 215),
+(604, 51, 213),
+(610, 51, 216),
+(611, 51, 217),
+(617, 51, 218),
+(618, 51, 3);
 
 -- --------------------------------------------------------
 
@@ -163,7 +170,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_magazinePieces`, `product_title`, `product_price`, `product_regularPrice`, `product_properties`, `product_description`, `category_id`, `product_img`, `product_boughtCount`, `isSuspended`) VALUES
-(3, 2, 'Czajnik elektryczny Adler AD1223 srebrny 1,7l', '80.00', '99.99', 'a:3:{i:0;a:2:{i:0;s:9:\"Kategoria\";i:1;s:11:\"Elektronika\";}i:1;a:2:{i:0;s:9:\"Producent\";i:1;s:7:\"PHILIPS\";}i:2;a:2:{i:0;s:5:\"Kolor\";i:1;s:6:\"czarny\";}}', 'Filtr z mikrosiateczką wyłapujący drobne cząsteczki kamienia\r\nZdejmowany filtr z mikrosiateczką wyłapuje drobne cząsteczki kamienia, nawet o wielkości 200 mikronów, zapewniając czystość wody.<br><br>Płaski element grzejny umożliwia szybkie gotowanie\r\nUkryty element grzejny ze stali szlachetnej umożliwia szybkie gotowanie i łatwe czyszczenie czajnika PHILIPS HD9318/20.', 1, 'a:2:{i:0;s:33:\"Czajnik-PHILIPS-HD9318-20-bok.jpg\";i:1;s:35:\"Czajnik-PHILIPS-HD9318-20-front.jpg\";}', 0, 'no'),
+(3, 5, 'Czajnik elektryczny Adler AD1223 srebrny 1,7l', '80.00', '99.99', 'a:6:{i:0;a:2:{i:0;s:9:\"Kategoria\";i:1;s:11:\"Elektronika\";}i:1;a:2:{i:0;s:9:\"Producent\";i:1;s:7:\"SAMSUNG\";}i:2;a:2:{i:0;s:5:\"Kolor\";i:1;s:6:\"czarny\";}i:3;a:2:{i:0;s:12:\"Pamięć RAM\";i:1;s:3:\"8GB\";}i:4;a:2:{i:0;s:8:\"Pamięć\";i:1;s:5:\"128GB\";}i:5;a:2:{i:0;s:12:\"Kod produktu\";i:1;s:7:\"SM-S901\";}}', 'Filtr z mikrosiateczką wyłapujący drobne cząsteczki kamienia\r\nZdejmowany filtr z mikrosiateczką wyłapuje drobne cząsteczki kamienia, nawet o wielkości 200 mikronów, zapewniając czystość wody.<br><br>Płaski element grzejny umożliwia szybkie gotowanie\r\nUkryty element grzejny ze stali szlachetnej umożliwia szybkie gotowanie i łatwe czyszczenie czajnika PHILIPS HD9318/20.', 1, 'a:2:{i:0;s:33:\"Czajnik-PHILIPS-HD9318-20-bok.jpg\";i:1;s:35:\"Czajnik-PHILIPS-HD9318-20-front.jpg\";}', 0, 'no'),
 (4, 0, 'Samsung Galaxy S22 5G SM-S901 8/128GB Czarny', '2599.99', '2798.00', 'a:6:{i:0;a:2:{i:0;s:9:\"Kategoria\";i:1;s:11:\"Elektronika\";}i:1;a:2:{i:0;s:9:\"Producent\";i:1;s:7:\"SAMSUNG\";}i:2;a:2:{i:0;s:5:\"Kolor\";i:1;s:6:\"czarny\";}i:3;a:2:{i:0;s:12:\"Pamięć RAM\";i:1;s:3:\"8GB\";}i:4;a:2:{i:0;s:8:\"Pamięć\";i:1;s:5:\"128GB\";}i:5;a:2:{i:0;s:12:\"Kod produktu\";i:1;s:7:\"SM-S901\";}}', 'Za działanie Galaxy S22 odpowiada najszybszy w historii Galaxy procesor. Wykonany w procesie 4 nm i wspierany 8 GB RAM przyczynia się do szybkiej i energooszczędnej pracy smartfona. Możesz uruchomić nawet zaawansowaną grę 3D i nie zauważysz opóźnień. A możliwość szybkiego przetwarzania danych przełoży się na polepszenie jakości zdjęć i filmów. \r\n<br><br>\r\nGalaxy S22 dysponuje 3-krotnym zoomem optycznym wspomaganym optyczną stabilizacją obrazu (OIS). Nawet, jeśli fotografowany obiekt jest daleko, możesz wykonać zbliżenie i pokazać go, nie tracąc na jakości obrazu. \r\n<br><br>\r\nDodatkowo aparat używa nieskompresowanych danych, zawierających więcej szczegółów o kolorach, ostrości i kontraście, poprawiając Twoje fotografie. Smartfon wyposażono w baterię o pojemności 3700 mAh oraz wspiera szybkie ładowanie 25 W*. Wszystko po to, by umożliwić Ci jak najdłuższe oglądanie filmów, wideoczaty ze znajomymi czy granie oraz skrócenie czasu potrzebnego do naładowania baterii.\r\n<br><br>\r\n Z Galaxy S22 noce nabierają wspaniałych kolorów. Aparat w smartfonie otrzymał duże piksele (2 µm), które lepiej wyłapują światło, by nawet robione po zmierzchu zdjęcia i filmy zachwycały bogatą paletą barw, wiernością odwzorowania detali czy świetnym kontrastem. Dodatkowo aparat wspiera sztuczna inteligencja, która dobiera optymalne ustawienia.', 1, 'a:3:{i:0;s:48:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-tyl-front.jpg\";i:1;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-2.jpg\";i:2;s:40:\"Smartfon-SAMSUNG-Galaxy-S22-Czarny-3.jpg\";}', 12, 'yes'),
 (211, 1, 'Zabawka interaktywna FISHER PRICE Tańczący DJ HND41', '221.45', '230.99', 'a:3:{i:0;a:2:{i:0;s:9:\"Kategoria\";i:1;s:7:\"Dziecko\";}i:1;a:2:{i:0;s:9:\"Producent\";i:1;s:12:\"FISHER PRICE\";}i:2;a:2:{i:0;s:5:\"Kolor\";i:1;s:14:\"różno-kolory\";}}', 'Zorganizuj imprezę taneczną dla swojego malucha z muzyczną zabawką edukacyjną Taneczny DJ od Fisher-Price! Gdy dziecko naciska przyciski, interaktywny przyjaciel do tańca „ożywa” dzięki kolorowym światełkom i ponad 75 dźwiękowym aktywacjom, na które składają się odgłosy, melodie, piosenki i wypowiedzi wprowadzające malucha w świat literek, liczenia, kolorów i nie tylko. Ta muzyczna zabawka ma specjalną miękką sprężynę – Taneczny DJ wesoło podskakuje, zapraszając do aktywnej zabawy! Dzięki 3 poziomom nauki Taneczny DJ zachęca szkraby do tańca, skakania i wesołej nauki. A to nie wszystko! Taneczny DJ ma też funkcję nagrywania – powiedz coś, a on to powtórzy, przerabiając na krótką, zabawną piosenkę! Zabawka w polskiej wersji językowej, dla dzieci w wieku 9–36 miesięcy.', 9, 'a:2:{i:0;s:59:\"Zabawka-edukacyjna-FISHER-PRICE-Taneczny-DJ-HND41-front.jpg\";i:1;s:64:\"Zabawka-edukacyjna-FISHER-PRICE-Taneczny-DJ-HND41-opakowanie.jpg\";}', 0, 'no');
 
@@ -245,25 +252,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `cartproduct`
 --
 ALTER TABLE `cartproduct`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT dla tabeli `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT dla tabeli `favoriteproduct`
 --
 ALTER TABLE `favoriteproduct`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT dla tabeli `lastwatchedproducts`
 --
 ALTER TABLE `lastwatchedproducts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=316;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=619;
 
 --
 -- AUTO_INCREMENT dla tabeli `orders`
@@ -275,7 +282,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT dla tabeli `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 
 --
 -- AUTO_INCREMENT dla tabeli `user`

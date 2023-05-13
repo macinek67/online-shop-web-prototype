@@ -22,10 +22,11 @@
 
 
     <div class="addNewProductContainer">
-        <form class="productSelectedImagesContainer" action="insertNewProduct.php" method="post" enctype="multipart/form-data">
+        <form class="productSelectedImagesContainer" action="insertNewProduct.php" method="POST" enctype="multipart/form-data">
             <div id="imagesContainerId">
                 <?php
                     $productEditData = ["product_title" => "", "product_regularPrice" => "", "product_price" => "", "product_magazinePieces" => "", "product_properties" => "", "product_description" => ""];
+                    $newProductImagesArray = [];
                     if(isset($_POST['productId'])) {
                         $product = $_POST['productId'];
                         $result = $connect->query("SELECT * FROM product WHERE product_id='$product'");
@@ -33,23 +34,25 @@
                             $productEditData = $row;
                         }
                         $imgs = unserialize($productEditData['product_img']);
-                        $i = 0;
+                        $i = 1;
                         foreach($imgs as &$img) {
                             echo "<div class='productGotImageContainer' id='productGotImageContainer$i'>
                                 <img src='../../uploadedProductImages/$img' class='productGotImage'>
-                                <input type='file' name='productImage$i' onchange='productImageChanged($i)' class='upload-photo' id='upload-photo$i'/>
+                                <input type='file' name='productImage$i' value='' onchange='productImageChanged($i)' class='upload-photo' id='upload-photo$i'/>
                                 <label class='productImageDeleteLabel' onclick='productImageDelete($i)'>Usuń</label>
                                 <label for='upload-photo$i' id='editImageLabel$i' class='productImageEditLabel'>Edytuj</label>
                             </div>";
+                            array_push($newProductImagesArray, $i);
                             $i++;
                         }
-                    } else $i = 0;
+                    } else $i = 1;
                     echo "<div class='productGotImageContainer' id='productGotImageContainer$i'>
                         <img class='productGotImage'>
                         <input type='file' name='productImage$i' onchange='productImageChanged($i)' class='upload-photo' id='upload-photo$i'/>
                         <label class='productImageDeleteLabel' onclick='productImageDelete($i)'>Usuń</label>
                         <label for='upload-photo$i' id='editImageLabel$i' class='productImageEditLabel'>Dodaj</label>
                     </div>";
+                    array_push($newProductImagesArray, $i);
                 ?>
             </div>
             <label class="boldLabel">* Tytuł produktu (np: Dysk samsung 980 PRO)</label><br>
@@ -57,39 +60,44 @@
             <label class="boldLabel">* Cena regularna (np: 899,99)</label><br>
             <input type="number" value='<?php echo $productEditData['product_regularPrice']; ?>' name="productRegularPrice" class="productValueInput">
             <label class="boldLabel">Cena promocyjna (np: 799,99)</label><br>
-            <input type="number" value='<?php echo $productEditData['product_price']; ?>' name="productRegularPrice" class="productValueInput">
+            <input type="number" value='<?php echo $productEditData['product_price']; ?>' name="productDiscountPrice" class="productValueInput">
             <label class="boldLabel">* Ilość magazynowa (np: 9)</label><br>
-            <input type="number" value='<?php echo $productEditData['product_magazinePieces']; ?>' name="productRegularPrice" class="productValueInput"><br>
+            <input type="number" value='<?php echo $productEditData['product_magazinePieces']; ?>' name="productMagazineStock" class="productValueInput"><br>
             <label class="boldLabel">* Szczegóły (np: Kolor : niebieski)</label><br>
             <div class="productPropertyContainer" id="productPropertyContainerId">
                 <?php
+                    $newProductPropertiesArray = [];
                     if(isset($_POST['productId'])) {
                         $properties = unserialize($productEditData['product_properties']);
-                        $i = 0;
+                        $i = 1;
                         foreach($properties as &$property) {
                             echo "<div id='property$i' style='margin-bottom: 15px;'><input type='text' value='$property[0]' name='propertyType$i' id='propertyType$i' class='propertyType'>
                             <label id='boldColon'> : </label>
                             <input type='text' value='$property[1]' name='propertyTypeValue$i' id='propertyTypeValue$i' class='propertyTypeValue'>
                             <label class='deleteProperyLabel' onclick='deleteProperty($i)'>Usuń</label></div>";
+                            array_push($newProductPropertiesArray, array("id" => $i, "propertyType" => $property[0], "propertyTypeValue" => $property[1]));
                             $i++;
                         }
-                    } else $i = 0;
-                    echo "<div id='property$i' style='margin-bottom: 15px;'><input type='text' value='' name='propertyType$i' id='propertyType$i' onchange='addNewProperty($i)' class='propertyType'>
+                    } else $i = 1;
+                    echo "<div id='property$i' style='margin-bottom: 15px;'><input type='text' value='' name='propertyType$i' id='propertyType$i' onkeyup='addNewProperty($i)' class='propertyType'>
                         <label id='boldColon'> : </label>
-                        <input type='text' value='' name='propertyTypeValue$i' id='propertyTypeValue$i' onchange='addNewProperty($i)' class='propertyTypeValue'>
+                        <input type='text' value='' name='propertyTypeValue$i' id='propertyTypeValue$i' onkeyup='addNewProperty($i)' class='propertyTypeValue'>
                     <label class='deleteProperyLabel' onclick='deleteProperty($i)'>Usuń</label></div>";
+                    array_push($newProductPropertiesArray, array("id" => $i, "propertyType" => "", "propertyTypeValue" => ""));
                 ?>
             </div>
             <label class="boldLabel">* Kategoria (np. Elektornika)</label><br>
-            <select class="categorySelect">
+            <select class="categorySelect" name="productCategory">
                 <?php if(isset($_POST['productId'])) echo "<option>Aktualna</option>"; ?>
                 <optgroup label="Kategorie">
                     <?php showCategories(); ?>
                 </optgroup>
             </select><br>
             <label class="boldLabel">* Opis produktu</label><br>
-            <textarea name="productRegularPrice" class="productDescriptionArea"><?php echo $productEditData['product_description']; ?></textarea><br><br>
-            <input type="submit" value="ZAPISZ" style="margin-left: 20px;">
+            <textarea name="productDescriptionText" class="productDescriptionArea"><?php echo $productEditData['product_description']; ?></textarea><br><br>
+            <input type="submit" name="newProductSubmited" value="ZAPISZ" style="margin-left: 20px;">
+            <input type="hidden" name="imgsArray" value="">
+            <input type="hidden" name="propsArray" value="">
         </form>
     </div>
 
@@ -124,9 +132,22 @@
     <script>
 
         function productImageDelete(id) {
-            if(document.getElementById("editImageLabel" + (id)).innerHTML != "Dodaj")
+            if(document.getElementById("editImageLabel" + (id)).innerHTML != "Dodaj") {
                 document.getElementById("productGotImageContainer" + (id)).remove();
+                for(let i=0; i<Imgs.length; i++) {
+                    if(Imgs[i] != null) {
+                        if(Imgs[i] == id)
+                            delete Imgs[i];
+                    }
+                }
+                $('[name=imgsArray]').val(Imgs); 
+            }
         }
+
+        const Imgs = <?php echo json_encode($newProductImagesArray); ?>;
+        $('[name=imgsArray]').val(Imgs);
+        const Props = <?php echo json_encode($newProductPropertiesArray); ?>;
+        $('[name=propsArray]').val(JSON.stringify(Props));
 
         function productImageChanged(id) {
             if(document.getElementById("editImageLabel" + (id)).innerHTML == "Dodaj") {
@@ -156,55 +177,78 @@
                 imageContainer.appendChild(deleteLabel);
                 imageContainer.appendChild(addLabel);
                 document.getElementById("imagesContainerId").append(imageContainer);
+                Imgs.push(id+1);
             }
-            if(event.target.value != "")
+            if(event.target.value != "") {
                 document.getElementById("editImageLabel" + id).innerHTML = event.target.value;
-            else {
-                document.getElementById("editImageLabel" + id).innerHTML = "Edytuj";
-                event.target.value = "image" + id;
+                $('[name=imgsArray]').val(Imgs); 
             }
         }
 
         function addNewProperty(id) {
             var highterProperty =  document.getElementById('property' + (id+1));
-            if(highterProperty == null) {
-                const propertyContainer = document.createElement("div");
-                propertyContainer.id = "property" + (id+1);
-                propertyContainer.style.marginBottom = "15px";
-                const propertyType = document.createElement("input");
-                propertyType.type = "text";
-                propertyType.name = "propertyType" + (id+1);
-                propertyType.id = "propertyType" + (id+1);
-                propertyType.className = "propertyType";
-                propertyType.setAttribute("onchange","addNewProperty("+(id+1)+");");
-                const boldColon = document.createElement("label");
-                boldColon.innerHTML = " : ";
-                boldColon.id = "boldColon";
-                boldColon.style.marginLeft = "-1px";
-                const propertyTypeValue = document.createElement("input");
-                propertyTypeValue.type = "text";
-                propertyTypeValue.name = "propertyTypeValue" + (id+1);
-                propertyTypeValue.id = "propertyTypeValue" + (id+1);
-                propertyTypeValue.className = "propertyTypeValue";
-                propertyTypeValue.style.marginLeft = "-1px";
-                propertyTypeValue.setAttribute("onchange","addNewProperty("+(id+1)+");");
-                const deleteLabel = document.createElement("label");
-                deleteLabel.className = "deleteProperyLabel";
-                deleteLabel.innerHTML = "Usuń";
-                deleteLabel.style.marginLeft = "4px";
-                deleteLabel.setAttribute("onclick","deleteProperty("+(id+1)+");");
+            let propertyDiv = document.getElementById("property" + id);
+            if(propertyDiv.children[0].value != "" && propertyDiv.children[2].value != "") {
+                if(highterProperty == null) {
+                    const propertyContainer = document.createElement("div");
+                    propertyContainer.id = "property" + (id+1);
+                    propertyContainer.style.marginBottom = "15px";
+                    const propertyType = document.createElement("input");
+                    propertyType.type = "text";
+                    propertyType.name = "propertyType" + (id+1);
+                    propertyType.id = "propertyType" + (id+1);
+                    propertyType.className = "propertyType";
+                    propertyType.setAttribute("onkeyup","addNewProperty("+(id+1)+");");
+                    const boldColon = document.createElement("label");
+                    boldColon.innerHTML = " : ";
+                    boldColon.id = "boldColon";
+                    boldColon.style.marginLeft = "-1px";
+                    const propertyTypeValue = document.createElement("input");
+                    propertyTypeValue.type = "text";
+                    propertyTypeValue.name = "propertyTypeValue" + (id+1);
+                    propertyTypeValue.id = "propertyTypeValue" + (id+1);
+                    propertyTypeValue.className = "propertyTypeValue";
+                    propertyTypeValue.style.marginLeft = "-1px";
+                    propertyTypeValue.setAttribute("onkeyup","addNewProperty("+(id+1)+");");
+                    const deleteLabel = document.createElement("label");
+                    deleteLabel.className = "deleteProperyLabel";
+                    deleteLabel.innerHTML = "Usuń";
+                    deleteLabel.style.marginLeft = "4px";
+                    deleteLabel.setAttribute("onclick","deleteProperty("+(id+1)+");");
 
-                propertyContainer.appendChild(propertyType);
-                propertyContainer.appendChild(boldColon);
-                propertyContainer.appendChild(propertyTypeValue);
-                propertyContainer.appendChild(deleteLabel);
-                document.getElementById("productPropertyContainerId").append(propertyContainer);
+                    propertyContainer.appendChild(propertyType);
+                    propertyContainer.appendChild(boldColon);
+                    propertyContainer.appendChild(propertyTypeValue);
+                    propertyContainer.appendChild(deleteLabel);
+                    document.getElementById("productPropertyContainerId").append(propertyContainer);
+                    Props.push({"id": id+1, "propertyType": "", "propertyTypeValue": ""});
+                }
             }
+            for(let i=0; i<Props.length; i++) {
+                if(Props[i] != null) {
+                    if(Props[i]["id"] == id) {
+                        let propertyDiv = document.getElementById("property" + id);
+                        if(propertyDiv.children[0].value != "" && propertyDiv.children[2].value != "") {
+                            Props[i]["propertyType"] = propertyDiv.children[0].value;
+                            Props[i]["propertyTypeValue"] = propertyDiv.children[2].value;
+                        }
+                    }
+                }
+            }
+            $('[name=propsArray]').val(JSON.stringify(Props));
         }
 
         function deleteProperty(id) {
-            if(document.getElementById("propertyTypeValue" + (id)).value != "" || document.getElementById("propertyType" + (id)).value != "")
+            if(document.getElementById("propertyTypeValue" + (id)).value != "" || document.getElementById("propertyType" + (id)).value != "") {
                 document.getElementById("property" + (id)).remove();
+                for(let i=0; i<Props.length; i++) {
+                    if(Props[i] != null) {
+                        if(Props[i]["id"] == id)
+                            delete Props[i];
+                    }
+                }
+                $('[name=propsArray]').val(JSON.stringify(Props));
+            }
         }
 
     </script>
