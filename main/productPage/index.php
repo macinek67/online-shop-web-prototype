@@ -1,7 +1,6 @@
 <script>
 
     function adjustImageWidth(imgUrl) {
-        productImageUrls.push(imgUrl);
         let imagesGalleryWidth = document.getElementById("photosGalleryId").offsetWidth;
         let imagesGalleryHeight = document.getElementById("photosGalleryId").offsetHeight;
         let img = document.getElementById(imgUrl);

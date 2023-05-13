@@ -115,8 +115,7 @@
             document.getElementById("searchCategoryFormId").submit();
         }
 
-        function deleteCategoryRequest(id) {
-            alert("e");
+        function deleteCategoryFromDbRequest(id) {
             document.getElementById("categoryToDeleteButtonId").value = id;
             document.getElementById("categoryDeleteFormId").submit();
         }

@@ -24,8 +24,8 @@
     <div class="addNewProductContainer">
         <form class="productSelectedImagesContainer" action="insertNewProduct.php" method="post" enctype="multipart/form-data">
             <div id="imagesContainerId">
-            <?php
-                $productEditData = ["product_title" => "", "product_regularPrice" => "", "product_price" => "", "product_magazinePieces" => "", "product_properties" => "", "product_description" => ""];
+                <?php
+                    $productEditData = ["product_title" => "", "product_regularPrice" => "", "product_price" => "", "product_magazinePieces" => "", "product_properties" => "", "product_description" => ""];
                     if(isset($_POST['productId'])) {
                         $product = $_POST['productId'];
                         $result = $connect->query("SELECT * FROM product WHERE product_id='$product'");

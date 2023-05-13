@@ -167,7 +167,7 @@
         $.ajax({
             type: "POST",
             url: '../php/cartProduct/changeQuantityProduct.php',
-            data:{action:'changeQuantity', quantity:event.target.value, productId:eventTarget.parentElement.children[0].value},
+            data:{action:'changeQuantity', quantity:event.target.value, productId:((eventTarget.parentElement.children[0]).id).value},
             success:function() {
                 window.location.reload();
             }
