@@ -18,10 +18,10 @@ class AdminPageProduct {
         $price = $this->product->price;
         $this->id = $this->product->id;
         $connect = @new mysqli("localhost", "root", "", "sklepinternetowypai");
-        $result = $connect->query("SELECT * FROM product WHERE product_id='$this->id'");
+        $result = $connect->query("SELECT * FROM product JOIN category USING(category_id) WHERE product_id='$this->id'");
         if($row = mysqli_fetch_assoc($result)) {
             $this->mainImg = unserialize($row['product_img'])[0];
-            $popularity = $row['product_boughtCount'];
+            $productCategory = $row['name'];
             $propertiesArray = unserialize($row['product_properties']);
             echo <<< html
             <div class="searchedItemAdminPageMainDiv">
@@ -35,7 +35,8 @@ class AdminPageProduct {
                 <div class="searchedItemProperties">
         html;
                 foreach ($propertiesArray as &$productProperty) {
-                        echo "<label>$productProperty[0]: $productProperty[1]</label>";
+                    if($productProperty[0] == "Kategoria") echo "<label>$productProperty[0]: $productCategory</label>";
+                    else echo "<label>$productProperty[0]: $productProperty[1]</label>";
                 }
         echo <<< html
                 </div>
@@ -44,9 +45,7 @@ class AdminPageProduct {
          html;
             if($row['isSuspended'] == "no") echo "<label class='deleteLabel' onclick='deleteCategoryRequest($this->id)'>Usuń</label>";
             else if($row['isSuspended'] == "yes") echo "<label class='deleteLabel' onclick='restoreCategoryRequest($this->id)'>Przywróć</label>";
-        echo <<< html
-            </div>
-        html;
+            echo "</div>";
         }
     }
 }

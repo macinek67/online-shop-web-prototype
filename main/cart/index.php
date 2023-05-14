@@ -31,74 +31,85 @@
     <?php
         if(isset($_SESSION['loggedIn'])){
             if($_SESSION['loggedIn'] == true) {
-                echo <<< html
-                    <div class="cartMainContainer">
-                        <div class="cartItemsContainer">
-                html;
-                        $userID = $_SESSION["user"]['user_id'];
-                        $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
-                        $cartProcutsArray = [];
-                        $productsCount = 0;
-                        while($row = mysqli_fetch_assoc($result)) {
-                            $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
-                            $CartPrdct = new CartItem($row['product_id'], $prdct);
-                            $CartPrdct->createProduct();
-                            $cartProcutsArray[$productsCount++] = ['product_id' => $row['product_id'], 'product_quantity' => $row['product_quantity']];
-                        }
-                        $serializedcartProcutsArray = serialize($cartProcutsArray);
-                        echo <<< html
+                $userID = $_SESSION["user"]['user_id'];
+                $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
+                if($row = mysqli_fetch_assoc($result)) {
+                    echo <<< html
+                        <div class="cartMainContainer">
+                            <div class="cartItemsContainer">
+                    html;
+                            $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
+                            $cartProcutsArray = [];
+                            $productsCount = 0;
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                                $CartPrdct = new CartItem($row['product_id'], $prdct);
+                                $CartPrdct->createProduct();
+                                $cartProcutsArray[$productsCount++] = ['product_id' => $row['product_id'], 'product_quantity' => $row['product_quantity']];
+                            }
+                            $serializedcartProcutsArray = serialize($cartProcutsArray);
+                            echo <<< html
+                            </div>
+                            <div class="sideCartPanel">
+                                <label class="cartItemsSumPriceText">Wartość produktów</label>
+                                <label class="cartItemsSumPrice">
+                            html;
+                            $cartSumPrice = 0;
+                            $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $cartSumPrice += $row['product_price']*$row['product_quantity']; 
+                            }
+                            echo <<< html
+                                $cartSumPrice zł
+                                </label>
+                                <label class="cartShipCostText">Dostawa od</label>
+                                <label class="cartShipCost">
+                            html;
+                            if($cartSumPrice > 399) $shipCost = "0.00";
+                            else $shipCost = "9.99";
+                            echo <<< html
+                                $shipCost zł
+                                </label>
+                                <hr>
+                                <label class="cartFinalPriceText">Razem z dostawą</label>
+                                <label class="cartFinalPrice">
+                            html;
+                            $finalPrice = $cartSumPrice + $shipCost;
+                            echo <<< html
+                                $finalPrice zł
+                                </label>
+                                <form action="shipAndPaymentPage.php" method="POST">
+                                    <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
+                                    <input type="hidden" name="sumPriceProducts" value='$cartSumPrice'>
+                                    <input type="hidden" name="cartProducts" value='$serializedcartProcutsArray'>
+                                </form>
+                                <label class="continueShopping" id="continueShoppingID">KONTYNUUJ ZAKUPY</label>
+                            </div>
                         </div>
-                        <div class="sideCartPanel">
-                            <label class="cartItemsSumPriceText">Wartość produktów</label>
-                            <label class="cartItemsSumPrice">
-                        html;
-                        $cartSumPrice = 0;
-                        $result = $connect->query("SELECT * FROM product JOIN cartproduct USING(product_id) WHERE cartproduct.user_id=$userID ORDER BY id ASC");
-                        while($row = mysqli_fetch_assoc($result)) {
-                            $cartSumPrice += $row['product_price']*$row['product_quantity']; 
-                        }
-                        echo <<< html
-                            $cartSumPrice zł
-                            </label>
-                            <label class="cartShipCostText">Dostawa od</label>
-                            <label class="cartShipCost">
-                        html;
-                        if($cartSumPrice > 399) $shipCost = "0.00";
-                        else $shipCost = "9.99";
-                        echo <<< html
-                            $shipCost zł
-                            </label>
-                            <hr>
+                        <div class="bottomCartPanel">
                             <label class="cartFinalPriceText">Razem z dostawą</label>
                             <label class="cartFinalPrice">
                         html;
-                        $finalPrice = $cartSumPrice + $shipCost;
+                        echo $finalPrice;
                         echo <<< html
-                            $finalPrice zł
-                            </label>
+                            zł</label>
                             <form action="shipAndPaymentPage.php" method="POST">
                                 <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
                                 <input type="hidden" name="sumPriceProducts" value='$cartSumPrice'>
                                 <input type="hidden" name="cartProducts" value='$serializedcartProcutsArray'>
+                                <input type="button" value="KONTYNUUJ ZAKUPY" class="continueShopping" onclick="ReturnToMainPageFunction()">
                             </form>
-                            <label class="continueShopping" id="continueShoppingID">KONTYNUUJ ZAKUPY</label>
                         </div>
-                    </div>
-                    <div class="bottomCartPanel">
-                        <label class="cartFinalPriceText">Razem z dostawą</label>
-                        <label class="cartFinalPrice">
                     html;
-                    echo $finalPrice;
+                } else {
                     echo <<< html
-                        zł</label>
-                        <form action="shipAndPaymentPage.php" method="POST">
-                            <input type="submit" name="cartShipAndPaymentSubmit" value="DOSTAWA I PŁATNOŚĆ" class="cartShipAndPaymentButton">
-                            <input type="hidden" name="sumPriceProducts" value='$cartSumPrice'>
-                            <input type="hidden" name="cartProducts" value='$serializedcartProcutsArray'>
-                            <input type="button" value="KONTYNUUJ ZAKUPY" class="continueShopping" onclick="ReturnToMainPageFunction()">
-                        </form>
-                    </div>
-                html;
+                        <div class='emptyCartDiv'>
+                            <label id='boldLabel'>Twój koszyk jest pusty</label><br>
+                            <label>Dodaj do koszyka przedmioty i kup je szybko i wygodnie.</label><br>
+                            <img src='../../images/emptyCartImage.svg'>
+                        </div>
+                    html;
+                }
             }
         }
     ?>

@@ -38,7 +38,7 @@
                         foreach($imgs as &$img) {
                             echo "<div class='productGotImageContainer' id='productGotImageContainer$i'>
                                 <img src='../../uploadedProductImages/$img' class='productGotImage'>
-                                <input type='file' name='productImage$i' value='' onchange='productImageChanged($i)' class='upload-photo' id='upload-photo$i'/>
+                                <input type='file' name='productImage$i' value='../../uploadedProductImages/$img' onchange='productImageChanged($i)' class='upload-photo' id='upload-photo$i'/>
                                 <label class='productImageDeleteLabel' onclick='productImageDelete($i)'>Usuń</label>
                                 <label for='upload-photo$i' id='editImageLabel$i' class='productImageEditLabel'>Edytuj</label>
                             </div>";
@@ -52,7 +52,6 @@
                         <label class='productImageDeleteLabel' onclick='productImageDelete($i)'>Usuń</label>
                         <label for='upload-photo$i' id='editImageLabel$i' class='productImageEditLabel'>Dodaj</label>
                     </div>";
-                    array_push($newProductImagesArray, $i);
                 ?>
             </div>
             <label class="boldLabel">* Tytuł produktu (np: Dysk samsung 980 PRO)</label><br>
@@ -71,12 +70,14 @@
                         $properties = unserialize($productEditData['product_properties']);
                         $i = 1;
                         foreach($properties as &$property) {
-                            echo "<div id='property$i' style='margin-bottom: 15px;'><input type='text' value='$property[0]' name='propertyType$i' id='propertyType$i' class='propertyType'>
-                            <label id='boldColon'> : </label>
-                            <input type='text' value='$property[1]' name='propertyTypeValue$i' id='propertyTypeValue$i' class='propertyTypeValue'>
-                            <label class='deleteProperyLabel' onclick='deleteProperty($i)'>Usuń</label></div>";
-                            array_push($newProductPropertiesArray, array("id" => $i, "propertyType" => $property[0], "propertyTypeValue" => $property[1]));
-                            $i++;
+                            if($property[0] != "Kategoria") {
+                                echo "<div id='property$i' style='margin-bottom: 15px;'><input type='text' value='$property[0]' name='propertyType$i' id='propertyType$i' class='propertyType'>
+                                <label id='boldColon'> : </label>
+                                <input type='text' value='$property[1]' name='propertyTypeValue$i' id='propertyTypeValue$i' class='propertyTypeValue'>
+                                <label class='deleteProperyLabel' onclick='deleteProperty($i)'>Usuń</label></div>";
+                                array_push($newProductPropertiesArray, array("id" => $i, "propertyType" => $property[0], "propertyTypeValue" => $property[1]));
+                                $i++;
+                            }
                         }
                     } else $i = 1;
                     echo "<div id='property$i' style='margin-bottom: 15px;'><input type='text' value='' name='propertyType$i' id='propertyType$i' onkeyup='addNewProperty($i)' class='propertyType'>
@@ -98,6 +99,13 @@
             <input type="submit" name="newProductSubmited" value="ZAPISZ" style="margin-left: 20px;">
             <input type="hidden" name="imgsArray" value="">
             <input type="hidden" name="propsArray" value="">
+            <?php
+                if(isset($_POST['productId'])) {
+                    echo '<input type="hidden" name="usingMethod" value="editing">';
+                    echo "<input type='hidden' name='productId' value=$_POST[productId]>";
+                }
+                else echo '<input type="hidden" name="usingMethod" value="adding">';
+            ?>
         </form>
     </div>
 
@@ -177,10 +185,10 @@
                 imageContainer.appendChild(deleteLabel);
                 imageContainer.appendChild(addLabel);
                 document.getElementById("imagesContainerId").append(imageContainer);
-                Imgs.push(id+1);
             }
             if(event.target.value != "") {
                 document.getElementById("editImageLabel" + id).innerHTML = event.target.value;
+                if(Imgs[id-1] != id) Imgs.push(id);
                 $('[name=imgsArray]').val(Imgs); 
             }
         }

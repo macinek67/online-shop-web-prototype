@@ -14,6 +14,26 @@
     margin-bottom: 250px;
 }
 
+.emptyFavoritesDiv {
+    position: relative;
+    top: 125px;
+    width: 90%;
+    max-width: 1280px;
+    margin: auto;
+    text-align: center;
+}
+
+.emptyFavoritesDiv #boldLabel {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.emptyFavoritesDiv img {
+    width: 50%;
+    max-width: 300px;
+    margin-top: 25px;
+}
+
 @media screen and (min-width: 821px) and (max-width: 1279px) {
     .cartMainContainer {
         width: 97.5%;

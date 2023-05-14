@@ -30,15 +30,30 @@
 
 
     <?php
-        echo "<div class='cartMainContainer'>";
-            $userID = $_SESSION["user"]['user_id'];
-            $result = $connect->query("SELECT * FROM product JOIN favoriteproduct USING(product_id) WHERE favoriteproduct.user_id=$userID ORDER BY id ASC");
-            while($row = mysqli_fetch_assoc($result)) {
-                $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
-                $CartPrdct = new FavoriteItem($row['product_id'], $prdct);
-                $CartPrdct->createProduct();
+        if(isset($_SESSION['loggedIn'])){
+            if($_SESSION['loggedIn'] == true) {
+                $userID = $_SESSION["user"]['user_id'];
+                $result = $connect->query("SELECT * FROM product JOIN favoriteproduct USING(product_id) WHERE favoriteproduct.user_id=$userID ORDER BY id ASC");
+                if($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='cartMainContainer'>";
+                        $result = $connect->query("SELECT * FROM product JOIN favoriteproduct USING(product_id) WHERE favoriteproduct.user_id=$userID ORDER BY id ASC");
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $prdct = new Product($row['product_id'], $row['product_title'], $row['product_price'], $row['product_img']);
+                            $CartPrdct = new FavoriteItem($row['product_id'], $prdct);
+                            $CartPrdct->createProduct();
+                        }
+                    echo "</div>";
+                } else {
+                    echo <<< html
+                        <div class='emptyFavoritesDiv'>
+                            <label id='boldLabel'>Nie masz ulubionych przedmiotów</label><br>
+                            <label>Dodaj jakiś klikając gwiazdkę na stronie produktu.</label><br>
+                            <img src='../../images/emptyFavoritesImage.png'>
+                        </div>
+                    html;
+                }
             }
-        echo "</div>";
+        }
     ?>
 
 

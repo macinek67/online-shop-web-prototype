@@ -1,21 +1,3 @@
-<script>
-
-    function adjustImageWidth(imgUrl) {
-        let imagesGalleryWidth = document.getElementById("photosGalleryId").offsetWidth;
-        let imagesGalleryHeight = document.getElementById("photosGalleryId").offsetHeight;
-        let img = document.getElementById(imgUrl);
-        if(img.width==0) window.location.reload();
-        if(img.width<imagesGalleryWidth) {
-            img.style.marginLeft = (((imagesGalleryWidth-img.width)/2)/imagesGalleryWidth)*100 + "%";
-            img.style.marginRight = (((imagesGalleryWidth-img.width)/2)/imagesGalleryWidth)*100 + "%";
-        }
-        if(img.width>imagesGalleryWidth) {
-            let j = 100-(imagesGalleryWidth/img.naturalWidth*100);
-            img.style.marginTop = j/8 + "%";
-            img.style.width = imagesGalleryWidth;
-        }
-    }
-</script>
 <?php
     session_start();
     require_once('../php/classes.php');
@@ -70,8 +52,9 @@
             <?php
                 $i = 0;
                 foreach ($productImages as &$productImage) {
-                    echo "<img src='../../uploadedProductImages/$productImage' id='productPhoto$i'>";
-                    echo "<script>adjustImageWidth('productPhoto$i');</script>";
+                    echo "<div class='productImageDiv'>";
+                        echo "<img src='../../uploadedProductImages/$productImage' id='productPhoto$i'>";
+                    echo "</div>";
                     $i++;
                 }
             ?>

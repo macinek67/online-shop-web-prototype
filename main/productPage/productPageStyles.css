@@ -16,7 +16,7 @@
 
 .photosGallery {
     width: var(--gallery-width);
-    height: var(--gallery-height);
+    height: var(--gallery-width);
     overflow-x: scroll;
     display: flex;
     flex-direction: row;
@@ -43,7 +43,7 @@
     top: 50%;
     transform: translateY(-50%);
     width: calc(var(--gallery-height) / 10);
-    height: calc(var(--gallery-width) / 10);
+    height: calc(var(--gallery-height) / 10);
     font-size: calc((var(--gallery-width) / 10)-1);
     background-color: rgba(165, 165, 165, 0.25);
     border-style: solid;
@@ -239,6 +239,22 @@
     writing-mode: horizontal-tb;
 }
 
+
+.productImageDiv {
+    min-height: var(--gallery-height);
+    height: var(--gallery-height);
+    max-height: var(--gallery-height);
+    min-width: var(--gallery-width);
+    max-width: var(--gallery-width);
+    text-align: center;
+}
+
+.productImageDiv img {
+    height: var(--gallery-height);
+    max-height: var(--gallery-height);
+    max-width: var(--gallery-width);
+}
+
 @media screen and (max-width: 720px) {
     .productMainContainer {
         flex-direction: column;
@@ -270,7 +286,7 @@
 
 @media screen and (max-width: 423px) {
     :root {
-        --gallery-height: 18rem;
+        --gallery-height: 17rem;
     }
 
     .regularPriceLabel, .regularPriceValueLabel, .discountPercentLabel {

@@ -16,6 +16,25 @@
     margin-bottom: 250px;
 }
 
+.emptyCartDiv {
+    position: relative;
+    top: 125px;
+    width: 90%;
+    max-width: 1280px;
+    margin: auto;
+    text-align: center;
+}
+
+.emptyCartDiv #boldLabel {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.emptyCartDiv img {
+    width: 75%;
+    max-width: 600px;
+}
+
 
 @media screen and (min-width: 821px) {
     .sideCartPanel {
